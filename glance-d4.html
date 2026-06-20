@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>D4 走機日 · 南大門→明洞→安國→東大門 · at a glance · 26 Jun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.5;padding:0 0 64px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+a{color:var(--ink)}
+.wx{background:var(--ink);color:#fff;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.wx .d{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.wx .t{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;opacity:.85}
+.wx .t b{color:#fff;opacity:1}
+.wx .rn{color:#fff;background:var(--red);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:1px 7px;text-transform:uppercase}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:18px}
+.masthead{display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:start;border-top:2px solid var(--ink);padding-top:10px;margin-top:6px}
+.daynum{font-weight:900;font-size:72px;line-height:.78;letter-spacing:-.045em}
+.daynum small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;margin-top:6px}
+.title{font-weight:900;font-size:clamp(22px,4.8vw,32px);line-height:1.04;letter-spacing:-.022em;margin-top:2px}
+.sub{font-size:13.5px;line-height:1.5;color:var(--ink-2);margin-top:9px;max-width:50ch}
+@media(max-width:520px){.daynum{font-size:54px}}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:16px 0;border-left:3px solid var(--red)}
+.callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
+.callout.ink{border-left-color:var(--ink)}.callout.ink .ct{color:var(--ink)}
+.sec h2{font-weight:900;font-size:14px;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:7px;border-bottom:2px solid var(--ink);margin-top:26px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.sec h2 .hn{font-family:var(--mono);font-size:11px;color:var(--red);font-weight:700}
+.sec h2 .zs{font-family:var(--mono);font-size:10px;color:var(--ink-3);font-weight:400;letter-spacing:.04em}
+.stop{display:grid;grid-template-columns:40px 78px 1fr;column-gap:14px;align-items:start;padding:15px 0 13px;border-bottom:1px solid var(--rule)}
+.stop:last-child{border-bottom:none}
+.idx{font-weight:900;font-size:32px;line-height:.82;letter-spacing:-.04em}
+.stop.opt .idx{color:var(--red);opacity:.5}
+.stop.add{background:linear-gradient(90deg,rgba(228,0,43,.05),transparent 60%);margin:0 -10px;padding-left:10px;padding-right:10px}
+.when{font-family:var(--mono);font-size:14px;font-weight:700;line-height:1.1}
+.when .must{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ink);padding:1px 5px;margin-top:6px}
+.when .can{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-top:6px}
+.when .new{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--red);padding:1px 5px;margin-top:6px}
+.nm{font-weight:800;font-size:17px;line-height:1.12;letter-spacing:-.01em}
+.nm .ko{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+.usp{font-size:12.5px;line-height:1.5;color:var(--ink-2);margin-top:5px;max-width:48ch}
+.row{margin-top:7px;font-size:11.5px;line-height:1.5;display:flex;flex-wrap:wrap;gap:3px 14px}
+.row .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.row b{font-weight:700}
+.nav{margin-top:7px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.03em}
+.nav a{border-bottom:1px solid var(--ink);text-decoration:none;margin-right:14px}
+.nav a::after{content:" →";color:var(--red)}
+.rain{margin-top:6px;font-size:11.5px;line-height:1.45;color:var(--ink-2);padding-left:11px;border-left:2px solid var(--rule)}
+.rain .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-right:5px}
+.foot{margin-top:30px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="wx">
+  <span class="d">26 Jun 五</span>
+  <span class="t">~<b>28°C</b> 焗熱</span>
+  <span class="rn">梅雨季 · 有雨</span>
+  <span class="t">走機日 · 室內/有蓋為主</span>
+</div>
+
+<div class="wrap">
+
+  <div class="kicker">Seoul · Day 4 · 走機日 finale</div>
+  <div class="masthead">
+    <div class="daynum">D4<small>26 JUN 五</small></div>
+    <div>
+      <div class="title">南大門 → 明洞 → 安國 → 東大門</div>
+      <div class="sub">朝市掃手信 → 明洞午餐 → 🆕 安國/익선동 文化 café 段 → 東大門 finale 夜燈收筆。梅雨走機日，全程沿室內與有蓋商街，戶外只擺夜燈。</div>
+    </div>
+  </div>
+
+  <div class="callout ink"><div class="ct">走機 deadline</div><div class="cv"><b>20:30 前返酒店攞行李、21:00 前離酒店</b> → 回程交通去 ICN 趕 01:55（van 直去 / AREX 尾班直通 22:40）。下半場集中東大門，方便收尾。</div></div>
+  <div class="callout"><div class="ct">本次更新</div><div class="cv">🆕 加入 <b>安國段（仁寺洞 Ssamziegil 工藝 + 冬柏洋菓子店 韓屋 café）</b>，換走原本明洞 RoofCatMe 貓café。<b>London Bagel 安國 落晝入唔到（截 13:00·排 2 鐘），未納入。</b></div></div>
+
+  <!-- 南大門 -->
+  <div class="sec">
+    <h2><span class="hn">朝市</span> 南大門市場 <span class="zs">08:30–11:30 · 掃手信</span></h2>
+
+    <div class="stop">
+      <div class="idx">1</div>
+      <div class="when">早餐<br>08:30<div class="must">必到</div></div>
+      <div>
+        <div class="nm">南大門刀削麵橫巷 <span class="ko">남대문 칼국수골목</span></div>
+        <div class="usp">一條窄巷十幾檔並排，刀削麵配冷麵與大麥飯一套同上的市場早餐，最有朝市氣氛的開場。11:00 前到免排。</div>
+        <div class="row"><span><span class="k">價</span> <b>₩5,000–9,000</b>／人 · HKD 26–47</span><span><span class="k">忠武路</span> 4 號線 1 站 會賢</span><span><span class="k">tag</span> 爸爸食物</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/남대문시장 칼국수골목" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>巷內有蓋；轉 Gamegol 手工大餃子室內檔</div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">2</div>
+      <div class="when">09:00<div class="must">必到</div></div>
+      <div>
+        <div class="nm">南大門市場 掃手信 + 雜貨 <span class="ko">남대문시장</span></div>
+        <div class="usp">全韓最大綜合市場：海苔零食大包裝平過明洞，C/D 棟廚具樓不鏽鋼餐具，E 棟飾品樓髮飾仿首飾（媽媽手作配件）。週五照開。</div>
+        <div class="row"><span><span class="k">價</span> 手信 <b>₩3,000 起</b> · 餐具 ₩10,000 起</span><span><span class="k">步行</span> 巷口 3 分</span><span><span class="k">tag</span> 全家 + 媽媽手作</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/남대문시장" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>C/D 棟廚具樓 + E 棟飾品樓全室內串連</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 明洞 -->
+  <div class="sec">
+    <h2><span class="hn">明洞</span> 午餐 <span class="zs">12:00 · 米芝蓮刀削麵</span></h2>
+
+    <div class="stop">
+      <div class="idx">3</div>
+      <div class="when">午餐<br>12:00<div class="must">必到</div></div>
+      <div>
+        <div class="nm">明洞餃子 本店 <span class="ko">명동교자 본점</span></div>
+        <div class="usp">米芝蓮必比登老字號，雞湯底刀削麵濃稠不辣，夏季限定豆漿冷麵應時。D0 趕不及的補償午餐。3 人以上上 3 樓人龍短。</div>
+        <div class="row"><span><span class="k">價</span> 刀削麵 <b>₩11,000</b> · 餃子 ₩13,000 · HKD 57/67</span><span><span class="k">步行</span> 明洞站 8 出口 3 分</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/명동교자 본점" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身室內名店，照食</div>
+      </div>
+    </div>
+    <div class="rain" style="margin-top:13px;padding:11px 0 0 11px;border-top:1px dashed var(--rule);border-left:2px solid var(--rule)">
+      <span class="k">二揀一</span><b>戒指大學 銀戒工房</b>（媽媽手工藝·需預約·約 2.5h·₩40,000 起）—— 同下面仁寺洞工藝重疊，走機日二揀一；要做手作體驗就改朝早預約戒指大學、跳仁寺洞。
+    </div>
+  </div>
+
+  <!-- 安國 NEW -->
+  <div class="sec">
+    <h2><span class="hn">🆕 安國 / 益善洞</span> 下午文化 café 段 <span class="zs">13:30–17:00 · 近酒店 3 站</span></h2>
+
+    <div class="stop add">
+      <div class="idx">4</div>
+      <div class="when">13:30<div class="new">新增</div></div>
+      <div>
+        <div class="nm">仁寺洞 Ssamziegil 쌈지길 工藝 <span class="ko">쌈지길</span></div>
+        <div class="usp">四層螺旋商街、50+ 本地工藝 gallery 與手作：軟陶、鎖匙扣、DIY 小物、傳統紙藝 —— 媽媽手工藝主場，亦有手信。安國站 6 出口 292 米。</div>
+        <div class="row"><span><span class="k">時間</span> <b>10:30–20:30</b> 每日</span><span><span class="k">交通</span> 明洞 → 安國（3 號線）約 12 分</span><span><span class="k">tag</span> 媽媽手工藝</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/인사동 쌈지길" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>螺旋商街半室內、各舖室內，雨天照行</div>
+      </div>
+    </div>
+
+    <div class="stop add">
+      <div class="idx">5</div>
+      <div class="when">15:00<div class="new">新增</div></div>
+      <div>
+        <div class="nm">冬柏洋菓子店 益善洞 <span class="ko">동백양과자점</span></div>
+        <div class="usp">韓屋木質裝潢、開放廚房睇住整舒芙蕾班戟，鬆軟入口即化 —— 安國段嘅韓屋 café 抖腳位（全家）。Supyo-ro 28-gil 17-24。</div>
+        <div class="row"><span><span class="k">時間</span> <b>09:00–22:00</b>（LO 21:30）</span><span><span class="k">價</span> 舒芙蕾/咖啡 ₩8,000 起</span><span><span class="k">步行</span> 仁寺洞 → 益善洞 5 分</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/동백양과자점" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">後備</span>Onion 安國（어니언 안국·平日 07–22·韓屋麵包店·安國站 3 出口）二揀一</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 東大門 finale -->
+  <div class="sec">
+    <h2><span class="hn">東大門</span> finale <span class="zs">18:30–20:30 · 一隻雞 + 夜燈</span></h2>
+
+    <div class="stop">
+      <div class="idx">6</div>
+      <div class="when">晚餐<br>18:30<div class="must">必到</div></div>
+      <div>
+        <div class="nm">陳玉華奶奶 元祖一隻雞 <span class="ko">진옥화할매원조닭한마리</span></div>
+        <div class="usp">1978 年東大門一隻雞元祖，整隻雞清湯鍋滾煮、店員代切、蘸醬自調，湯底零辣最啱長輩。走機前一鑊熱湯收尾。18:30 到避高峰。</div>
+        <div class="row"><span><span class="k">價</span> <b>₩30,000/隻</b> · 3 人約 ₩45–50k · HKD 233–259</span><span><span class="k">東大門站</span> 9 出口 5 分</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/진옥화할매원조닭한마리" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>室內店 + 一隻雞街有蓋，照食</div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">7</div>
+      <div class="when">19:15<div class="must">必到</div></div>
+      <div>
+        <div class="nm">現代 City Outlet 東大門 <span class="ko">현대시티아울렛</span></div>
+        <div class="usp">全室內冷氣 outlet、180+ 品牌折扣，女裝樓層 + 7F 戶外運動品牌，1F 服務台憑護照攞折扣券、全場退稅 —— 走機前撿平貨 + 退稅主場。</div>
+        <div class="row"><span><span class="k">價</span> 服飾 ₩20,000–60,000 · 退稅</span><span><span class="k">步行</span> 一隻雞街 6 分</span><span><span class="k">tag</span> 媽媽女裝（+Doota 仔男裝/夾娃娃）</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/현대시티아울렛 동대문점" target="_blank" rel="noopener">Naver Map</a><a href="https://map.naver.com/p/search/두타몰" target="_blank" rel="noopener">Doota Mall</a></div>
+        <div class="rain"><span class="k">Rain</span>全天候室內主備案，與 DDP 室內展連動線</div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">8</div>
+      <div class="when">20:00<div class="must">必到</div></div>
+      <div>
+        <div class="nm">DDP · Dream in Light 夜燈 <span class="ko">동대문디자인플라자</span></div>
+        <div class="usp">Zaha Hadid 流線銀牆 + 2.5 萬朵 LED 發光玫瑰，每晚 19:00–22:00 逢半點一場（免費）。走機前最易出大片嘅免費夜景。</div>
+        <div class="row"><span><span class="k">價</span> <b>免費</b></span><span><span class="k">場次</span> 19:00–22:00 每 30 分</span><span><span class="k">步行</span> Outlet 4 分</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/동대문디자인플라자" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>落雨夜燈或取消 → 退入 DDP 室內展 / 現代 Outlet</div>
+      </div>
+    </div>
+
+    <div class="stop opt">
+      <div class="idx">9</div>
+      <div class="when">20:15<div class="can">收筆</div></div>
+      <div>
+        <div class="nm">清溪川 夜行（東大門段）<span class="ko">청계천</span></div>
+        <div class="usp">市中心人工河步道，東大門段比光化門段安靜，落水邊行 15 分鐘睇夜燈倒影，旅程收筆位。落大雨封路就跳。</div>
+        <div class="row"><span><span class="k">價</span> <b>免費</b></span><span><span class="k">步行</span> DDP 旁落水邊 4 分</span><span><span class="k">⚠</span> 20:30 前要返酒店攞行李</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/청계천" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>梅雨封路就跳 → 現代 Outlet/Doota 室內行到 20:30 收隊</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout ink"><div class="ct">收尾動線</div><div class="cv">清溪川/Outlet 收 → <b>20:30 返酒店攞行李 → 21:00 離酒店</b> → van 直去 ICN T1（或的士去首爾站搭 22:40 尾班 AREX 直通）→ 趕 CX427 01:55。</div></div>
+
+  <div class="foot">
+    <b>D4 · 26 Jun 2026 · 走機日</b> · 🆕 加 安國段（仁寺洞+冬柏/Onion·核 21/6）· 換走明洞貓café · London Bagel 安國 落晝不可行未納<br>
+    天氣梅雨有雨·室內為主 · 地圖 Naver 到場核 pin · 價 1 HKD ≈ 195 ₩ · Generated by Claude Code
+  </div>
+
+</div>
+</body>
+</html>
