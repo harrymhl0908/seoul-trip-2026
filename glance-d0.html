@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>D0 明洞到埗夜 · at a glance · 22 Jun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.5;padding:0 0 64px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+a{color:var(--ink)}
+/* weather banner */
+.wx{background:var(--ink);color:#fff;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.wx .d{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.wx .t{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;opacity:.85}
+.wx .t b{color:#fff;opacity:1}
+.wx .rn{color:#fff;background:var(--red);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:1px 7px;text-transform:uppercase}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:18px}
+.masthead{display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:start;border-top:2px solid var(--ink);padding-top:10px;margin-top:6px}
+.daynum{font-weight:900;font-size:72px;line-height:.78;letter-spacing:-.045em}
+.daynum small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;margin-top:6px}
+.title{font-weight:900;font-size:clamp(24px,5.2vw,34px);line-height:1.02;letter-spacing:-.022em;margin-top:2px}
+.sub{font-size:13.5px;line-height:1.5;color:var(--ink-2);margin-top:9px;max-width:50ch}
+@media(max-width:520px){.daynum{font-size:54px}}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:16px 0;border-left:3px solid var(--red)}
+.callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
+.arrival{margin:18px 0 4px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:11px 0}
+.alabel{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:9px}
+.arow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.acell{border-top:2px solid var(--ink);padding-top:6px}
+.acell .an{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--red)}
+.acell .at{font-size:12.5px;font-weight:700;line-height:1.2;margin-top:3px}
+.acell .at span{display:block;font-weight:400;font-size:10.5px;color:var(--ink-2);margin-top:2px}
+@media(max-width:520px){.arow{grid-template-columns:repeat(2,1fr);gap:11px 14px}}
+.sec h2{font-weight:900;font-size:14px;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:7px;border-bottom:2px solid var(--ink);margin-top:26px;display:flex;align-items:baseline;gap:8px}
+.sec h2 .hn{font-family:var(--mono);font-size:11px;color:var(--red);font-weight:700}
+.stop{display:grid;grid-template-columns:40px 78px 1fr;column-gap:14px;align-items:start;padding:15px 0 13px;border-bottom:1px solid var(--rule)}
+.stop:last-child{border-bottom:none}
+.idx{font-weight:900;font-size:34px;line-height:.82;letter-spacing:-.04em}
+.stop.opt .idx{color:var(--red);opacity:.5}
+.when{font-family:var(--mono);font-size:14px;font-weight:700;line-height:1.1}
+.when .must{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ink);padding:1px 5px;margin-top:6px}
+.when .can{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-top:6px}
+.nm{font-weight:800;font-size:17px;line-height:1.12;letter-spacing:-.01em}
+.nm .ko{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+.usp{font-size:12.5px;line-height:1.5;color:var(--ink-2);margin-top:5px;max-width:48ch}
+.row{margin-top:7px;font-size:11.5px;line-height:1.5;display:flex;flex-wrap:wrap;gap:3px 14px}
+.row .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.row b{font-weight:700}
+.nav{margin-top:7px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.03em}
+.nav a{border-bottom:1px solid var(--ink);text-decoration:none}
+.nav a::after{content:" →";color:var(--red)}
+.rain{margin-top:6px;font-size:11.5px;line-height:1.45;color:var(--ink-2);padding-left:11px;border-left:2px solid var(--rule)}
+.rain .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-right:5px}
+.foot{margin-top:30px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="wx">
+  <span class="d">22 Jun 一</span>
+  <span class="t">~<b>28°C</b> 濕熱 · 濕度高</span>
+  <span class="rn">梅雨未到 · 25–27 先落</span>
+  <span class="t">到埗夜 · 戶外低風險</span>
+</div>
+
+<div class="wrap">
+
+  <div class="kicker">Seoul · Day 0 · 明洞 Myeongdong</div>
+  <div class="masthead">
+    <div class="daynum">D0<small>22 JUN 一</small></div>
+    <div>
+      <div class="title">明洞到埗夜<br>第一鍋與燈牌街</div>
+      <div class="sub">落機後輕量夜遊：忠武路 Gudo 為起點，先食一鍋暖身，再沿明洞主街串食 → 掃 → 玩，食飽即收，養回體力。重點購物留 D4 日間補。</div>
+    </div>
+  </div>
+
+  <div class="callout"><div class="ct">今晚定調</div><div class="cv">Jet-lag 日，刻意輕。<b>必到＝①元堂暖鍋 + ②夜市街</b>；攰就食完元堂即返酒店，③④⑤ 全部可跳。落雨 → ÅLAND（室內掃到深夜）或元堂（24h）。</div></div>
+
+  <div class="arrival">
+    <div class="alabel">Arrival · 抵港動線</div>
+    <div class="arow">
+      <div class="acell"><div class="an">01</div><div class="at">CX418 國泰<span>HKG 14:25 → ICN 19:05</span></div></div>
+      <div class="acell"><div class="an">02</div><div class="at">入境 e-Arrival<span>領行李 · 約 20:00 出關</span></div></div>
+      <div class="acell"><div class="an">03</div><div class="at">私家 van<span>ICN → 忠武路</span></div></div>
+      <div class="acell"><div class="an">04</div><div class="at">Gudo 入住<span>無人 · 自助</span></div></div>
+      <div class="acell"><div class="an">05</div><div class="at">Climate Card<span>5 日 ₩15,000</span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="hn">明洞主街一條夜線</span> 食 → 掃 → 玩</h2>
+
+    <div class="stop">
+      <div class="idx">1</div>
+      <div class="when">晚餐<br>21:20<div class="must">必到</div></div>
+      <div>
+        <div class="nm">元堂馬鈴薯排骨湯 明洞店 <span class="ko">원당감자탕</span></div>
+        <div class="usp">24h 亮燈深夜豬骨鍋，脊骨慢熬濃白湯、骨肉一抿即脫，鹹鮮不辣 —— 落機夜最安穩一鍋熱湯。</div>
+        <div class="row"><span><span class="k">價</span> <b>₩35,000 起</b>／2–3 人鍋 · HKD 181 起</span><span><span class="k">步行</span> Gudo 5 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/원당감자탕 명동" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身 24h 室內 —— 全日落雨最終後備</div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">2</div>
+      <div class="when">22:30<div class="must">必到</div></div>
+      <div>
+        <div class="nm">明洞夜市街食一條街 <span class="ko">명동 야시장</span></div>
+        <div class="usp">沿街即點即食：種子糖餅、可頌鯛魚燒、椰絲炸蝦熱辣上手，一條會發光的宵夜街。</div>
+        <div class="row"><span><span class="k">價</span> <b>₩2,000–10,000</b>／款 · HKD 10–52</span><span><span class="k">步行</span> 元堂 3 分</span><span><span class="k">攤檔</span> 17–23 落雨即收</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/명동 야시장" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>落雨即收 → 改元堂排骨湯 或 Daiso 明洞</div>
+      </div>
+    </div>
+
+    <div class="stop opt">
+      <div class="idx">3</div>
+      <div class="when">23:00<div class="can">可選</div></div>
+      <div>
+        <div class="nm">NiNi 明洞 夾娃娃機旗艦 <span class="ko">니니 명동</span></div>
+        <div class="usp">整幢粉紅四層，夾娃娃每局 ₩1,000、頂層打卡，開到午夜。食飽玩一局收尾。</div>
+        <div class="row"><span><span class="k">價</span> <b>₩1,000 起</b>／局 · HKD 5 起</span><span><span class="k">步行</span> 夜市 3 分</span><span><span class="k">tag</span> 仔夾娃娃</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/니니 명동" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>室內整幢娃娃機樓 · 雨天照玩</div>
+      </div>
+    </div>
+
+    <div class="stop opt">
+      <div class="idx">4</div>
+      <div class="when">途經<br>23:20<div class="can">可選</div></div>
+      <div>
+        <div class="nm">明洞聖堂 夜景 <span class="ko">명동성당</span></div>
+        <div class="usp">首爾最古老哥德式主教座堂，全年泛光照明，深夜仰拍鐘樓尖頂靜謐莊嚴。當路過外牆仰拍即可。</div>
+        <div class="row"><span><span class="k">價</span> <b>免費</b></span><span><span class="k">步行</span> NiNi 6 分</span><span><span class="k">最穩</span> 21:00–22:30 影相</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/명동성당" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>落雨改 FUROA 室內咖啡 或 直接返酒店</div>
+      </div>
+    </div>
+
+    <div class="stop opt">
+      <div class="idx">5</div>
+      <div class="when">加碼<br>雨天<div class="can">可選</div></div>
+      <div>
+        <div class="nm">ÅLAND 明洞旗艦店 <span class="ko">에이랜드 명동본점</span></div>
+        <div class="usp">四層約百個新晉設計師品牌選物店，女裝男裝鞋飾文具一次看齊、性價比高、開到 23:00。</div>
+        <div class="row"><span><span class="k">價</span> 女裝上衣 <b>₩30,000–60,000</b> · HKD 155–311</span><span><span class="k">步行</span> 4 分</span><span><span class="k">tag</span> 媽媽女裝</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/에이랜드 명동본점" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>室內掃到深夜 · 雨天加碼首選（兼顧媽媽女裝＋仔男裝）</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <b>D0 · 22 Jun 2026</b> · 天氣 ~28°C 梅雨未到（onset 25–27）· 地圖 Naver Map 到場核 pin · 價 1 HKD ≈ 195 ₩<br>
+    版本：default 動線（食→掃→玩）· 評估後我會 republish 反映你嘅排序／取捨 · Generated by Claude Code
+  </div>
+
+</div>
+</body>
+</html>
