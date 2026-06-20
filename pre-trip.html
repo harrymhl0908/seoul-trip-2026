@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>出發前落單卡 + 梅雨打包 · Seoul 22–27 Jun 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;
+  --rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.55;padding:22px 18px 72px}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--ink)}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.masthead{display:grid;grid-template-columns:auto 1fr;column-gap:20px;align-items:start;border-top:2px solid var(--ink);padding-top:12px;margin-top:8px}
+.daynum{font-weight:900;font-size:86px;line-height:.8;letter-spacing:-.045em}
+.daynum small{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;margin-top:6px}
+.title{font-weight:900;font-size:clamp(26px,5.4vw,38px);line-height:1.02;letter-spacing:-.022em;margin-top:2px}
+.sub{font-size:14px;line-height:1.5;color:var(--ink-2);margin-top:10px;max-width:52ch}
+@media(max-width:520px){.daynum{font-size:60px}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0 16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:20px 0 4px;padding:10px 0}
+.fact .l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.fact .v{font-size:12.5px;font-weight:700;line-height:1.25;margin-top:3px}
+@media(max-width:520px){.facts{grid-template-columns:repeat(2,1fr);gap:10px 16px}}
+.sec{margin-top:34px}
+.sec h2{font-weight:900;font-size:15px;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:8px;border-bottom:2px solid var(--ink);display:flex;align-items:baseline;gap:9px}
+.sec h2 .hn{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700}
+.item{display:grid;grid-template-columns:48px 1fr;column-gap:16px;align-items:start;padding:18px 0 16px;border-bottom:1px solid var(--rule)}
+.item:last-child{border-bottom:none}
+.idx{font-weight:900;font-size:40px;line-height:.82;letter-spacing:-.04em}
+.item.opt .idx{color:var(--red);opacity:.5}
+.nm{font-weight:800;font-size:19px;line-height:1.12;letter-spacing:-.012em}
+.tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--red);padding:1px 6px;vertical-align:2px;margin-left:6px}
+.tag.you{background:var(--ink)}
+.price{font-family:var(--mono);font-size:13px;font-weight:700;margin-top:7px}
+.price .hkd{color:var(--ink-3);font-weight:400}
+.note{font-size:13px;line-height:1.5;color:var(--ink-2);margin-top:7px}
+.note b{color:var(--ink)}
+.fill{font-size:12px;line-height:1.5;color:var(--ink);margin-top:7px;padding-left:12px;border-left:2px solid var(--red)}
+.fill .l{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:2px}
+.book{display:block;margin-top:8px;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.02em;border:1px solid var(--ink);padding:9px 12px;text-decoration:none;color:var(--ink)}
+.book::after{content:" →";color:var(--red)}
+.book:hover,.book:active{border-color:var(--red);color:var(--red)}
+.book .s{font-weight:400;color:var(--ink-3);font-size:11px}
+.book.alt{border-style:dashed}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:14px 0;border-left:3px solid var(--red)}
+.callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
+.callout.ink{border-left-color:var(--ink)}.callout.ink .ct{color:var(--ink)}
+.done li{list-style:none;padding:9px 0 9px 60px;position:relative;border-bottom:1px solid var(--rule-2);font-size:13.5px;line-height:1.5}
+.done li:last-child{border-bottom:none}
+.done li::before{content:"DONE";position:absolute;left:0;top:9px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;color:var(--red)}
+.done b{font-weight:800}
+.pack{margin-top:6px}
+.pack label{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:9px 0;border-bottom:1px solid var(--rule-2);font-size:14px;line-height:1.45;cursor:pointer}
+.pack label:last-child{border-bottom:none}
+.pack input{width:18px;height:18px;margin-top:2px;accent-color:var(--red)}
+.pack .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);display:block}
+.pack b{font-weight:700}
+.pgrp{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:16px 0 2px}
+.foot{margin-top:36px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10.5px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">Seoul Family Trip · 22–27 Jun 2026 · T–1 出發前夜</div>
+  <div class="masthead">
+    <div class="daynum">21<small>JUN SUN</small></div>
+    <div>
+      <div class="title">出發前落單卡<br>＋ 梅雨打包</div>
+      <div class="sub">一頁搞掂今日要落單嘅嘢同打包。手機直接點 link 訂；打包項可 tick，會記住。價 KRW 主、HKD 副（1 HKD ≈ 195 KRW）。</div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><div class="l">去程</div><div class="v">CX418 · 22/6 14:25→19:05</div></div>
+    <div class="fact"><div class="l">回程</div><div class="v">CX427 · 27/6 01:55 紅眼</div></div>
+    <div class="fact"><div class="l">酒店</div><div class="v">忠武路 Gudo · 無人式</div></div>
+    <div class="fact"><div class="l">FX</div><div class="v">1 HKD ≈ 195 ₩</div></div>
+  </div>
+
+  <!-- ============ 🔴 今日必落單 ============ -->
+  <div class="sec">
+    <h2><span class="hn">A</span> 今日必落單 · 4 項</h2>
+
+    <div class="item">
+      <div class="idx">1</div>
+      <div>
+        <div class="nm">去程私家 van<span class="tag you">你訂</span></div>
+        <div class="price">₩95,000–145,000<span class="hkd"> ／車 · ≈HKD 487–744</span></div>
+        <div class="note">聽日夜到（19:05）+ 梅雨，私家 van 舉牌接、door-to-door，免拖 6 件行李轉線。今日鎖 slot 最穩。</div>
+        <div class="fill"><span class="l">落單填</span>酒店 <b>구도 레지던스 충무로</b>／地址 <b>마른내로12길 17-23</b>／航班 <b>CX418 到 ICN T1 19:05 Mon 22 Jun</b>／3 大人 + 3 寄艙。</div>
+        <a class="book" href="https://www.klook.com/en-US/search/?query=Incheon%20Airport%20private%20transfer" target="_blank" rel="noopener">Klook 搜尋 <span class="s">Incheon Airport private transfer</span></a>
+        <a class="book alt" href="https://www.kkday.com/en-hk/product/productlist?keyword=incheon%20airport%20transfer" target="_blank" rel="noopener">KKday 搜尋 <span class="s">incheon airport transfer</span></a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">2</div>
+      <div>
+        <div class="nm">回程去機場交通<span class="tag">需決定</span></div>
+        <div class="price">van ₩90,000–150,000<span class="hkd"> ≈HKD 462–769</span> ｜ AREX ₩39,000<span class="hkd"> ≈HKD 236</span></div>
+        <div class="note"><b>建議：私家 van 直去 T1。</b>~22:45 離酒店 → ~23:45–00:15 到 T1，免拖行李夜衝。2 位約 60 歲 + 紅眼 + 梅雨，舒適確定值差價。</div>
+        <div class="callout ink"><div class="ct">慳錢 fallback</div><div class="cv">AREX 尾班<b>直通 22:40</b>（唔係 23:00！）：須 ≤20:30 離酒店 → 的士去首爾站 → 22:40 直通 → ~23:23 到 T1。蘇咗就得搭 ~23:40 慢車 ~00:39 到 = 太貼 00:55 截 bag-drop。</div></div>
+        <div class="fill"><span class="l">順手核</span>CX427 機票上 bag-drop 截 check-in 時間（估 00:55）。揀 van 就今日順手訂（同上面 Klook／KKday airport transfer，方向掉轉、22:30 pickup）。</div>
+        <a class="book" href="https://www.klook.com/en-US/search/?query=Seoul%20to%20Incheon%20Airport%20private%20transfer" target="_blank" rel="noopener">Klook 搜尋 <span class="s">Seoul to Incheon Airport transfer</span></a>
+        <a class="book alt" href="https://www.airportrailroad.com/" target="_blank" rel="noopener">AREX 官網 <span class="s">核 22:40 尾班直通</span></a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">3</div>
+      <div>
+        <div class="nm">加平包車（D2 · 24/6）<span class="tag you">你訂</span></div>
+        <div class="price">₩280,000–350,000<span class="hkd"> ／車 10h · ≈HKD 1,436–1,795</span></div>
+        <div class="note">私家 sedan 連司機、忠武路 pickup、~10 小時玩 4 點：南怡島＋小法國＋晨靜樹木園＋rail bike。門票自付。最遲今／聽日（22/6）訂鎖車。</div>
+        <div class="fill"><span class="l">落單填</span>日期 <b>Wed 24 Jun</b>／pickup <b>충무로 Gudo</b>／3 人／4 點：남이섬 · 쁘띠프랑스 · 아침고요수목원 · 가평레일바이크。</div>
+        <a class="book" href="https://www.klook.com/en-US/search/?query=Gapyeong%20private%20car%20charter" target="_blank" rel="noopener">Klook 搜尋 <span class="s">Gapyeong private car charter</span></a>
+        <a class="book alt" href="https://www.kkday.com/en-hk/product/productlist?keyword=gapyeong%20private%20car" target="_blank" rel="noopener">KKday 搜尋 <span class="s">gapyeong private car</span></a>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">4</div>
+      <div>
+        <div class="nm">Seoul Sky ×3（D3 · 25/6）<span class="tag you">你訂</span></div>
+        <div class="price">₩31,000–33,000<span class="hkd"> ／人 ×3 ≈ ₩93k–99k · HKD 477–508</span></div>
+        <div class="note">揀 <b>19:00–19:30 入場</b>睇 <b>19:58 日落</b>。官方或 Klook 預訂 timed slot；黃昏熱門，今日訂鎖位。票價以 checkout 為準（官方列 31k、舊核 33k）。</div>
+        <div class="callout"><div class="ct">天氣</div><div class="cv">25/6 梅雨 onset：120F 室外 Sky Terrace 大雨／強風會關，但室內 observatory 照開，影日落主場喺室內玻璃。</div></div>
+        <a class="book" href="https://seoulsky.lotteworld.com/" target="_blank" rel="noopener">Seoul Sky 官網 <span class="s">seoulsky.lotteworld.com</span></a>
+        <a class="book alt" href="https://www.klook.com/en-US/search/?query=Seoul%20Sky" target="_blank" rel="noopener">Klook 搜尋 <span class="s">Seoul Sky observatory</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 🟠 今日／聽朝 ============ -->
+  <div class="sec">
+    <h2><span class="hn">B</span> 今日或聽朝</h2>
+
+    <div class="item opt">
+      <div class="idx">5</div>
+      <div>
+        <div class="nm">裝齊 App<span class="tag you">你裝</span></div>
+        <div class="note"><b>Naver Map</b>（行人／交通主力，Google Map 喺韓國唔準）· <b>Papago</b>（翻譯）· <b>Kakao T</b>（的士／call 車）· <b>티머니GO</b>（Climate Card）· <b>Catch Table</b>（部分餐廳排隊）。eSIM 已搞掂 ✓。</div>
+      </div>
+    </div>
+
+    <div class="item opt">
+      <div class="idx">6</div>
+      <div>
+        <div class="nm">加平 rail bike<span class="tag you">你訂／併包車</span></div>
+        <div class="price">₩48,000<span class="hkd"> ／4 人車 · ≈HKD 246</span></div>
+        <div class="note">揀 <b>16:30 黃昏 slot</b>（夕陽鐵橋）。平日 walk-in 可，但訂咗鎖時段穩陣；或叫包車 operator 一齊代訂。</div>
+        <a class="book" href="https://www.klook.com/en-US/search/?query=Gapyeong%20rail%20bike" target="_blank" rel="noopener">Klook 搜尋 <span class="s">Gapyeong rail bike</span></a>
+        <a class="book alt" href="https://booking.naver.com/" target="_blank" rel="noopener">Naver Booking <span class="s">가평레일파크</span></a>
+      </div>
+    </div>
+
+    <div class="item opt">
+      <div class="idx">7</div>
+      <div>
+        <div class="nm">Climate Card<span class="tag">落地買 · 唔急</span></div>
+        <div class="price">₩15,000 + 卡 ₩3,000<span class="hkd"> ≈HKD 92</span></div>
+        <div class="note">5 日無限地鐵+巴士。<b>外國人要實體卡</b>（mobile app 需韓國電話）。機場 T1 或 충무로 GS25／CU 買。唔 cover AREX／的士／加平。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ☑ 已搞掂 ============ -->
+  <div class="sec">
+    <h2><span class="hn">C</span> 已搞掂 · 自動跳過</h2>
+    <ul class="done">
+      <li><b>K-ETA</b>：HK SAR 護照豁免到 2026-12-31 → 唔使申請，入境靠 e-Arrival + 有效護照。</li>
+      <li><b>e-Arrival Card</b>：全家已填（每人一張；順手確認三個人都交咗）。</li>
+      <li><b>eSIM</b>、<b>旅遊保險</b>、<b>韓圜現金</b>、<b>致電 Gudo</b>（核入住／行李櫃）— 全部 ✓。</li>
+    </ul>
+  </div>
+
+  <!-- ============ ⚠ 三個提醒 ============ -->
+  <div class="sec">
+    <h2><span class="hn">D</span> 三個提醒</h2>
+    <div class="callout"><div class="ct">Gudo 入住</div><div class="cv">無人式 aparthotel、無前台。出發前再確認入門密碼／自助流程同 26/6 晚行李櫃自取（你已致電 +82-10-8738-0926）。</div></div>
+    <div class="callout"><div class="ct">回程 22:40</div><div class="cv">AREX 尾班直通係 <b>22:40</b> 唔係 23:00。揀 AREX 就 ≤20:30 走；揀 van 就今日訂、唔使趕車。</div></div>
+    <div class="callout ink"><div class="ct">梅雨 timing</div><div class="cv">首都圈梅雨 <b>25–27/6 先到</b>：前半（22–24）相對乾、後半濕。D2 加平戶外日（24/6）啱排雨前；D3／D4 本身室內為主。打包 sun + rain 兩備。</div></div>
+  </div>
+
+  <!-- ============ 🧳 梅雨打包 ============ -->
+  <div class="sec">
+    <h2><span class="hn">E</span> 梅雨打包清單</h2>
+
+    <div class="pgrp">▍ 雨 · RAIN（後半 25–27 必備）</div>
+    <div class="pack">
+      <label><input type="checkbox" data-k="p1"><span><span class="k">×3</span><b>輕便雨遮</b>（每人一把，可摺）</span></label>
+      <label><input type="checkbox" data-k="p2"><span><span class="k">×1–3</span><b>快乾外套／薄風褸</b>（驟雨+冷氣）</span></label>
+      <label><input type="checkbox" data-k="p3"><span><b>防水鞋或涼鞋</b>（D2 加平多行、雨天唔濕腳）</span></label>
+      <label><input type="checkbox" data-k="p4"><span><b>背囊防雨套</b>／大膠袋（護住相機手機）</span></label>
+    </div>
+
+    <div class="pgrp">▍ 熱 · SUN（前半 22–24 ~28°C 濕熱）</div>
+    <div class="pack">
+      <label><input type="checkbox" data-k="p5"><span><b>防曬 SPF50</b>（正午避直曬）</span></label>
+      <label><input type="checkbox" data-k="p6"><span><b>太陽帽 / 太陽眼鏡</b></span></label>
+      <label><input type="checkbox" data-k="p7"><span><b>蚊怕水</b>（加平樹木園／戶外）</span></label>
+      <label><input type="checkbox" data-k="p8"><span><b>透氣輕便衫</b>、替換襪（濕度高）</span></label>
+    </div>
+
+    <div class="pgrp">▍ 電 · POWER</div>
+    <div class="pack">
+      <label><input type="checkbox" data-k="p9"><span><b>C／F 轉插</b>（韓國 220V）＋ 拖板</span></label>
+      <label><input type="checkbox" data-k="p10"><span><b>行動電源</b>（夜行／導航耗電）</span></label>
+    </div>
+
+    <div class="pgrp">▍ 證件／截圖 · DOCS</div>
+    <div class="pack">
+      <label><input type="checkbox" data-k="p11"><span><b>護照</b>（有效期 6 個月以上）</span></label>
+      <label><input type="checkbox" data-k="p12"><span><b>e-Arrival 提交截圖</b>（全家）</span></label>
+      <label><input type="checkbox" data-k="p13"><span><b>各 booking 確認截圖</b>（van／加平／Seoul Sky／機票）</span></label>
+      <label><input type="checkbox" data-k="p14"><span><b>酒店韓文地址</b> 마른내로12길 17-23（畀司機睇）</span></label>
+    </div>
+
+    <div class="pgrp">▍ 購物／雜 · MISC</div>
+    <div class="pack">
+      <label><input type="checkbox" data-k="p15"><span><b>可摺購物袋</b>（掃貨＋退稅手提）</span></label>
+      <label><input type="checkbox" data-k="p16"><span><b>少量韓圜現金</b>（傳統市場攤檔，已換 ✓）</span></label>
+      <label><input type="checkbox" data-k="p17"><span><b>常用／長者藥物</b>、保濕（冷氣乾）</span></label>
+      <label><input type="checkbox" data-k="p18"><span><b>舒適行山鞋</b>（D2 加平日步數多）</span></label>
+    </div>
+  </div>
+
+  <div class="foot">
+    <b>核實 2026-06-21</b> · FX 1 HKD ≈ 195 KRW（Xe.com）· AREX 尾班直通 22:40（Chadorri 2026-04-18）· 梅雨首都圈 25–27（AJU Press 2026-05-06）· K-ETA HK 豁免到 2026-12-31<br>
+    booking link = 平台搜尋頁，價以 checkout 為準 · 地圖一律 Naver Map · Generated by Claude Code
+  </div>
+
+</div>
+<script>
+// 打包 checklist：localStorage 記住
+(function(){
+  var boxes=document.querySelectorAll('.pack input[type=checkbox]');
+  boxes.forEach(function(b){
+    var k='pretrip_'+b.dataset.k;
+    try{if(localStorage.getItem(k)==='1')b.checked=true;}catch(e){}
+    b.addEventListener('change',function(){
+      try{localStorage.setItem(k,b.checked?'1':'0');}catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>
