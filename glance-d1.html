@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>D1 弘大 + 延南洞 · 京義線林蔭道一日線 · at a glance · 23 Jun</title>
+<title>D1 弘大 + 延南洞 · 相+影評版 · at a glance · 23 Jun</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
@@ -34,14 +34,7 @@ a{color:var(--ink)}
 .callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:16px 0;border-left:3px solid var(--red)}
 .callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
 .callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
-.arrival{margin:18px 0 4px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:11px 0}
-.alabel{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:9px}
-.arow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.acell{border-top:2px solid var(--ink);padding-top:6px}
-.acell .an{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--red)}
-.acell .at{font-size:12.5px;font-weight:700;line-height:1.2;margin-top:3px}
-.acell .at span{display:block;font-weight:400;font-size:10.5px;color:var(--ink-2);margin-top:2px}
-@media(max-width:520px){.arow{grid-template-columns:repeat(2,1fr);gap:11px 14px}}
+.callout.ink{border-left-color:var(--ink)}.callout.ink .ct{color:var(--ink)}
 .sec h2{font-weight:900;font-size:14px;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:7px;border-bottom:2px solid var(--ink);margin-top:26px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .sec h2 .hn{font-family:var(--mono);font-size:11px;color:var(--red);font-weight:700}
 .sec h2 .zs{font-family:var(--mono);font-size:10px;color:var(--ink-3);font-weight:400;letter-spacing:.04em}
@@ -49,9 +42,11 @@ a{color:var(--ink)}
 .stop:last-child{border-bottom:none}
 .idx{font-weight:900;font-size:34px;line-height:.82;letter-spacing:-.04em}
 .stop.opt .idx{color:var(--red);opacity:.5}
+.stop.add{background:linear-gradient(90deg,rgba(228,0,43,.05),transparent 60%);margin:0 -10px;padding-left:10px;padding-right:10px}
 .when{font-family:var(--mono);font-size:14px;font-weight:700;line-height:1.1}
 .when .must{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ink);padding:1px 5px;margin-top:6px}
 .when .can{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-top:6px}
+.when .new{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--red);padding:1px 5px;margin-top:6px}
 .nm{font-weight:800;font-size:17px;line-height:1.12;letter-spacing:-.01em}
 .nm .ko{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--ink-3);letter-spacing:.02em}
 .usp{font-size:12.5px;line-height:1.5;color:var(--ink-2);margin-top:5px;max-width:48ch}
@@ -59,10 +54,13 @@ a{color:var(--ink)}
 .row .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
 .row b{font-weight:700}
 .nav{margin-top:7px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.03em}
-.nav a{border-bottom:1px solid var(--ink);text-decoration:none}
+.nav a{border-bottom:1px solid var(--ink);text-decoration:none;margin-right:14px}
 .nav a::after{content:" →";color:var(--red)}
 .rain{margin-top:6px;font-size:11.5px;line-height:1.45;color:var(--ink-2);padding-left:11px;border-left:2px solid var(--rule)}
 .rain .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-right:5px}
+.ph{display:block;width:100%;max-width:260px;aspect-ratio:16/10;object-fit:cover;margin-top:10px;background:var(--rule-2);filter:grayscale(.08)}
+.cmt{margin-top:8px;padding-left:11px;border-left:2px solid var(--red);font-size:12px;line-height:1.5;color:var(--ink)}
+.cmt .src{display:block;margin-top:2px;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.02em}
 .foot{margin-top:30px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
 .foot b{color:var(--ink)}
 </style>
@@ -72,36 +70,38 @@ a{color:var(--ink)}
 <div class="wx">
   <span class="d">23 Jun 二</span>
   <span class="t">梅雨未到 · ~<b>28°C</b> 濕熱</span>
-  <span class="rn">戶外 OK（趁前半乾）</span>
-  <span class="t">弘大 + 延南洞</span>
+  <span class="rn">戶外 OK（前半乾）</span>
+  <span class="t">錨點 · 弘大 + 延南洞</span>
 </div>
 
 <div class="wrap">
 
-  <div class="kicker">Seoul · Day 1 · 延南洞 → 弘大</div>
+  <div class="kicker">Seoul · Day 1 · 弘大 + 延南洞</div>
   <div class="masthead">
     <div class="daynum">D1<small>23 JUN 二</small></div>
     <div>
-      <div class="title">京義線林蔭道<br>延南直落弘大一日線</div>
-      <div class="sub">沿京義線林蔭道由北面延南洞一路行落南面弘大核心：上午趁涼用戶外配額，正午退入室內避梅雨高溫，黃昏回到步行街看街頭表演收尾的一條南北直線。</div>
+      <div class="title">弘大 + 延南洞<br>京義線林蔭道一日線</div>
+      <div class="sub">沿京義線林蔭道由北面延南洞一路行落南面弘大核心：上午趁涼用戶外配額、正午退入室內避梅雨高溫、黃昏回到步行街看街頭表演收尾的一條南北直線。全程平路，長者可行。</div>
     </div>
   </div>
 
-  <div class="callout"><div class="ct">一日節奏 · 南北直線</div><div class="cv">全程沿廢鐵路林蔭公園串連，平路為主、長者可行。<b>戶外（散步 / 街頭表演）擺早上與黃昏</b>，正午預設室內；落雨即退入沿線 <b>AK Plaza / 想像庭院</b> 室內備案。</div></div>
+  <div class="callout"><div class="ct">一條南北直線</div><div class="cv">由 <b>延南洞早午餐 → 林蔭道 → 弘大潮店 → 步行街表演 → 烤肉</b>，沿廢鐵路綠帶串連 12 站。梅雨季正午預設室內；戶外散步與街頭表演擺早上同黃昏，落雨即退入沿線室內備案。</div></div>
 
   <!-- 延南洞 -->
   <div class="sec">
-    <h2><span class="hn">延南洞</span> 早午餐 · 林蔭散步 · 設計小店 <span class="zs">09:00–12:30 · 弘大入口站 3 出口起</span></h2>
+    <h2><span class="hn">延南洞</span> 早午餐 · 林蔭道 · 文青小店 <span class="zs">09:00–12:30 · 京義線綠帶</span></h2>
 
     <div class="stop">
       <div class="idx">1</div>
       <div class="when">早餐<br>09:00<div class="must">必到</div></div>
       <div>
         <div class="nm">河馬早午餐館 <span class="ko">히포 브런치하우스</span></div>
-        <div class="usp">民居改建的寬敞早午餐大店，招牌當季水果法式吐司與每日限量布拉塔凍意粉 —— 酒店無早餐時行足一日的能量底。</div>
+        <div class="usp">民居改建的寬敞早午餐大店，招牌當季水果法式吐司與每日限量布拉塔凍意粉，熱食、舒適、寵物友善 —— 酒店無早餐時行足一日的能量底。</div>
         <div class="row"><span><span class="k">價</span> <b>₩13,000–22,000</b>／人 · HKD 67–114</span><span><span class="k">步行</span> 8 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/히포 브런치하우스" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>本身室內大店照食；客滿轉 Blue Bottle 延南店淨飲咖啡</div>
+        <div class="rain"><span class="k">Rain</span>本身室內大店，落雨照食；客滿轉延南 Blue Bottle 淨飲</div>
+        <img class="ph" src="img/d1_hippo_brunch.jpg" loading="lazy" alt="">
+        <div class="cmt">「由民居改建、設庭園遮陽座的延南洞早午餐店，主廚出身酒店與星級餐廳，招牌是新鮮當季水果法式吐司，寵物與小朋友皆可同行。」<span class="src">— @brunchhaus_hippo · Instagram</span></div>
       </div>
     </div>
 
@@ -110,22 +110,26 @@ a{color:var(--ink)}
       <div class="when">10:00<div class="must">必到</div></div>
       <div>
         <div class="nm">延南中央公園 · 京義線林蔭道 <span class="ko">경의선숲길 연남동</span></div>
-        <div class="usp">廢鐵路改建的長條林蔭公園，延南段約 1.3 公里最美，似紐約中央公園而有「延特爾公園」之稱，樹蔭隧道是招牌構圖兼全日主軸線。</div>
+        <div class="usp">廢鐵路改建的長條林蔭公園，延南段約 1.3 公里最美，因似紐約中央公園而有「延特爾公園」之稱，樹蔭隧道是招牌構圖，亦是貫穿全日的主軸線。</div>
         <div class="row"><span><span class="k">價</span> <b>免費</b></span><span><span class="k">步行</span> 4 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/경의선숲길 연남동" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>部分路段有樹蔭；大雨轉入兩側 Café Layered 或延南小店室內串連</div>
+        <div class="rain"><span class="k">Rain</span>部分有樹蔭；大雨轉入兩側 Café Layered 或延南小店室內串連</div>
+        <img class="ph" src="img/d1_yeonnam.jpg" loading="lazy" alt="">
+        <div class="cmt">「由廢棄鐵路改建的綠帶公園，兩側布滿咖啡館、甜點店與小餐廳，假日有時還有跳蚤市場或街頭藝人表演。」<span class="src">— 小螺絲看世界 · 小螺絲看世界</span></div>
       </div>
     </div>
 
     <div class="stop opt">
       <div class="idx">3</div>
-      <div class="when">10:30<div class="can">可選</div></div>
+      <div class="when">咖啡<br>10:30<div class="can">可選</div></div>
       <div>
         <div class="nm">延南洞 Layered 司康咖啡店 <span class="ko">카페 레이어드 연남</span></div>
         <div class="usp">紅磚復古名店，每日新鮮英式司康配凝脂奶油，二樓天台位望延南洞街景，長者坐得舒適。</div>
-        <div class="row"><span><span class="k">價</span> 司康 <b>₩4,500 起</b> · 奶咖 ₩6,000 · HKD 23/31</span><span><span class="k">步行</span> 5 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="row"><span><span class="k">價</span> 司康 <b>₩4,500 起</b>／奶咖 ₩6,000 · HKD 23／31</span><span><span class="k">步行</span> 5 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/카페 레이어드 연남" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>本身室內照坐；亦作散步段落雨第一個退入點</div>
+        <div class="rain"><span class="k">Rain</span>本身室內，落雨照坐；亦作散步段第一個退入點</div>
+        <img class="ph" src="img/d1_cafe_layered.jpg" loading="lazy" alt="">
+        <div class="cmt">「店內裝潢滿滿英國氛圍，鮮花與各式書本畫作營造英倫風，是因為可愛圖案就想走進去的司康甜點咖啡店。」<span class="src">— hikorea · hikorea</span></div>
       </div>
     </div>
 
@@ -133,11 +137,13 @@ a{color:var(--ink)}
       <div class="idx">4</div>
       <div class="when">11:00<div class="must">必到</div></div>
       <div>
-        <div class="nm">延南洞設計小店帶（FENNEC / made by）<span class="ko">페넥 메이드바이 연남</span></div>
-        <div class="usp">公園兩側一串本地獨立設計小店，made by 聚集多位設計師文創、FENNEC 以貉做標誌的簡約真皮皮件，非快時尚的手作選物帶。</div>
-        <div class="row"><span><span class="k">價</span> 文創 <b>₩1,500–10,000</b> · 銀包 ₩49,000 起 · HKD 8–52／254 起</span><span><span class="k">步行</span> 3 分</span><span><span class="k">tag</span> 媽媽手工藝</span></div>
+        <div class="nm">延南洞設計小店帶 <span class="ko">페넥 메이드바이 연남</span></div>
+        <div class="usp">公園兩側一串本地獨立設計小店，made by 聚集多位設計師文創、FENNEC 以貉做標誌的簡約真皮皮件 —— 非快時尚的手作選物帶。</div>
+        <div class="row"><span><span class="k">價</span> 文創 <b>₩1,500–10,000</b> · 銀包 ₩49,000 起</span><span><span class="k">步行</span> 3 分</span><span><span class="k">tag</span> 媽媽手工藝</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/페넥 연남" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>各店本身室內，串連步行數分鐘，即散步段雨天替代</div>
+        <div class="rain"><span class="k">Rain</span>各店本身室內，串連只需數分鐘，本身即散步段雨天替代</div>
+        <img class="ph" src="img/d1_yeonnam_design_shops.jpg" loading="lazy" alt="">
+        <div class="cmt">「FENNEC 用的是高級真皮、價格合理不貴；連同 made by、TETEUM 一帶，由手機殼到電腦袋的韓系文創都能一次逛齊。」<span class="src">— Creatrip 延南洞購物總整理 · Creatrip</span></div>
       </div>
     </div>
 
@@ -147,26 +153,30 @@ a{color:var(--ink)}
       <div>
         <div class="nm">青春貓咖啡 <span class="ko">청춘고양이카페</span></div>
         <div class="usp">弘大區人氣貓咖啡，環境乾淨、無時限，照顧多隻被領養的貓，入場附一杯飲品 —— 延南行落弘大途中的休息與互動點。</div>
-        <div class="row"><span><span class="k">價</span> 入場 <b>₩10,000</b>（Naver 預約 ₩9,000）· HKD 52／47</span><span><span class="k">步行</span> 7 分</span><span><span class="k">tag</span> 爸爸貓</span></div>
+        <div class="row"><span><span class="k">價</span> 入場 <b>₩10,000</b>（預約 ₩9,000）· HKD 52／47</span><span><span class="k">步行</span> 7 分</span><span><span class="k">tag</span> 爸爸貓</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/청춘고양이카페 홍대" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>本身室內照常；正午高溫亦是冷氣避難點</div>
+        <div class="rain"><span class="k">Rain</span>本身室內，落雨照常；正午高溫亦是冷氣避難點</div>
+        <img class="ph" src="img/d0_roofcatme.jpg" loading="lazy" alt="">
+        <div class="cmt">「弘大商圈貓咖啡廳，可以享受整日被貓咪包圍的療癒感受，貓性情溫順、附一杯飲品，適合一家大細坐低慢慢摸貓。」<span class="src">— Kate's neverland · Kate's neverland</span></div>
       </div>
     </div>
   </div>
 
   <!-- 弘大核心 -->
   <div class="sec">
-    <h2><span class="hn">弘大核心</span> 潮店 · 午餐 · 夾娃娃 <span class="zs">13:00–17:00 · 弘大入口站 9 出口</span></h2>
+    <h2><span class="hn">弘大核心</span> 潮店 · 午餐 · 文藝 · 夾娃娃 <span class="zs">13:00–17:00 · 梅雨正午退室內</span></h2>
 
     <div class="stop">
       <div class="idx">6</div>
       <div class="when">13:00<div class="must">必到</div></div>
       <div>
         <div class="nm">Musinsa Standard 弘大 <span class="ko">무신사 스탠다드 홍대</span></div>
-        <div class="usp">韓國國民基本款，2025 年底翻新約 600 坪旗艦店（B1 男裝 / 1F 主打 / 2F 女裝，設 Live Fitting Room），剪裁好、性價比高、可退稅。</div>
-        <div class="row"><span><span class="k">價</span> 上衣 <b>₩19,000 起</b> · 外套 ₩59,000 起 · HKD 98／306 起</span><span><span class="k">步行</span> 8 分</span><span><span class="k">tag</span> 仔男裝</span></div>
+        <div class="usp">韓國國民基本款，2025 年底翻新約 600 坪旗艦店（B1 男裝／1F 主打／2F 女裝，設 Live Fitting Room），剪裁好、性價比高、可退稅。</div>
+        <div class="row"><span><span class="k">價</span> 上衣 <b>₩19,000 起</b>／外套 ₩59,000 起 · HKD 98／306</span><span><span class="k">步行</span> 8 分</span><span><span class="k">tag</span> 仔男裝</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/무신사 스탠다드 홍대" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>由此潮店帶直接轉入 AK Plaza 一棟搞掂</div>
+        <div class="rain"><span class="k">Rain</span>落雨可由潮店帶直接轉入 AK Plaza 一棟搞掂</div>
+        <img class="ph" src="img/d1_musinsa_standard.jpg" loading="lazy" alt="">
+        <div class="cmt">「Musinsa Standard 是韓國國民基本款主力，剪裁與性價比皆好，是挑回港著得出男裝的穩陣站。」<span class="src">— Funliday 2026 首爾逛街地圖 · Funliday</span></div>
       </div>
     </div>
 
@@ -175,10 +185,12 @@ a{color:var(--ink)}
       <div class="when">午餐<br>13:30<div class="must">必到</div></div>
       <div>
         <div class="nm">AK Plaza 弘大店 <span class="ko">AK플라자 홍대점</span></div>
-        <div class="usp">直駁車站的全室內冷氣商場，集女裝、生活雜貨、卡通角色店與美食廣場，亦有 K-pop 與動漫周邊 —— 正午高溫驟雨主庇護所兼午餐點。</div>
-        <div class="row"><span><span class="k">價</span> 服飾 <b>₩20,000–60,000</b> · 午餐 ₩10,000 · HKD 104–311／52</span><span><span class="k">步行</span> 5 分</span><span><span class="k">tag</span> 媽媽女裝</span></div>
+        <div class="usp">直駁車站的全室內冷氣商場，集女裝、生活雜貨、卡通角色店與美食廣場，亦有 K-pop 與動漫周邊 —— 正午高溫驟雨的主庇護所兼午餐點。</div>
+        <div class="row"><span><span class="k">價</span> 服飾 <b>₩20,000–60,000</b>／午餐約 ₩10,000 · HKD 104–311／52</span><span><span class="k">步行</span> 5 分</span><span><span class="k">tag</span> 媽媽女裝</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/AK플라자 홍대점" target="_blank" rel="noopener">Naver Map</a></div>
         <div class="rain"><span class="k">Rain</span>此處本身就是全日的雨天主備案</div>
+        <img class="ph" src="img/d1_ak_plaza.jpg" loading="lazy" alt="">
+        <div class="cmt">「AK Plaza 弘大店一次可以買到不少東西，是應有盡有的小型百貨公司。」<span class="src">— Funliday 2026 首爾逛街地圖 · Funliday</span></div>
       </div>
     </div>
 
@@ -188,9 +200,11 @@ a{color:var(--ink)}
       <div>
         <div class="nm">KT&amp;G 想像庭院 弘大 <span class="ko">KT&amp;G 상상마당 홍대</span></div>
         <div class="usp">多層文藝複合空間，含當代藝術展廊、一樓設計選物店與地下 Live Hall，外牆建築本身好拍 —— 梅雨大雨時兼具文化體驗的最佳室內備案。</div>
-        <div class="row"><span><span class="k">價</span> 展覽 <b>免費或 ₩3,000</b> · HKD 0／16</span><span><span class="k">步行</span> 6 分</span><span><span class="k">tag</span> 媽媽手工藝</span></div>
+        <div class="row"><span><span class="k">價</span> 展覽 <b>免費或 ₩3,000</b> · 免費／HKD 16</span><span><span class="k">步行</span> 6 分</span><span><span class="k">tag</span> 媽媽手工藝</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/KT&G 상상마당 홍대" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>大雨王牌室內點；看當日免費展或地下場次</div>
+        <div class="rain"><span class="k">Rain</span>本身為大雨王牌室內點；可看當日免費展或地下場次</div>
+        <img class="ph" src="img/d1_sangsangmadang.jpg" loading="lazy" alt="">
+        <div class="cmt">「弘大文藝複合空間，支援非主流藝術家，含展覽、電影、設計與演出，一樓設計廣場可逛可買設計品。」<span class="src">— KT&amp;G 想像庭院官方 · KT&amp;G 想像庭院官方</span></div>
       </div>
     </div>
 
@@ -203,35 +217,41 @@ a{color:var(--ink)}
         <div class="row"><span><span class="k">價</span> <b>₩1,000–2,000</b>／次（多支援拍卡）· HKD 5–10</span><span><span class="k">步行</span> 4 分</span><span><span class="k">tag</span> 仔夾娃娃</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/홍대 인형뽑기" target="_blank" rel="noopener">Naver Map</a></div>
         <div class="rain"><span class="k">Rain</span>全室內店群，落雨照玩</div>
+        <img class="ph" src="img/d0_nini_arcade.jpg" loading="lazy" alt="">
+        <div class="cmt">「弘大核心一帶無人夾娃娃店與小店密集，街頭表演與遊樂店連成一片，是感受弘大青年氣氛的散策路線。」<span class="src">— Funliday 2026 首爾逛街地圖 · Funliday</span></div>
       </div>
     </div>
 
     <div class="stop opt">
       <div class="idx">10</div>
-      <div class="when">16:30<div class="can">可選</div></div>
+      <div class="when">咖啡<br>16:30<div class="can">可選</div></div>
       <div>
         <div class="nm">雪冰 弘大入口站店 <span class="ko">설빙 홍대입구역점</span></div>
-        <div class="usp">黃豆粉年糕刨冰，凍、甜、不辣，二樓冷氣強 —— 梅雨濕熱的消暑避難所，一大碗三人分一碗已夠。</div>
+        <div class="usp">黃豆粉年糕刨冰，凍、甜、不辣，二樓冷氣強 —— 梅雨濕熱的消暑避難所。</div>
         <div class="row"><span><span class="k">價</span> 刨冰 <b>₩7,000–12,000</b> · HKD 36–62</span><span><span class="k">步行</span> 6 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/설빙 홍대입구역점" target="_blank" rel="noopener">Naver Map</a></div>
         <div class="rain"><span class="k">Rain</span>本身室內，落雨無問題</div>
+        <img class="ph" src="img/food_bingsu.jpg" loading="lazy" alt="">
+        <div class="cmt">「雪冰在視覺、味覺上都讓人感到歡喜，來韓國一定要吃；招牌黃豆粉年糕刨冰細緻如雪，弘大入口站 9 號出口即到。」<span class="src">— 萍萍的美食記錄網（痞客邦） · 萍萍的美食記錄網</span></div>
       </div>
     </div>
   </div>
 
   <!-- 想散步的街步行街 -->
   <div class="sec">
-    <h2><span class="hn">想散步的街步行街</span> 街頭表演 · 烤肉收尾 <span class="zs">18:00–21:00 · 弘大入口站 8–9 出口</span></h2>
+    <h2><span class="hn">想散步的街步行街</span> 街頭表演 · 烤肉 finale <span class="zs">18:00–21:00 · 黃昏收尾</span></h2>
 
     <div class="stop">
       <div class="idx">11</div>
-      <div class="when">夜間<br>18:00<div class="must">必到</div></div>
+      <div class="when">晚間<br>18:00<div class="must">必到</div></div>
       <div>
         <div class="nm">弘大想散步的街步行街（街頭表演）<span class="ko">홍대 걷고싶은거리</span></div>
         <div class="usp">弘大青年文化核心步行街，傍晚有音樂、跳舞、魔術等街頭表演，平路站一陣即走 —— 當晚晚餐前後的主活動。</div>
         <div class="row"><span><span class="k">價</span> <b>免費</b>（打賞隨意）</span><span><span class="k">步行</span> 5 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/홍대 걷고싶은거리" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>落雨即停演 → 退入 AK Plaza、想像庭院 Live Hall 或街邊咖啡店</div>
+        <div class="rain"><span class="k">Rain</span>落雨或安全理由即停演 → 退入 AK Plaza、想像庭院 Live Hall 或街邊咖啡店</div>
+        <img class="ph" src="img/d1_hongdae.jpg" loading="lazy" alt="">
+        <div class="cmt">「沿主要動線走向弘大 9 號出口，傍晚之後氛圍更明顯，這裡是街頭藝人最集中的地方，從舞團、歌手到樂器演奏都有。」<span class="src">— 跟著漫琳去旅行 · 跟著漫琳去旅行</span></div>
       </div>
     </div>
 
@@ -240,17 +260,64 @@ a{color:var(--ink)}
       <div class="when">晚餐<br>19:30<div class="must">必到</div></div>
       <div>
         <div class="nm">肉夢 弘大本店（炭火烤肉）<span class="ko">육몽 홍대본점</span></div>
-        <div class="usp">弘大三大烤肉之一，同供牛、豬與烤腸，主肉約 360 小時濕式熟成、只灑鹽不醃，辣度只在可選蘸醬，有店員代烤，適合遊客與長輩。</div>
-        <div class="row"><span><span class="k">價</span> 拼盤 <b>₩69,900</b> · 人均 ₩20,000–23,000 · HKD 362／104–119</span><span><span class="k">步行</span> 7 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
+        <div class="usp">弘大三大烤肉之一，同供牛、豬與烤腸，主肉約 360 小時濕式熟成、只灑鹽不醃，辣度只在可選蘸醬與小菜，有店員代烤，啱遊客與長輩。</div>
+        <div class="row"><span><span class="k">價</span> 拼盤 <b>₩69,900</b>／人均 ₩20,000–23,000 · HKD 362／104–119</span><span><span class="k">步行</span> 7 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/육몽 홍대본점" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>全室內；梅雨夜晚一定先用 Naver / CatchTable 訂位免排隊（lead 約 1 日）</div>
+        <div class="rain"><span class="k">Rain</span>全室內。梅雨夜晚一定先 Naver／CatchTable 訂位免排隊</div>
+        <img class="ph" src="img/d3_ilwol_gogi.jpg" loading="lazy" alt="">
+        <div class="cmt">「肉夢被喻為弘大必吃三大烤肉店之一，店內是為數不多同時提供牛肉、豬肉和烤腸的烤肉店。」<span class="src">— 仙婆婆的腳毛遊記（痞客邦） · 仙婆婆的腳毛遊記</span></div>
       </div>
     </div>
   </div>
 
+  <!-- 新村加碼 NEW -->
+  <div class="sec">
+    <h2><span class="hn">新村 加碼</span> 文青 café／店（可選 · 홍대隔籬一站）<span class="zs">時間有餘先加</span></h2>
+
+    <div class="stop add opt">
+      <div class="idx">+</div>
+      <div class="when">可選<div class="can">可選</div></div>
+      <div>
+        <div class="nm">독수리다방 老鷹茶房 <span class="ko">독수리다방</span></div>
+        <div class="usp">新村老牌文青茶房，8 樓俯瞰延世路，招牌維也納咖啡，舊時學運與文藝青年地標，坐得舒服又有故事感。</div>
+        <div class="row"><span><span class="k">時間</span> <b>11:00–23:30</b></span><span><span class="k">址</span> 연세로 36</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/독수리다방" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>整層室內 café，落雨照坐</div>
+      </div>
+    </div>
+
+    <div class="stop add opt">
+      <div class="idx">+</div>
+      <div class="when">可選<div class="can">可選</div></div>
+      <div>
+        <div class="nm">파이홀 PIEHOLE <span class="ko">파이홀 신촌</span></div>
+        <div class="usp">美式復古手工批甜品 café，現烤鹹甜批配咖啡，店面復古佈置好拍，是新村段的甜品抖腳位。</div>
+        <div class="row"><span><span class="k">時間</span> <b>11:00–22:00</b></span><span><span class="k">址</span> 연세로5나길 20</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/파이홀 신촌" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身室內，落雨無問題</div>
+      </div>
+    </div>
+
+    <div class="stop add opt">
+      <div class="idx">+</div>
+      <div class="when">可選<div class="can">可選</div></div>
+      <div>
+        <div class="nm">블루벨트 BLUE BELT <span class="ko">블루벨트 신촌</span></div>
+        <div class="usp">新村 vintage 古著店，主打版型好嘅 Levi's 牛仔等美式舊物，店主精選，撿版型佳的二手丹寧。</div>
+        <div class="row"><span><span class="k">時間</span> <b>11:00–23:00</b></span><span><span class="k">址</span> 신촌로 93</span><span><span class="k">tag</span> 仔／媽媽</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/블루벨트 신촌" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身室內，落雨照逛</div>
+      </div>
+    </div>
+
+    <div class="rain" style="margin-top:14px;padding:11px 0 0 11px;border-top:1px dashed var(--rule);border-left:2px solid var(--rule)">
+      <span class="k">註</span>에이닐／AYNIL <b>逢週二休</b>，而 D1＝23 Jun 正是週二，故不列；想去留待非週二日。新村三店時間到場 Naver 核「영업 중」。
+    </div>
+  </div>
+
   <div class="foot">
-    <b>D1 · 23 Jun 二 2026</b> · 天氣 梅雨未到·~28°C 濕熱·戶外 OK（趁前半乾）· 地圖 Naver 到場核 pin · 價 1 HKD ≈ 195 ₩ · Generated by Claude Code<br>
-    路線：京義線林蔭道延南 → 弘大核心 → 想散步的街（12 站 · 平路為主長者可行）· 設計小店 / 夾娃娃機街時段到場 Naver 核「영업 중」
+    <b>D1 · 23 Jun 二 2026 · 相+影評版</b> · 地圖 Naver 到場核 · 1 HKD ≈ 195 ₩ · Generated by Claude Code<br>
+    弘大 + 延南洞 · 京義線林蔭道一日線 · 影評取自各部落客／官方 IG · 新村加碼三店（독수리다방／PIEHOLE／BLUE BELT·避開週二休嘅 AYNIL）
   </div>
 
 </div>
