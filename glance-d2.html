@@ -57,6 +57,9 @@ a{color:var(--ink)}
 .nav a::after{content:" →";color:var(--red)}
 .rain{margin-top:6px;font-size:11.5px;line-height:1.45;color:var(--ink-2);padding-left:11px;border-left:2px solid var(--rule)}
 .rain .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-right:5px}
+.ph{display:block;width:100%;max-width:260px;aspect-ratio:16/10;object-fit:cover;margin-top:10px;background:var(--rule-2);filter:grayscale(.08)}
+.cmt{margin-top:8px;padding-left:11px;border-left:2px solid var(--red);font-size:12px;line-height:1.5;color:var(--ink)}
+.cmt .src{display:block;margin-top:2px;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.02em}
 .foot{margin-top:30px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
 .foot b{color:var(--ink)}
 </style>
@@ -65,28 +68,26 @@ a{color:var(--ink)}
 
 <div class="wx">
   <span class="d">24 Jun 三</span>
-  <span class="t">梅雨未到 · 加平戶外日</span>
-  <span class="rn">啱排喺雨前</span>
-  <span class="t">加平包車一日（南怡島 + 小法國 + 晨靜 + rail bike）</span>
+  <span class="t">梅雨未到 · 加平戶外日 · 啱排雨前</span>
+  <span class="rn">加平包車一日</span>
 </div>
 
 <div class="wrap">
 
-  <div class="kicker">Seoul · Day 2 · 加平 Gapyeong 包車</div>
+  <div class="kicker">Seoul · Day 2 · 加平 Gapyeong</div>
   <div class="masthead">
     <div class="daynum">D2<small>24 JUN 三</small></div>
     <div>
       <div class="title">加平包車一日<br>南怡島 · 小法國 · 晨靜 · 軌道單車</div>
-      <div class="sub">私家包車 door-to-door 串連加平四大點，車上冷氣抖、司機駁散點，黃昏返忠武路收結；全程零轉車。戶外為主，前一晚睇加平郡預報；暴雨主場＝晨靜溫室，軌道單車係攰時 skip-first。</div>
+      <div class="sub">私家包車 door-to-door 串連加平四大點，車上冷氣抖、司機駁散點，黃昏返忠武路收結；全程零轉車。趁梅雨未到搶戶外日。</div>
     </div>
   </div>
 
-  <div class="callout"><div class="ct">本日策略</div><div class="cv">全日以戶外為主，<b>趁梅雨未到搶呢個窗</b>。前一晚睇加平郡預報；暴雨主場＝<b>晨靜樹木園溫室</b>（室內睇花），包車冷氣車隨時走做緩衝。<b>軌道單車＝攰時 skip-first 嗰站。</b></div></div>
-  <div class="callout ink"><div class="ct">路線軸 · 零轉車</div><div class="cv"><b>忠武路 → 南怡島 → 小法國 → 晨靜樹木園 → 加平軌道單車 → 返忠武路晚餐。</b>包車接送、步行量低；午餐留島內（南門韓定食）省出島折騰，長者走得輕鬆。</div></div>
+  <div class="callout"><div class="ct">路線軸 · 6 站</div><div class="cv">忠武路 → <b>①南怡島 → ②小法國 → ③晨靜樹木園 → ④加平軌道單車</b> → 返忠武路晚餐。全日戶外為主，前一晚睇加平郡預報；暴雨主場＝晨靜樹木園溫室，包車冷氣車做緩衝；軌道單車係攰時 skip-first。</div></div>
 
-  <!-- 南怡島 -->
+  <!-- Zone 1 南怡島 -->
   <div class="sec">
-    <h2><span class="hn">南怡島</span> 水杉道 + 島內午餐 <span class="zs">09:10–13:00 · 包車送碼頭</span></h2>
+    <h2><span class="hn">Zone 1</span> 南怡島 <span class="zs">09:10–13:00 · 水杉道 + 島內午餐</span></h2>
 
     <div class="stop">
       <div class="idx">1</div>
@@ -94,9 +95,11 @@ a{color:var(--ink)}
       <div>
         <div class="nm">南怡島 <span class="ko">남이섬</span></div>
         <div class="usp">水杉大道晨光下的招牌構圖，落船即搭小火車直達島中央，松林、蓮池、白樺林平路慢行。</div>
-        <div class="row"><span><span class="k">價</span> <b>₩16,000</b>（入場連來回渡輪）+ 小火車 ₩4,000 · HKD 83 + 21</span><span><span class="k">步行</span> 4 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="row"><span><span class="k">價</span> <b>₩16,000</b>（入場連渡輪）+ 小火車 ₩4,000 · HKD 83 + 21</span><span><span class="k">步行</span> 碼頭 4 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/남이섬" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>薄霧水杉道仍可快影；雨大則縮短南怡島，轉島內咖啡餐廳，重心移後段晨靜溫室</div>
+        <div class="rain"><span class="k">Rain</span>薄霧水杉道仍可快影；雨大轉島內咖啡餐廳，重心移後段晨靜溫室</div>
+        <img class="ph" src="img/d2_nami.jpg" loading="lazy" alt="">
+        <div class="cmt">「只是在這杉林道中就備感舒暢，洗滌了平日繁雜忙亂的心靈，叫人流連忘返。」<span class="src">— 小語的幸福巧虎島 · 痞客邦</span></div>
       </div>
     </div>
 
@@ -106,9 +109,11 @@ a{color:var(--ink)}
       <div>
         <div class="nm">南怡島 Swing 咖啡烘焙坊 <span class="ko">남이섬 스윙카페&베이커리</span></div>
         <div class="usp">面向北漢江的戶外露台咖啡烘焙坊，配現烤麵包與輕音樂，行島中段的歇腳補給點。</div>
-        <div class="row"><span><span class="k">價</span> 咖啡 <b>₩6,000–8,000</b>、麵包 ₩5,000 起 · HKD 31–41</span><span><span class="k">步行</span> 6 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
+        <div class="row"><span><span class="k">價</span> 咖啡 <b>₩6,000–8,000</b>、麵包 ₩5,000 起 · HKD 31–41</span><span><span class="k">步行</span> 南怡島 6 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/남이섬 스윙카페" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>店內設室內座位；雨天可改去島內北 Café 或 Tea House 室內避雨</div>
+        <div class="rain"><span class="k">Rain</span>店內設室內座位；雨天改島內北 Café 或 Tea House 室內避雨</div>
+        <img class="ph" src="img/d2_swing_cafe.jpg" loading="lazy" alt="">
+        <div class="cmt">「島上漫步累了，找間江邊咖啡坐下歇腳，配現烤麵包看北漢江最是悠閒。」<span class="src">— KKday Blog · KKday 部落格</span></div>
       </div>
     </div>
 
@@ -118,16 +123,18 @@ a{color:var(--ink)}
       <div>
         <div class="nm">南門（南怡島荷葉飯韓定食）<span class="ko">남문</span></div>
         <div class="usp">島內少數正式韓定食，荷葉清香蒸飯配家常小菜，不辣、有室內座位，適合長者中午定點補給。</div>
-        <div class="row"><span><span class="k">價</span> 海鮮煎餅 <b>₩19,000</b>、嫩豆腐鍋 ₩14,000、石鍋牛肉飯 ₩14,000 · HKD 98/73/73</span><span><span class="k">步行</span> 8 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
+        <div class="row"><span><span class="k">價</span> 海鮮煎餅 <b>₩19,000</b> · 嫩豆腐鍋/石鍋牛肉飯 ₩14,000 · HKD 98 / 73</span><span><span class="k">步行</span> Swing 8 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/남이섬 남문" target="_blank" rel="noopener">Naver Map</a></div>
         <div class="rain"><span class="k">Rain</span>本身設室內座位，可直接做雨天午餐主場</div>
+        <img class="ph" src="img/d2_nammun.jpg" loading="lazy" alt="">
+        <div class="cmt">「島內用餐選擇不算多，想坐下吃頓正式韓式定食，松林道盡頭的餐廳是穩當之選。」<span class="src">— KKday Blog · KKday 部落格</span></div>
       </div>
     </div>
   </div>
 
-  <!-- 小法國 / 晨靜 -->
+  <!-- Zone 2 小法國 / 晨靜 -->
   <div class="sec">
-    <h2><span class="hn">小法國 / 晨靜</span> 歐風村 + 樹木園 <span class="zs">13:10–16:00 · 包車駁清平湖畔</span></h2>
+    <h2><span class="hn">Zone 2</span> 小法國 / 晨靜 <span class="zs">13:10–16:00 · 歐風村 + 樹木園</span></h2>
 
     <div class="stop">
       <div class="idx">4</div>
@@ -135,9 +142,11 @@ a{color:var(--ink)}
       <div>
         <div class="nm">小法國 + 意大利村 <span class="ko">쁘띠프랑스 이탈리아마을</span></div>
         <div class="usp">《小王子》主題的歐風山村，有室內展館與半室內咖啡座，正午半室內避曬最合適。</div>
-        <div class="row"><span><span class="k">價</span> 通票 <b>₩19,500</b>/大人（含意大利村，官網即場為準）· HKD 101</span><span><span class="k">步行</span> 2 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="row"><span><span class="k">價</span> 通票 <b>₩19,500</b>/大人（單園約 ₩10,000–12,000）· HKD 101</span><span><span class="k">步行</span> 正門 2 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/쁘띠프랑스" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>室內展館與半室內咖啡座可避微雨；暴雨則縮短戶外巷弄，重心移室內館</div>
+        <div class="rain"><span class="k">Rain</span>室內展館與半室內咖啡座可避微雨；暴雨縮短戶外巷弄，重心移室內館</div>
+        <img class="ph" src="img/d2_petite_france.jpg" loading="lazy" alt="">
+        <div class="cmt">「就算不是韓劇迷，和色彩繽紛的可愛房舍拍照，也很有歐洲童話小鎮的氛圍。」<span class="src">— 艾莉絲・我的小旅行 · 痞客邦</span></div>
       </div>
     </div>
 
@@ -147,16 +156,18 @@ a{color:var(--ink)}
       <div>
         <div class="nm">晨靜樹木園 <span class="ko">아침고요수목원</span></div>
         <div class="usp">三十三萬平方米、二十多個主題花園，六月玫瑰繡球盛放，設溫室做暴雨避雨睇花主場。</div>
-        <div class="row"><span><span class="k">價</span> 成人 <b>₩11,000</b> · HKD 57</span><span><span class="k">步行</span> 3 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="row"><span><span class="k">價</span> 成人 <b>₩11,000</b> · HKD 57</span><span><span class="k">步行</span> 正門 3 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/아침고요수목원" target="_blank" rel="noopener">Naver Map</a></div>
         <div class="rain"><span class="k">Rain</span>園內溫室＝全日暴雨主場，可室內睇花；另有園內咖啡座供長者歇腳</div>
+        <img class="ph" src="img/d2_morning_calm.jpg" loading="lazy" alt="">
+        <div class="cmt">「四季皆美的庭園，每個主題園都有獨特風光，是加平一帶最值得花時間慢逛的一站。」<span class="src">— 西施型 獨男旅遊生活日誌 · 西施型</span></div>
       </div>
     </div>
   </div>
 
-  <!-- 加平站 / 忠武路 -->
+  <!-- Zone 3 加平站 / 忠武路 -->
   <div class="sec">
-    <h2><span class="hn">加平站 / 忠武路</span> 軌道單車 + 返程晚餐 <span class="zs">16:30–21:00 · 黃昏鐵橋 + 老舖收結</span></h2>
+    <h2><span class="hn">Zone 3</span> 加平站 / 忠武路 <span class="zs">16:30–21:30 · 軌道單車 + 返程晚餐</span></h2>
 
     <div class="stop opt">
       <div class="idx">6</div>
@@ -164,9 +175,11 @@ a{color:var(--ink)}
       <div>
         <div class="nm">加平軌道單車（Rail Park）<span class="ko">가평레일파크</span></div>
         <div class="usp">半自動電動軌道單車，踩十幾下即自動推進，沿八公里舊鐵道越過三十米高鐵橋黃昏絕景。</div>
-        <div class="row"><span><span class="k">價</span> <b>₩48,000</b>/4 人車（3 人需訂 1 架）· 2 人車 ₩36,000 · HKD 249</span><span><span class="k">步行</span> 5 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="row"><span><span class="k">價</span> <b>₩48,000</b>/4 人車（3 人訂 1 架）· 2 人車 ₩36,000 · HKD 249</span><span><span class="k">步行</span> Rail Park 總站 5 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/가평레일파크" target="_blank" rel="noopener">Naver Map</a></div>
-        <div class="rain"><span class="k">Rain</span>暴雨取消，改延長晨靜溫室或提早返忠武路；軌道單車係攰時 skip-first 嗰站</div>
+        <div class="rain"><span class="k">Rain</span>暴雨取消，改延長晨靜溫室或提早返忠武路；攰時 skip-first 那站</div>
+        <img class="ph" src="img/d2_rail_bike.jpg" loading="lazy" alt="">
+        <div class="cmt">「半電動軌道單車不太費力，沿著舊鐵道穿過樹林與鐵橋，老少都能輕鬆享受沿途風光。」<span class="src">— Rowing 旅遊筆記 · 痞客邦</span></div>
       </div>
     </div>
 
@@ -176,19 +189,17 @@ a{color:var(--ink)}
       <div>
         <div class="nm">進古介（忠武路六十年韓食老舖）<span class="ko">진고개</span></div>
         <div class="usp">一九六三年開業的忠武路老字號韓食，招牌藥材黑湯燉牛肋骨不辣軟腍，最適合長者的返程定點晚餐。</div>
-        <div class="row"><span><span class="k">價</span> 燉牛肋骨定食 <b>₩20,000–28,000</b>/人 · HKD 104–145</span><span><span class="k">步行</span> 3 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="row"><span><span class="k">價</span> 燉牛肋骨定食約 <b>₩20,000–28,000</b>/人 · HKD 104–145</span><span><span class="k">步行</span> 忠武路站 6 出口 3 分</span><span><span class="k">tag</span> 全家</span></div>
         <div class="nav"><a href="https://map.naver.com/p/search/진고개 충무로" target="_blank" rel="noopener">Naver Map</a></div>
         <div class="rain"><span class="k">Rain</span>店內用餐，本身即雨天晚餐；近忠武路站，落雨可從酒店直接步行往返</div>
+        <img class="ph" src="img/d2_jingogae.jpg" loading="lazy" alt="">
+        <div class="cmt">「招牌燉牛肋骨肉質入口即化，帶淡淡藥材清香，是忠武路六十年的老味道。」<span class="src">— DiningCode 食評 · DiningCode</span></div>
       </div>
-    </div>
-
-    <div class="rain" style="margin-top:14px;padding:11px 0 0 11px;border-top:1px dashed var(--rule);border-left:2px solid var(--rule)">
-      <span class="k">全日暴雨 Plan B</span>南怡島大幅縮短 → 主力<b>晨靜樹木園溫室</b> + 小法國室內館，包車冷氣車隨時走。軌道單車暴雨取消，改延長晨靜溫室睇花。
     </div>
   </div>
 
   <div class="foot">
-    <b>D2 · 24 Jun 三 2026</b> · 天氣 梅雨未到·加平戶外日·啱排喺雨前 · 地圖 Naver 到場核 pin · 價 1 HKD ≈ 195 ₩ · Generated by Claude Code
+    <b>D2 · 24 Jun 三 2026 · 相+影評版</b> · 地圖 Naver 到場核 · 1 HKD ≈ 195 ₩ · Generated by Claude Code
   </div>
 
 </div>
