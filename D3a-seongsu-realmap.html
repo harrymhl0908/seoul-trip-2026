@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=6,user-scalable=yes">
+<title>D3-A · 聖水 · 實景動線地圖</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800;900&family=Space+Mono:wght@700&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;box-sizing:border-box}
+html,body{height:100%}
+body{font-family:Inter,'Noto Sans TC',sans-serif}
+#map{position:absolute;inset:0;z-index:0}
+.hdr{position:absolute;top:0;left:0;right:0;z-index:600;background:#fff;border-bottom:2px solid #111;padding:9px 14px}
+.hdr .k{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;color:#E4002B;text-transform:uppercase}
+.hdr h1{font-size:17px;font-weight:900;letter-spacing:-.5px;margin-top:2px}
+.hdr .s{font-size:11px;color:#555;margin-top:3px;line-height:1.35;max-height:30px;overflow:hidden}
+.pin{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;
+  font-weight:800;font-size:13px;color:#fff;background:#111;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.45)}
+.pin.opt{background:#fff;color:#E4002B;border:3px solid #E4002B}
+.lg{position:absolute;bottom:16px;left:14px;z-index:600;background:#fff;border:2px solid #111;padding:6px 10px;font-size:11px;display:flex;gap:11px;align-items:center}
+.lg b{display:inline-block;width:13px;height:13px;border-radius:50%;background:#111;vertical-align:-2px;margin-right:4px}
+.lg i{display:inline-block;width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid #E4002B;vertical-align:-2px;margin-right:4px}
+.lg em{font-family:'Space Mono',monospace;font-style:normal;color:#E4002B;font-weight:700}
+.leaflet-popup-content{font-family:Inter,'Noto Sans TC',sans-serif;font-size:13px;margin:10px 12px}
+.leaflet-popup-content b{font-size:14px}
+.leaflet-popup-content .meta{color:#555;font-size:12px;margin-top:3px}
+.leaflet-popup-content a{color:#E4002B;font-weight:700;text-decoration:none}
+</style></head>
+<body>
+<div id="map"></div>
+<div class="hdr"><div class="k">Seoul Family Trip · 實景動線</div><h1 id="t"></h1><div class="s" id="s"></div></div>
+<div class="lg"><span><b></b>必到</span><span><i></i>可選</span><span><em>┄┄</em> 步行次序</span></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const D = {"title": "D3-A · 聖水", "sub": "沿鍊武場街一條街由工廠改建區掃到精品帶，再乘二號線直達蠶室，於樂天世界塔上看石村湖日落與夜景。", "stops": [{"order": 1, "name": "洋蔥咖啡", "full": "洋蔥咖啡 聖水本店", "lat": 37.5447135, "lon": 127.0582322, "optional": false, "time": "08:40", "price": "₩4,000–7,000/件，咖啡 ₩5,000 起；3 人約 ₩36,000", "cat": "咖啡", "naver": "https://map.naver.com/p/search/어니언 성수"}, {"order": 2, "name": "Monami 文具", "full": "Monami 文具概念店 聖水", "lat": 37.5444425, "lon": 127.0554581, "optional": false, "time": "09:45", "price": "153 原子筆 DIY 套裝約 ₩8,000–15,000，筆記本客製約 ₩10,000 起", "cat": "手作", "naver": "https://map.naver.com/p/search/모나미 스토어 성수"}, {"order": 3, "name": "大林倉庫", "full": "大林倉庫紅磚街散步", "lat": 37.5418247, "lon": 127.0564591, "optional": true, "time": "10:15", "price": "免費", "cat": "景點", "naver": "https://map.naver.com/p/search/대림창고"}, {"order": 4, "name": "Olive Young N", "full": "Olive Young N 聖水旗艦", "lat": 37.544207, "lon": 127.0543773, "optional": false, "time": "10:30", "price": "面膜/防曬約 ₩5,000–20,000；3 人手信約 ₩60,000", "cat": "購物", "naver": "https://map.naver.com/p/search/올리브영N 성수"}, {"order": 5, "name": "Musinsa Megastore", "full": "Musinsa Megastore 聖水", "lat": 37.5417962, "lon": 127.0560972, "optional": false, "time": "11:00", "price": "Musinsa Standard 基本款 tee ₩20,000 起，整套 <₩150,000", "cat": "購物", "naver": "https://map.naver.com/p/search/무신사 메가스토어 성수"}, {"order": 6, "name": "Point of View", "full": "Point of View 設計文具選物", "lat": 37.5435642, "lon": 127.0514036, "optional": true, "time": "11:50", "price": "文具/設計小物約 ₩5,000–40,000", "cat": "手作", "naver": "https://map.naver.com/p/search/포인트오브뷰 성수"}, {"order": 7, "name": "Jojo 刀削麵", "full": "Jojo 刀削麵 聖水店", "lat": 37.5452059, "lon": 127.0568125, "optional": false, "time": "午餐 12:30", "price": "蜆湯刀削麵 ₩10,000、章魚海鮮煎餅 ₩15,000；3 人約 ₩35,000", "cat": "食", "naver": "https://map.naver.com/p/search/조조칼국수 성수점"}, {"order": 8, "name": "Cat&F 貓咖啡", "full": "Cat&F 貓咖啡烘焙店", "lat": 37.5434683, "lon": 127.0527346, "optional": false, "time": "13:20", "price": "飲品約 ₩6,000–8,000，烘焙約 ₩5,000 起", "cat": "貓咖啡", "naver": "https://map.naver.com/p/search/캣앤에프 성수"}, {"order": 9, "name": "LuckyPop 夾娃娃", "full": "LuckyPop 夾娃娃機樂園 聖水", "lat": 37.5441762, "lon": 127.0506192, "optional": false, "time": "13:50", "price": "每抽約 ₩1,000–2,000", "cat": "夾娃娃", "naver": "https://map.naver.com/p/search/럭키팝 성수"}]};
+document.getElementById('t').textContent = D.title;
+document.getElementById('s').textContent = D.sub;
+const map = L.map('map',{zoomControl:true}).setView([37.544,127.056],15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
+const pts=[];
+D.stops.forEach(s=>{
+  const ll=[s.lat,s.lon]; pts.push(ll);
+  const ic=L.divIcon({className:'',html:`<div class="pin ${s.optional?'opt':''}">${s.order}</div>`,iconSize:[28,28],iconAnchor:[14,14]});
+  const m=L.marker(ll,{icon:ic}).addTo(map);
+  const naver = s.naver?`<div class="meta"><a href="${s.naver}" target="_blank" rel="noopener">Naver Map ↗</a></div>`:'';
+  m.bindPopup(`<b>${s.order}. ${s.full}</b><div class="meta">${s.cat}${s.time?' · '+s.time:''}</div>${s.price?`<div class="meta">${s.price}</div>`:''}${naver}`);
+});
+if(pts.length){
+  L.polyline(pts,{color:'#E4002B',weight:3,opacity:.85,dashArray:'2,8',lineCap:'round'}).addTo(map);
+  map.fitBounds(L.latLngBounds(pts).pad(0.22));
+}
+</script>
+</body></html>
