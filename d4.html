@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>D4 · 안국/명동/동대문 · 行程＋購物＋地圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.5;padding:0 0 64px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+a{color:var(--ink)}
+.wx{background:var(--ink);color:#fff;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.wx .d{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.wx .t{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;opacity:.85}
+.wx .t b{color:#fff;opacity:1}
+.wx .rn{color:#fff;background:var(--red);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:1px 7px;text-transform:uppercase}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:18px}
+.masthead{display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:start;border-top:2px solid var(--ink);padding-top:10px;margin-top:6px}
+.daynum{font-weight:900;font-size:72px;line-height:.78;letter-spacing:-.045em}
+.daynum small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;margin-top:6px}
+.title{font-weight:900;font-size:clamp(22px,4.8vw,32px);line-height:1.04;letter-spacing:-.022em;margin-top:2px}
+.sub{font-size:13.5px;line-height:1.5;color:var(--ink-2);margin-top:9px;max-width:50ch}
+@media(max-width:520px){.daynum{font-size:54px}}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:16px 0;border-left:3px solid var(--red)}
+.callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
+.callout.ink{border-left-color:var(--ink)}.callout.ink .ct{color:var(--ink)}
+.sec h2{font-weight:900;font-size:14px;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:7px;border-bottom:2px solid var(--ink);margin-top:26px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.sec h2 .hn{font-family:var(--mono);font-size:11px;color:var(--red);font-weight:700}
+.sec h2 .zs{font-family:var(--mono);font-size:10px;color:var(--ink-3);font-weight:400;letter-spacing:.04em}
+.stop{display:grid;grid-template-columns:40px 78px 1fr;column-gap:14px;align-items:start;padding:15px 0 13px;border-bottom:1px solid var(--rule)}
+.stop:last-child{border-bottom:none}
+.idx{font-weight:900;font-size:32px;line-height:.82;letter-spacing:-.04em}
+.stop.opt .idx{color:var(--red);opacity:.5}
+.stop.add{background:linear-gradient(90deg,rgba(228,0,43,.05),transparent 60%);margin:0 -10px;padding-left:10px;padding-right:10px}
+.when{font-family:var(--mono);font-size:14px;font-weight:700;line-height:1.1}
+.when .must{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ink);padding:1px 5px;margin-top:6px}
+.when .can{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-top:6px}
+.when .new{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--red);padding:1px 5px;margin-top:6px}
+.nm{font-weight:800;font-size:17px;line-height:1.12;letter-spacing:-.01em}
+.nm .ko{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+.usp{font-size:12.5px;line-height:1.5;color:var(--ink-2);margin-top:5px;max-width:48ch}
+.row{margin-top:7px;font-size:11.5px;line-height:1.5;display:flex;flex-wrap:wrap;gap:3px 14px}
+.row .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.row b{font-weight:700}
+.nav{margin-top:7px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.03em}
+.nav a{border-bottom:1px solid var(--ink);text-decoration:none;margin-right:14px}
+.nav a::after{content:" →";color:var(--red)}
+.rain{margin-top:6px;font-size:11.5px;line-height:1.45;color:var(--ink-2);padding-left:11px;border-left:2px solid var(--rule)}
+.rain .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-right:5px}
+.ph{display:block;width:100%;max-width:260px;aspect-ratio:16/10;object-fit:cover;margin-top:10px;background:var(--rule-2);filter:grayscale(.08)}
+.cmt{margin-top:8px;padding-left:11px;border-left:2px solid var(--red);font-size:12px;line-height:1.5;color:var(--ink)}
+.cmt .src{display:block;margin-top:2px;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.02em}
+.foot{margin-top:30px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
+.foot b{color:var(--ink)}
+.zonehd{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--ink);padding:7px 12px;margin-top:30px}
+.shop{display:grid;grid-template-columns:46px 1fr;column-gap:14px;align-items:start;padding:18px 0 17px;border-bottom:1px solid var(--rule)}
+.snum{font-weight:900;font-size:30px;line-height:.82;letter-spacing:-.04em}
+.stitle{font-weight:900;font-size:18px;line-height:1.16;letter-spacing:-.015em}
+.stitle .t{display:block;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--red);margin-top:5px}
+.sd{font-size:12.5px;line-height:1.6;color:var(--ink-2);margin-top:9px}
+.brands{font-size:11.5px;line-height:1.7;margin-top:10px;padding:10px 12px;background:var(--rule-2)}
+.brands .bh{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-right:5px}
+.fam{font-size:12px;line-height:1.55;margin-top:10px;padding:7px 0 7px 11px;border-left:3px solid var(--red);color:var(--ink);font-weight:600}
+.meta2{margin-top:11px;font-family:var(--mono);font-size:10.5px;line-height:1.7;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:1px 16px}
+.meta2 .k{color:var(--red);font-weight:700;margin-right:4px}
+.meta2 b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="wx">
+  <span class="d">26 Jun 五</span>
+  <span class="t">~<b>28°C</b> 焗熱</span>
+  <span class="rn">梅雨季 · 有雨</span>
+  <span class="t">走機日 · 室內/有蓋為主</span>
+</div>
+
+<div class="wrap">
+
+  <div class="kicker">Seoul · Day 4 · 走機日 finale</div>
+  <div class="masthead">
+    <div class="daynum">D4<small>26 JUN 五</small></div>
+    <div>
+      <div class="title">安國朝 · 明洞午 · 東大門夜</div>
+      <div class="sub">🆕 為咗 London Bagel，安國段搬上朝早：bagel → 仁寺洞工藝 → 안녕인사동特色店 → 韓屋 café，再落明洞午餐、黃昏東大門 finale。梅雨走機日，全程室內/有蓋為主。</div>
+    </div>
+  </div>
+
+  <div class="callout"><div class="ct">本次更新</div><div class="cv">🆕 加 <b>安國/익선동段（朝早）</b>：London Bagel 安國 + 仁寺洞 Ssamziegil + 안녕인사동 + 冬柏 café。換走明洞貓café。<b>⚠ 南大門朝市 trade 走咗</b>（一個朝早做唔晒安國+南大門兩邊）—— 手信改現代 Outlet 退稅 + 便利店補；<b>想保留南大門就一句話我反返轉。</b></div></div>
+  <div class="callout ink"><div class="ct">走機 deadline</div><div class="cv"><b>20:30 前返酒店攞行李、21:00 前離酒店</b> → van 直去 ICN（或的士去首爾站搭 22:40 尾班 AREX 直通）→ 趕 CX427 01:55。下午 14:00–18:00 有 buffer：抖、執行李、或補明洞掃貨。</div></div>
+
+  <div class="sec"><h2><span class="hn">步行地圖</span> 全日動線 <span class="zs">每站撳 Naver 連結導航</span></h2></div>
+  <div style="margin:6px 0 4px;overflow-x:auto"><svg viewBox="0 0 860 390" xmlns="http://www.w3.org/2000/svg" font-family="Inter,'Noto Sans TC',sans-serif" style="width:100%;height:auto;max-width:680px;display:block"><rect x="0" y="0" width="860" height="390" fill="#FFFFFF"/><text x="58" y="40" font-family="'Space Mono',monospace" font-size="12" letter-spacing="2" fill="#E4002B">D4 / MYEONGDONG</text><text x="58" y="74" font-size="30" font-weight="800" letter-spacing="-1" fill="#111111">安國/益善洞/仁寺洞  /  明洞  /  東大門</text><line x1="58" y1="88" x2="802" y2="88" stroke="#111111" stroke-width="2"/><path d="M 58.0 128.0 L 244.0 128.0 L 430.0 128.0 L 616.0 128.0 L 802.0 128.0 L 802.0 258.0 L 616.0 258.0 L 430.0 258.0 L 244.0 258.0 L 58.0 258.0" fill="none" stroke="#E4002B" stroke-width="2.5"/><circle cx="58.0" cy="128.0" r="16" fill="#111111"/><text x="58.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">1</text><text x="58.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">London …</text><text x="58.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">早餐 08:00</text><circle cx="244.0" cy="128.0" r="16" fill="#111111"/><text x="244.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">2</text><text x="244.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">仁寺洞 Ssa…</text><text x="244.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">10:30</text><circle cx="430.0" cy="128.0" r="16" fill="#111111"/><text x="430.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">3</text><text x="430.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">안녕인사동 綜…</text><text x="430.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">11:30</text><circle cx="616.0" cy="128.0" r="16" fill="#111111"/><text x="616.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">4</text><text x="616.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">冬柏洋菓子店 …</text><text x="616.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">12:15</text><circle cx="802.0" cy="128.0" r="16" fill="#111111"/><text x="802.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">5</text><text x="802.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">明洞餃子 本店</text><text x="802.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">午餐 13:30</text><circle cx="802.0" cy="258.0" r="16" fill="#111111"/><text x="802.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">6</text><text x="802.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">陳玉華奶奶元祖…</text><text x="802.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">晚餐 18:30</text><circle cx="616.0" cy="258.0" r="16" fill="#111111"/><text x="616.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">7</text><text x="616.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">現代 City…</text><text x="616.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">19:15</text><circle cx="430.0" cy="258.0" r="16" fill="#FFFFFF" stroke="#E4002B" stroke-width="3"/><text x="430.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#E4002B">8</text><text x="430.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Doota M…</text><text x="430.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">19:45</text><circle cx="244.0" cy="258.0" r="16" fill="#111111"/><text x="244.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">9</text><text x="244.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">東大門設計廣場…</text><text x="244.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">晚間活動 20:00</text><circle cx="58.0" cy="258.0" r="16" fill="#FFFFFF" stroke="#E4002B" stroke-width="3"/><text x="58.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#E4002B">10</text><text x="58.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">清溪川 夜行（…</text><text x="58.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">晚間活動 20:15</text></svg></div>
+  <div class="rain"><span class="k">Map</span>示意動線（非實地圖）；實際導航撳下面各站「Naver Map」連結。</div>
+
+  <!-- 安國朝 NEW -->
+  <div class="sec">
+    <h2><span class="hn">🆕 安國 / 益善洞 / 仁寺洞</span> 朝早文化特色段 <span class="zs">08:00–13:00 · 近酒店 3 站</span></h2>
+
+    <div class="stop add">
+      <div class="idx">1</div>
+      <div class="when">早餐<br>08:00<div class="new">bagel</div></div>
+      <div>
+        <div class="nm">London Bagel Museum 安國 본점 <span class="ko">런던베이글뮤지엄 안국</span></div>
+        <div class="usp">全韓最紅 bagel·韓屋風本店，招牌 spring onion cream cheese。<b>排隊長達 2 鐘</b> → 唯一玩法：<b>07:30 到場攞號</b>（08:00 開門）或直接<b>外帶</b>；落晝（remote register 09:00 開、截 13:00）必摸門釘，所以擺朝早第一站。</div>
+        <div class="row"><span><span class="k">價</span> bagel+spread <b>₩5,000–10,000</b></span><span><span class="k">時間</span> 08:00–18:00</span><span><span class="k">址</span> Bukchon-ro 4-gil 20</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/런던베이글뮤지엄 안국" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Tip</span>07:30 攞號 / 外帶最快；本身室內店，落雨照</div>
+      </div>
+    </div>
+
+    <div class="stop add">
+      <div class="idx">2</div>
+      <div class="when">10:30<div class="new">新增</div></div>
+      <div>
+        <div class="nm">仁寺洞 Ssamziegil 쌈지길 工藝 <span class="ko">쌈지길</span></div>
+        <div class="usp">四層螺旋商街、50+ 本地工藝 gallery 與手作：軟陶、鎖匙扣、傳統紙藝、DIY 小物 —— 媽媽手工藝主場，亦有手信。安國站 6 出口 292 米。</div>
+        <div class="row"><span><span class="k">時間</span> <b>10:30–20:30</b> 每日</span><span><span class="k">步行</span> bagel → 仁寺洞 8 分</span><span><span class="k">tag</span> 媽媽手工藝</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/인사동 쌈지길" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>螺旋商街半室內、各舖室內，雨天照行</div>
+      </div>
+    </div>
+
+    <div class="stop add">
+      <div class="idx">3</div>
+      <div class="when">11:30<div class="new">特色店</div></div>
+      <div>
+        <div class="nm">안녕인사동 Annyeong Insadong <span class="ko">안녕인사동</span></div>
+        <div class="usp">仁寺洞綜合館一棟搞掂：소품샵／ArtBox character 文具、GS25 robot café、Color Pool Museum 打卡 —— 媽媽手作＋仔 character＋落雨備案三合一。인사동길 49。</div>
+        <div class="row"><span><span class="k">時間</span> 約 10:30–22:00 <b>到場 Naver 核「영업 중」</b></span><span><span class="k">步行</span> 仁寺洞旁</span><span><span class="k">tag</span> 仔 character + 媽媽</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/안녕인사동" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>整棟室內，梅雨主備案</div>
+      </div>
+    </div>
+
+    <div class="stop add">
+      <div class="idx">4</div>
+      <div class="when">12:15<div class="new">café</div></div>
+      <div>
+        <div class="nm">冬柏洋菓子店 益善洞 <span class="ko">동백양과자점</span></div>
+        <div class="usp">韓屋木質裝潢、開放廚房睇住整舒芙蕾班戟，鬆軟入口即化 —— 안국段嘅韓屋 café 抖腳位（全家）。Supyo-ro 28-gil 17-24。</div>
+        <div class="row"><span><span class="k">時間</span> <b>09:00–22:00</b>（LO 21:30）</span><span><span class="k">價</span> 舒芙蕾/咖啡 ₩8,000 起</span><span><span class="k">步行</span> 仁寺洞 → 益善洞 5 分</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/동백양과자점" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">後備</span>Onion 安國（어니언 안국·平日 07–22·韓屋麵包店·安國站 3 出口）二揀一</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 明洞午 -->
+  <div class="sec">
+    <h2><span class="hn">明洞</span> 午餐 <span class="zs">13:30 · 米芝蓮刀削麵</span></h2>
+
+    <div class="stop">
+      <div class="idx">5</div>
+      <div class="when">午餐<br>13:30<div class="must">必到</div></div>
+      <div>
+        <div class="nm">明洞餃子 本店 <span class="ko">명동교자 본점</span></div>
+        <div class="usp">米芝蓮必比登老字號，雞湯底刀削麵濃稠不辣，夏季限定豆漿冷麵應時。D0 趕不及的補償午餐。3 人以上上 3 樓人龍短。安國 → 明洞 3 號線轉 4 號線約 15 分。</div>
+        <div class="row"><span><span class="k">價</span> 刀削麵 <b>₩11,000</b> · 餃子 ₩13,000 · HKD 57/67</span><span><span class="k">步行</span> 明洞站 8 出口 3 分</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/명동교자 본점" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身室內名店，照食</div>
+        <img class="ph" src="img/d4_myeongdong_kyoja.jpg" loading="lazy" alt="">
+        <div class="cmt">「連續多年得米芝蓮必比登推薦，只賣刀削麵、餃子、冷麵、豆漿冷麵四樣，湯頭濃郁、餃子爆汁。」<span class="src">— 樂活的大方</span></div>
+      </div>
+    </div>
+    <div class="rain" style="margin-top:13px;padding:11px 0 0 11px;border-top:1px dashed var(--rule);border-left:2px solid var(--rule)">
+      <span class="k">下午 buffer</span>14:30–18:00：返酒店執行李 / 抖 / 補明洞掃貨（美妝·SPAO·ÅLAND）。走機日唔好逼太密。
+    </div>
+  </div>
+
+  <!-- 東大門夜 finale -->
+  <div class="sec">
+    <h2><span class="hn">東大門</span> finale <span class="zs">18:30–20:30 · 一隻雞 + 夜燈</span></h2>
+
+    <div class="stop">
+      <div class="idx">6</div>
+      <div class="when">晚餐<br>18:30<div class="must">必到</div></div>
+      <div>
+        <div class="nm">陳玉華奶奶 元祖一隻雞 <span class="ko">진옥화할매원조닭한마리</span></div>
+        <div class="usp">1978 年東大門一隻雞元祖，整隻雞清湯鍋滾煮、店員代切、蘸醬自調，湯底零辣最啱長輩。走機前一鑊熱湯收尾。18:30 到避高峰。</div>
+        <div class="row"><span><span class="k">價</span> <b>₩30,000/隻</b> · 3 人約 ₩45–50k · HKD 233–259</span><span><span class="k">東大門站</span> 9 出口 5 分</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/진옥화할매원조닭한마리" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>室內店 + 一隻雞街有蓋，照食</div>
+        <img class="ph" src="img/d4_jinokhwa_dakhanmari.jpg" loading="lazy" alt="">
+        <div class="cmt">「吃的就是最原始的雞肉鮮嫩、湯頭清甜，整隻雞清湯鍋滾煮、店員代切，附中文菜單點餐不難。」<span class="src">— 梅格享樂日記</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">7</div>
+      <div class="when">19:15<div class="must">必到</div></div>
+      <div>
+        <div class="nm">現代 City Outlet 東大門 <span class="ko">현대시티아울렛</span></div>
+        <div class="usp">全室內冷氣 outlet、180+ 品牌折扣，女裝樓層 + 7F 戶外運動品牌，1F 服務台憑護照攞折扣券、全場退稅 —— 走機前撿平貨 + 退稅 + 補手信主場（南大門 trade 走後喺度補）。</div>
+        <div class="row"><span><span class="k">價</span> 服飾 ₩20,000–60,000 · 退稅</span><span><span class="k">步行</span> 一隻雞街 6 分</span><span><span class="k">tag</span> 媽媽女裝（+Doota 仔男裝/夾娃娃）</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/현대시티아울렛 동대문점" target="_blank" rel="noopener">Naver Map</a><a href="https://map.naver.com/p/search/두타몰" target="_blank" rel="noopener">Doota Mall</a></div>
+        <div class="rain"><span class="k">Rain</span>全天候室內主備案，與 DDP 室內展連動線</div>
+        <img class="ph" src="img/d4_hyundai_city_outlet.jpg" loading="lazy" alt="">
+        <div class="cmt">「全室內冷氣、品牌折扣集中，1F 服務台憑護照換折扣券與飲品，並提供退稅，最適合走機前掃貨。」<span class="src">— Trip.com Moments</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">8</div>
+      <div class="when">20:00<div class="must">必到</div></div>
+      <div>
+        <div class="nm">DDP · Dream in Light 夜燈 <span class="ko">동대문디자인플라자</span></div>
+        <div class="usp">Zaha Hadid 流線銀牆 + 2.5 萬朵 LED 發光玫瑰，每晚 19:00–22:00 逢半點一場（免費）。走機前最易出大片嘅免費夜景。</div>
+        <div class="row"><span><span class="k">價</span> <b>免費</b></span><span><span class="k">場次</span> 19:00–22:00 每 30 分</span><span><span class="k">步行</span> Outlet 4 分</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/동대문디자인플라자" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>落雨夜燈或取消 → 退入 DDP 室內展 / 現代 Outlet</div>
+        <img class="ph" src="img/d4_ddp.jpg" loading="lazy" alt="">
+        <div class="cmt">「LED 玫瑰花園入夜後亮起逾兩萬五千朵發光玫瑰，配 Zaha Hadid 流線銀牆，是首爾免費夜拍勝地。」<span class="src">— Trip.com Moments</span></div>
+      </div>
+    </div>
+
+    <div class="stop opt">
+      <div class="idx">9</div>
+      <div class="when">20:15<div class="can">收筆</div></div>
+      <div>
+        <div class="nm">清溪川 夜行（東大門段）<span class="ko">청계천</span></div>
+        <div class="usp">市中心人工河步道，東大門段比光化門段安靜，落水邊行 15 分鐘睇夜燈倒影，旅程收筆位。落大雨封路就跳。</div>
+        <div class="row"><span><span class="k">價</span> <b>免費</b></span><span><span class="k">步行</span> DDP 旁落水邊 4 分</span><span><span class="k">⚠</span> 20:30 前要返酒店攞行李</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/청계천" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>梅雨封路就跳 → 現代 Outlet/Doota 室內行到 20:30 收隊</div>
+        <img class="ph" src="img/d4_cheonggyecheon.jpg" loading="lazy" alt="">
+        <div class="cmt">「傍晚川水映照兩岸燈火，東大門段比光化門段安靜，是體驗首爾浪漫夜景的好去處。」<span class="src">— Trip.com Moments</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zonehd">購物清單 · SHOPPING</div>
+
+  <div class="callout"><div class="ct">速覽 · 邊區買咩</div><div class="cv"><b>手工藝／文創</b>喺仁寺洞（쌈지길・통인가게・KCDF）同益善洞소품샵；<b>藥妝＋平價飾物＋潮牌</b>喺明洞一條街由 4 號線行到乙支路；<b>退稅掃貨＋平價靚女裝＋男裝</b>喺東大門現代 Outlet 同 Doota。走機日時間緊，行唔晒就揀各區 ⭐ 重點，其餘當順遊。</div></div>
+
+  <div class="callout ink"><div class="ct">⭐ 別錯過速查</div><div class="cv">
+    <b>媽媽</b>：쌈지길（手作飾物）、NYUNYU 명동／뉴뉴 동대문（平價飾物海量）、現代 Outlet（韓纖折扣女裝＋退稅）、Olive Young 명동 Town（藥妝旗艦）、益善소품샵（OBLESS／BLUE ELEPHANT）<br>
+    <b>仔</b>：안녕인사동（KPOP the SameE／Ktown4u＋character）、NOON SQUARE（SPAO 性價比）、POP MART 명동（Labubu 盲盒）、Doota Mall（男裝開到午夜＋夾娃娃）<br>
+    <b>爸爸</b>：Daiso 명동 12 層（10F 寵物雜貨）、Butter 명동（貓系角色雜貨）<br>
+    <b>全家</b>：쌈지길／안녕인사동 Color Pool（打卡）、Daiso 명동 12 層（雜貨手信）、現代 Outlet（藥妝＋雜貨）、DDP Design Store（首爾市文創）<br>
+    <b>🔸 獨特／有趣</b>：쌈지길（50+ 本地手作工藝）、통인가게（百年傳統工藝・나전칠기螺鈿）、KCDF 갤러리샵（官方匠人工藝選品）、익선동 韓屋村소품（OBLESS／BLUE ELEPHANT 香氛飾物）、안녕인사동（Color Pool 沉浸打卡／ArtBox）、POP MART 명동（Labubu 盲盒）、DDP Design Store（首爾市文創）、NYUNYU（數萬款飾物海量）
+  </div></div>
+
+  <div class="zonehd">仁寺洞 · 안국 6번 一帶 · 工藝文創</div>
+
+  <div class="shop">
+    <div class="snum">01</div>
+    <div>
+      <div class="stitle">쌈지길 人人廣場<span class="t">四層螺旋商街 · 仁寺洞工藝地標 · 已排 D4</span></div>
+      <div class="sd">四層螺旋斜坡商街、集 50+ 本地獨立工藝小檔：軟陶、手工戒指、手繪明信片、香氛蠟燭、韓紙小物，加多間 DIY 手作同頂層 café、屋頂「掛鎖」牆。一棟逐層慢逛、半室內，落雨照行；媽媽手工藝主場兼買獨一無二手信。</div>
+      <div class="brands">
+        <div><span class="bh">工藝手作</span>軟陶・手工戒指・手繪明信片・香氛蠟燭・韓紙小物 50+ 檔</div>
+        <div><span class="bh">體驗</span>多間 DIY 手作工房</div>
+        <div><span class="bh">打卡</span>螺旋斜坡 + 屋頂掛鎖牆 + 頂層 café／小食</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽手工飾物主場、全家打卡；以 ₩20,000 預算挑一件回港用得着嘅手作。</div>
+      <div class="meta2"><span><span class="k">址</span> 종로구 인사동길 44</span><span><span class="k">交通</span> 안국 <b>6번</b> 約 290m</span><span><span class="k">時</span> 10:30–20:30 每日</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">02</div>
+    <div>
+      <div class="stitle">안녕인사동<span class="t">新派綜合館 · KPOP + character + 打卡一棟 · 已排 D4</span></div>
+      <div class="sd">仁寺洞主街上嘅新派綜合館、一棟收齊：1F LINE FRIENDS PLAY（韓服 BT21／布朗熊門面）、3F the SameE（前 YG PLACE・BIGBANG／BLACKPINK 官方周邊小卡手燈）、3F Ktown4u（專輯應援）、ArtBox character 文具、6F Color Pool Museum 沉浸彩色打卡館（需門票）。大堂常設夾娃娃機。梅雨全室內主備案，仔 character／KPOP ＋ 全家打卡一次過。</div>
+      <div class="brands">
+        <div><span class="bh">KPOP</span>3F the SameE（BIGBANG／BLACKPINK 官方）、3F Ktown4u（專輯應援）</div>
+        <div><span class="bh">character</span>1F LINE FRIENDS PLAY（BT21）、ArtBox 文具소품</div>
+        <div><span class="bh">打卡</span>6F Color Pool Museum（門票約 ₩13,000–15,000・到場核）</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜仔 KPOP + character、全家 Color Pool 打卡；落雨主備案，仔揀一件 character 文具、全家影一張。</div>
+      <div class="meta2"><span><span class="k">址</span> 종로구 인사동길 49</span><span><span class="k">交通</span> 안국 <b>6번</b>（主街上）</span><span><span class="k">時</span> 商場 10:00–22:00；Color Pool 10:00–20:00（到場核）</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">03</div>
+    <div>
+      <div class="stitle">仁寺洞主街<span class="t">韓紙 · 扇子 · 古董 · 韓服一條街</span></div>
+      <div class="sd">安國站 6 號出口出站見巨型毛筆裝置即入口，全長約 700m、全程平路。沿街韓紙燈籠／信封／日記本／紙鳶髮飾／摺扇／나전칠기漆器小物，加古董店、畫廊（部分禁影）、韓服租借，仲有全韓唯一韓文招牌嘅星巴克打卡。媽媽買「獨一無二手信」最划算嘅散逛段。</div>
+      <div class="brands">
+        <div><span class="bh">手作手信</span>韓紙燈籠・信封・日記本・紙鳶髮飾・摺扇・나전칠기漆器小物</div>
+        <div><span class="bh">文化</span>古董店・畫廊・韓服租借</div>
+        <div><span class="bh">打卡</span>唯一韓文招牌 스타벅스（星巴克）</div>
+      </div>
+      <div class="fam"><b>👀 順遊</b>｜媽媽手作飾物、全家韓文招牌星巴克打卡。<b>避</b>：主街口「旅遊紀念品」攤位品質一般兼加價，行入室內商舖先有真貨。</div>
+      <div class="meta2"><span><span class="k">址</span> 종로구 인사동길 62</span><span><span class="k">交通</span> 안국 <b>6번</b> 約 1 分</span><span><span class="k">時</span> 各店約 10:00–21:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">04</div>
+    <div>
+      <div class="stitle">통인가게 通仁<span class="t">百年工藝老店 · 5 層螺鈿漆器 · 陶瓷 · 首飾</span></div>
+      <div class="sd">1924 創業嘅百年工藝老店、5 層樓，喺仁寺洞主街中段最旺位置。1F 通仁가게賣나전칠기螺鈿、도자기陶瓷、장신구首飾等成品工藝；B1＋5F 工藝＋繪畫展、4F 古董收藏販售。媽媽想要「有質感、非攤檔」嘅工藝禮品先上，純買平貨可跳。</div>
+      <div class="brands"><div><span class="bh">工藝飾物</span>1F 나전칠기螺鈿・陶瓷・首飾成品｜B1／5F 工藝繪畫展｜4F 古董</div></div>
+      <div class="fam"><b>👀 順遊</b>｜媽媽高一檔工藝飾物／送禮；純買平貨可跳。</div>
+      <div class="meta2"><span><span class="k">址</span> 종로구 관훈동</span><span><span class="k">交通</span> 안국 <b>6번</b> 3–5 分</span><span><span class="k">時</span> 約 10:30–18:30（週一或休・到場 Naver 核）</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">05</div>
+    <div>
+      <div class="stitle">KCDF 갤러리샵<span class="t">韓國工藝振興院官方選品 · 職人精品</span></div>
+      <div class="sd">韓國工藝振興院官方工藝選品店，1F 갤러리샵賣韓國代表性匠人／作家嘅優秀工藝商品（陶瓷／金工／纖維／韓紙設計品），樓上公藝設計展多數免費。想買「官方背書、設計感」韓國工藝手信嘅最佳一站，比攤檔貴但有保證。</div>
+      <div class="brands"><div><span class="bh">工藝選品</span>1F 陶瓷・金工・纖維・韓紙設計品（匠人／作家優秀工藝）｜樓上設計展（免費）</div></div>
+      <div class="fam"><b>👀 順遊</b>｜媽媽工藝選品升級版／送禮；想要官方背書設計品先上。</div>
+      <div class="meta2"><span><span class="k">址</span> 종로구 인사동11길 8</span><span><span class="k">交通</span> 안국 <b>6번</b> 約 5 分</span><span><span class="k">時</span> 約 10:00–19:00（週一或休・到場核）</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">06</div>
+    <div>
+      <div class="stitle">익선동 韓屋村소품巷<span class="t">韓屋소품샵 · 飾物 · 打卡 · 鐘路三街 6번</span></div>
+      <div class="sd">商業化最高嘅韓屋村、窄巷全是營業店，以 café 為主但夾雜幾間值得嘅飾物／소품샵：BLUE ELEPHANT 益善（韓屋香氛設計小物）、OBLESS（耳環戒指）、RUDA（韓屋風소품飾物），加庭院花房（《鬼怪》花店場景）。範圍細、半個下午行得完，與仁寺洞主街步行 5–8 分連成一線。媽媽想要比攤檔有設計感嘅飾物、更對年輕女裝口味。</div>
+      <div class="brands"><div><span class="bh">飾物소품</span>BLUE ELEPHANT 益善・OBLESS（耳環戒指）・RUDA（韓屋風소품）</div><div><span class="bh">打卡</span>庭院花房 마당（《鬼怪》場景）・樂園驛韓屋 café</div></div>
+      <div class="fam"><b>👀 順遊</b>｜媽媽有設計感飾物、全家韓屋打卡；介意行程緊則쌈지길已可代替。</div>
+      <div class="meta2"><span><span class="k">址</span> 종로구 익선동 韓屋街</span><span><span class="k">交通</span> 鐘路三街 <b>6번</b>右手邊</span><span><span class="k">時</span> 各店約 11:00–21:00（到場核）</span></div>
+    </div>
+  </div>
+
+  <div class="zonehd">명동 · 명동站 4번線→乙支路入口 2번線 · 藥妝 / 角色 / 潮牌</div>
+
+  <div class="shop">
+    <div class="snum">07</div>
+    <div>
+      <div class="stitle">Daiso 大創 명동역점<span class="t">全韓最高 12 層平價雜貨殿堂</span></div>
+      <div class="sd">明洞站 1 號出口即到嘅 12 層 Daiso、全韓最高。一棟收齊媽媽手作（11F DIY）、仔角色（4F）、爸爸貓寵物雜貨（10F），加美妝飾物（2F）、旅行運動（12F），多數 ₩1,000–3,000。落雨終極後備、手信掃貨必到。</div>
+      <div class="brands">
+        <div><span class="bh">爸爸</span>10F 寵物用品（貓系雜貨）</div>
+        <div><span class="bh">仔</span>4F 卡通兒童派對（角色聯名）・12F 旅行露營運動</div>
+        <div><span class="bh">媽媽</span>2F 美妝飾物服飾配件・11F 手作 DIY 用品</div>
+        <div><span class="bh">雜貨</span>3F 文具・5F 食品・6-7F 廚具陶器・9F 收納</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜全家手信掃貨：媽媽 11F DIY、仔 4F 角色、爸爸 10F 寵物；平到一次過買齊。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 퇴계로 134-1</span><span><span class="k">交通</span> 명동 <b>1번</b>即到</span><span><span class="k">時</span> 10:00–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">08</div>
+    <div>
+      <div class="stitle">OLIVE YOUNG 명동 Town<span class="t">明洞最大旗艦藥妝 · 2 層全區最齊</span></div>
+      <div class="sd">明洞最大嘅 2 層旗艦藥妝、全區最齊：Peripera、Clio、Wakemake、roundlab、Torriden 等護膚彩妝、零食保健、美容小家電一次掃，樓上設試用區。常有套裝優惠（編者實見 Bagel 脆餅 4 包 ₩6,480 比他店平），可用退稅 + Klook 現金券。</div>
+      <div class="brands"><div><span class="bh">藥妝</span>Peripera・Clio・Wakemake・roundlab・Torriden 旗艦級齊全｜零食保健・美容小家電</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽／全家藥妝核心；面膜手信，套裝有優惠、可退稅。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 명동길 53</span><span><span class="k">交通</span> 乙支路入口 <b>5번</b>／명동 <b>8번</b> 6 分</span><span><span class="k">時</span> 10:00–22:30</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">09</div>
+    <div>
+      <div class="stitle">Butter 명동<span class="t">可愛角色雜貨 · Chiikawa / Sanrio / 小新</span></div>
+      <div class="sd">自家 Butter Family 雜貨 + Chiikawa／Minion／蠟筆小新／Sanrio 角色周邊，加家品、文具、睡衣同寵物用品。價親民、緊貼 Olive Young 旗艦順路。仔 character、爸爸貓系角色小物、媽媽可愛家品一網打盡。</div>
+      <div class="brands"><div><span class="bh">角色</span>Chiikawa・Minion・蠟筆小新・Sanrio 周邊｜Butter Family 自家雜貨</div><div><span class="bh">其他</span>家品・文具・睡衣・寵物用品</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜仔角色、爸爸貓系角色雜貨、媽媽可愛家品；性價比角色雜貨。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 명동길 55</span><span><span class="k">交通</span> 乙支路入口 <b>5번</b>／명동 <b>8번</b> 7 分</span><span><span class="k">時</span> 10:00–23:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">10</div>
+    <div>
+      <div class="stitle">NOON SQUARE<span class="t">8 層服飾商場 · SPAO 性價比男裝主場</span></div>
+      <div class="sd">8 層服飾商場、SPAO／8SECONDS／Nike／Zara／ALAND 進駐。SPAO 編者評全韓 CP 值最高之一、款多質好常出卡通聯名，仔性價比男裝主場；媽媽行 8SECONDS／SPAO 女裝。可用 Klook 9 折券。</div>
+      <div class="brands"><div><span class="bh">仔</span>SPAO（性價比休閒／睡衣／角色聯名）</div><div><span class="bh">媽媽</span>8SECONDS・SPAO 女裝</div><div><span class="bh">其他</span>Nike・Zara・ALAND 進駐</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜仔 SPAO 性價比男裝（全韓 CP 值最高之一）、媽媽 8SECONDS；SPAO T ₩9,900 起、可退稅。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 명동길 14</span><span><span class="k">交通</span> 乙支路入口 <b>5번</b>／명동 <b>5번</b> 3–7 分</span><span><span class="k">時</span> 11:00–22:00（視店舖）</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">11</div>
+    <div>
+      <div class="stitle">NYUNYU 뉴뉴 명동<span class="t">3 層平價飾物小物 · 媽媽飾物天堂</span></div>
+      <div class="sd">3 層平價飾物店、手機吊飾／手飾／頭飾／耳環／帽／太陽眼鏡／圍巾／襪／包包款式極多。直接命中「平價靚飾物」，價極低、款海量。明洞 8 街潮牌街起點，預₩留 1–2 鐘頭慢挑。</div>
+      <div class="brands"><div><span class="bh">飾物</span>手機吊飾・手飾・頭飾・耳環・帽・太陽眼鏡・圍巾・襪・包包（款式極多）</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽平價靚女裝飾物核心命中；價極低、款海量，留 1–2 鐘頭。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 명동2가 55-2</span><span><span class="k">交通</span> 명동 <b>5번</b> 6 分</span><span><span class="k">時</span> 10:00–23:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">12</div>
+    <div>
+      <div class="stitle">ÅLAND 명동 旗艦<span class="t">4 層中價潮牌選物 · ★D0 已排</span></div>
+      <div class="sd">4 層中價潮牌選物店：B1 文創區、2F＋4F 男裝、3F 女裝（另設少量二手服飾），集合多個韓國中價潮牌、鞋、袋、文具。一站兼顧媽媽女裝（3F）＋仔男裝（2／4F）＋全家文創（B1），開到 23:00，落機夜或雨天皆宜。<b>D0 已排</b>，D4 順遊補逛。</div>
+      <div class="brands"><div><span class="bh">樓層</span>B1 文創｜2F＋4F 男裝｜3F 女裝（+少量二手）｜中價潮牌・鞋・袋・文具</div></div>
+      <div class="fam"><b>👀 順遊</b>｜媽媽女裝 3F、仔男裝 2／4F、全家文創 B1；D0 已排，行過順掃。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 명동8길 40（到場核入口）</span><span><span class="k">交通</span> 명동 <b>6번</b> 2 分</span><span><span class="k">時</span> 11:00–23:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">13</div>
+    <div>
+      <div class="stitle">POP MART 명동<span class="t">Labubu / 藝術盲盒旗艦</span></div>
+      <div class="sd">POP MART 藝術潮玩盲盒旗艦（Labubu／Molly／Dimoo 等），明洞 8 街潮牌街上。仔愛盲盒／Labubu 就 YES，否則可跳。同區 8 街仲有 emis（帽飾）／Marithé／Covernat／3CE 旗艦一字排開，由 6／7 號出口往北行沿街即見。</div>
+      <div class="brands"><div><span class="bh">盲盒</span>Labubu・Molly・Dimoo 藝術潮玩</div><div><span class="bh">同區 8 街</span>emis・Marithé・Covernat・3CE 旗艦（往北沿街）</div></div>
+      <div class="fam"><b>👀 順遊</b>｜仔盲盒潮玩（愛 Labubu 先去）；單盒 ₩15,000 起。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 명동8길 36</span><span><span class="k">交通</span> 명동 <b>8번</b>一帶</span><span><span class="k">時</span> 11:00–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">14</div>
+    <div>
+      <div class="stitle">樂天 YOUNG PLAZA 명동<span class="t">7 層年輕潮牌百貨 · 連通樂天百貨 · 雨天主場</span></div>
+      <div class="sd">7 層年輕潮牌百貨：Covernat、what it isn't、NERDY 等潮牌，B1 JUMPUP／M Star Shop 賣 KPOP 偶像周邊唱片，7F 有通道連樂天百貨（室內避雨避熱）。jangma 雨季避雨掃貨首選，仔潮牌＋KPOP＋全家室內動線。</div>
+      <div class="brands"><div><span class="bh">潮牌</span>Covernat・what it isn't・NERDY</div><div><span class="bh">KPOP</span>B1 JUMPUP・M Star Shop（偶像周邊唱片）</div><div><span class="bh">連通</span>7F 通道接樂天百貨（1–7F 百貨／9–12F 免稅店）</div></div>
+      <div class="fam"><b>👀 順遊</b>｜仔潮牌＋KPOP、媽媽／全家室內動線；雨天／酷熱日升做 ⭐，B1 KPOP 周邊唱片好掃。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 남대문로 67</span><span><span class="k">交通</span> 乙支路入口 <b>7번</b> 3 分</span><span><span class="k">時</span> 約 11:00–21:00（5C5G 記 10:30–20:30・到場核）</span></div>
+    </div>
+  </div>
+
+  <div class="zonehd">동대문 · 동대문역사문화공원 14번 一帶 · 退稅掃貨 finale</div>
+
+  <div class="shop">
+    <div class="snum">15</div>
+    <div>
+      <div class="stitle">現代 City Outlet 동대문<span class="t">全室內冷氣 outlet · 180+ 品牌 · 退稅一站 · 已排 D4</span></div>
+      <div class="sd">全室內冷氣 outlet、180+ 品牌折扣，東大門段唯一「四種興趣＋退稅」一次搞掂：媽媽韓纖折扣女裝（1F SYSTEM／SJSJ／TIME／MINE，連身裙常 70%+ off）、仔街頭潮（B1 Marithé／Covernat／Kirsh）、全家藥妝雜貨（2F Artbox／Olive Young／農心拉麵店／8F Lego）、4F 退稅櫃台。梅雨走機日全天候主場，南大門 trade 走後喺度補手信。</div>
+      <div class="brands">
+        <div><span class="bh">媽媽女裝</span>1F 韓纖 SYSTEM・SJSJ・TIME・MINE（連身裙 70%+ off）｜3F 流行女裝鞋內衣</div>
+        <div><span class="bh">仔街頭潮</span>B1 Marithé・Covernat・Kirsh（5–50% off）｜6F 男裝</div>
+        <div><span class="bh">全家雜貨</span>2F Artbox・Olive Young・農心拉麵店｜8F Lego｜B1 교보문고</div>
+        <div><span class="bh">戶外</span>7F National Geographic・Columbia・K2・Titleist</div>
+        <div><span class="bh">服務</span>4F 退稅櫃台｜B2 行李寄存・美食廣場</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽韓纖折扣女裝＋仔潮牌＋全家藥妝雜貨＋退稅，一棟搞掂；先到 1F 服務台憑護照換折扣券再上樓、集中退稅。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 장충단로13길 20</span><span><span class="k">交通</span> 동대문역사문화공원 <b>14번</b>直達</span><span><span class="k">時</span> 週五 10:30–21:30</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">16</div>
+    <div>
+      <div class="stitle">Doota Mall 두타몰<span class="t">開到午夜 24:00 · 男裝 + 設計師一棟 · 已排 D4</span></div>
+      <div class="sd">開到午夜 24:00、全年無休嘅東大門零售地標。5F 男裝主場、2／3F 女裝設計師＋飾物眼鏡、B1 스포츠中性休閒、B2 編集店手信＋푸드코트。性價比男裝集中、係走機日夜晚最後可掃男裝嘅零售場（其他開夜嘅多數係批發）。地下與周邊街角有無人夾娃娃機可順手玩幾鋪。</div>
+      <div class="brands">
+        <div><span class="bh">仔男裝</span>5F 남성패션잡화｜B1 스포츠・유니섹스 캐주얼</div>
+        <div><span class="bh">女裝</span>2F 女裝디자이너｜3F 女裝・액세서리・안경</div>
+        <div><span class="bh">手信食</span>1F 글로벌 컨셉 스토어｜B2 편집숍＋푸드코트｜No Brand 超市</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜仔 5F 男裝（開到午夜）＋全家 B2 編集店手信；夾娃娃機設 ₩5,000 上限比賽。<b>娃娃機官方未列專櫃</b>，多為周邊街角無人店、到場核。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 장충단로 275</span><span><span class="k">交通</span> 동대문역사문화공원 <b>14번</b>・DDP 對面</span><span><span class="k">時</span> 10:30–24:00 全年無休</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">17</div>
+    <div>
+      <div class="stitle">NYU NYU 뉴뉴 동대문<span class="t">最紅飾物批發樓 · 數萬款耳環頸鏈 · 媽媽飾物主場</span></div>
+      <div class="sd">近年最紅嘅飾物批發樓、零售照賣：1F 季節趨勢飾物＋衫包、2F 帽包頸鏈戒指、3F 耳環包髮箍（카츄샤），數萬款自家設計時下韓風。比 Migliore 殺價樓對遊客友善（明碼實價＋刷卡），有짐보관行李寄存同廁所。直擊「平價靚飾物」興趣，雖標榜批發但<b>每單最少 5 件</b>先可結帳，宜一次配齊耳環+頸鏈+髮飾湊夠數。</div>
+      <div class="brands"><div><span class="bh">飾物</span>1F 季節趨勢飾物＋衫包｜2F 帽・包・頸鏈・戒指｜3F 耳環・包・髮箍（카츄샤）</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽平價靚飾物主場（數萬款）；每單最少 5 件、一次配齊湊夠數。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 마장로 34</span><span><span class="k">交通</span> 동대문역사문화공원 步行 7–8 分</span><span><span class="k">時</span> 11:00–05:00 全年無休</span></div>
+    </div>
+  </div>
+
+  <div class="shop" style="border-bottom:none">
+    <div class="snum">18</div>
+    <div>
+      <div class="stitle">DDP Design Store<span class="t">首爾市官方文創 · 角色 · 紀念品 · 已排 D4 打卡</span></div>
+      <div class="sd">位於 DDP 디자인랩 B2 嘅首爾市＆DDP 官方文創店，賣可愛首爾市 goods、角色、紀念品，547㎡。睇完免費 Dream in Light 夜燈騷＋LED 發光玫瑰花園順道收文創手信。<b>避雷更正</b>：舊指南寫 DDP 有 SMTOWN／SUM KPOP 店——已於 2022-11 結業，想買 KPOP 周邊改去明洞，DDP 只當打卡＋Design Store 文創。</div>
+      <div class="brands"><div><span class="bh">文創</span>B2 디자인랩 Design Store（首爾市 goods・角色・紀念品）</div><div><span class="bh">打卡</span>免費 Dream in Light 夜燈騷（19:00–22:00 每 30 分）＋LED 發光玫瑰花園</div></div>
+      <div class="fam"><b>👀 順遊</b>｜全家文創手信＋打卡；文創小物 ₩5,000 起，免費出大片夜景。</div>
+      <div class="meta2"><span><span class="k">址</span> 중구 을지로 281（B2 디자인랩）</span><span><span class="k">交通</span> 동대문역사문화공원 <b>1번</b>直達</span><span><span class="k">時</span> Design Store 10:00–20:00；夜燈 19:00–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="callout"><div class="ct">區內最佳 · 1–2 食</div><div class="cv"><b>仁寺洞</b>：항아리수제비（甕裝麵疙瘩・清湯一份 ₩9,000・爸爸性價比食）。<b>益善洞</b>：소하염전（爆紅鹽可頌・水藍鹽田造景・趁開店）。<b>明洞</b>：明洞餃子（D4 已排午餐・米芝蓮必比登刀削麵）。<b>東大門</b>：陳玉華奶奶一隻雞（D4 已排晚餐・零辣清湯最啱長輩）。街攤價偏高，試味即止。</div></div>
+
+  <div class="foot">
+    <b>D4 · 26 Jun 2026 · 走機日</b> · 🆕 安國朝段（bagel 07:30 攞號 + 仁寺洞 + 안녕인사동 + 冬柏/Onion·核 21/6）· 南大門 trade 走（可反返轉）· 換走明洞貓café<br>
+    安녕인사동 時間到場 Naver 核 · 天氣梅雨有雨·室內為主 · 價 1 HKD ≈ 195 ₩ · Generated by Claude Code
+  </div>
+
+</div>
+</body>
+</html>

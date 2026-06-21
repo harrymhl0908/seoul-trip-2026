@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>D3 · 성수 + 잠실 · 行程＋購物＋地圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.5;padding:0 0 64px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+a{color:var(--ink)}
+/* weather banner */
+.wx{background:var(--ink);color:#fff;padding:12px 18px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.wx .d{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.wx .t{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;opacity:.85}
+.wx .t b{color:#fff;opacity:1}
+.wx .rn{color:#fff;background:var(--red);font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.06em;padding:1px 7px;text-transform:uppercase}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:18px}
+.masthead{display:grid;grid-template-columns:auto 1fr;column-gap:18px;align-items:start;border-top:2px solid var(--ink);padding-top:10px;margin-top:6px}
+.daynum{font-weight:900;font-size:72px;line-height:.78;letter-spacing:-.045em}
+.daynum small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;margin-top:6px}
+.title{font-weight:900;font-size:clamp(22px,4.8vw,32px);line-height:1.04;letter-spacing:-.022em;margin-top:2px}
+.sub{font-size:13.5px;line-height:1.5;color:var(--ink-2);margin-top:9px;max-width:50ch}
+@media(max-width:520px){.daynum{font-size:54px}}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:16px 0;border-left:3px solid var(--red)}
+.callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
+.callout.ink{border-left-color:var(--ink)}.callout.ink .ct{color:var(--ink)}
+.sec h2{font-weight:900;font-size:14px;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:7px;border-bottom:2px solid var(--ink);margin-top:26px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.sec h2 .hn{font-family:var(--mono);font-size:11px;color:var(--red);font-weight:700}
+.sec h2 .zs{font-family:var(--mono);font-size:10px;color:var(--ink-3);font-weight:400;letter-spacing:.04em}
+.stop{display:grid;grid-template-columns:40px 78px 1fr;column-gap:14px;align-items:start;padding:15px 0 13px;border-bottom:1px solid var(--rule)}
+.stop:last-child{border-bottom:none}
+.idx{font-weight:900;font-size:32px;line-height:.82;letter-spacing:-.04em}
+.stop.opt .idx{color:var(--red);opacity:.5}
+.when{font-family:var(--mono);font-size:14px;font-weight:700;line-height:1.1}
+.when .must{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ink);padding:1px 5px;margin-top:6px}
+.when .can{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);padding:1px 5px;margin-top:6px}
+.nm{font-weight:800;font-size:17px;line-height:1.12;letter-spacing:-.01em}
+.nm .ko{font-family:var(--mono);font-weight:400;font-size:12px;color:var(--ink-3);letter-spacing:.02em}
+.usp{font-size:12.5px;line-height:1.5;color:var(--ink-2);margin-top:5px;max-width:48ch}
+.row{margin-top:7px;font-size:11.5px;line-height:1.5;display:flex;flex-wrap:wrap;gap:3px 14px}
+.row .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.row b{font-weight:700}
+.nav{margin-top:7px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.03em}
+.nav a{border-bottom:1px solid var(--ink);text-decoration:none;margin-right:14px}
+.nav a::after{content:" →";color:var(--red)}
+.rain{margin-top:6px;font-size:11.5px;line-height:1.45;color:var(--ink-2);padding-left:11px;border-left:2px solid var(--rule)}
+.rain .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-right:5px}
+.ph{display:block;width:100%;max-width:260px;aspect-ratio:16/10;object-fit:cover;margin-top:10px;background:var(--rule-2);filter:grayscale(.08)}
+.cmt{margin-top:8px;padding-left:11px;border-left:2px solid var(--red);font-size:12px;line-height:1.5;color:var(--ink)}
+.cmt .src{display:block;margin-top:2px;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.02em}
+.foot{margin-top:30px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
+.foot b{color:var(--ink)}
+/* shopping list */
+.zonehd{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--ink);padding:7px 12px;margin-top:30px}
+.shop{display:grid;grid-template-columns:46px 1fr;column-gap:14px;align-items:start;padding:18px 0 17px;border-bottom:1px solid var(--rule)}
+.snum{font-weight:900;font-size:30px;line-height:.82;letter-spacing:-.04em}
+.stitle{font-weight:900;font-size:18px;line-height:1.16;letter-spacing:-.015em}
+.stitle .t{display:block;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--red);margin-top:5px}
+.sd{font-size:12.5px;line-height:1.6;color:var(--ink-2);margin-top:9px}
+.brands{font-size:11.5px;line-height:1.7;margin-top:10px;padding:10px 12px;background:var(--rule-2)}
+.brands .bh{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-right:5px}
+.fam{font-size:12px;line-height:1.55;margin-top:10px;padding:7px 0 7px 11px;border-left:3px solid var(--red);color:var(--ink);font-weight:600}
+.meta2{margin-top:11px;font-family:var(--mono);font-size:10.5px;line-height:1.7;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:1px 16px}
+.meta2 .k{color:var(--red);font-weight:700;margin-right:4px}
+.meta2 b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="wx">
+  <span class="d">25 Jun 四</span>
+  <span class="t">梅雨 onset · 有雨 · 室內為主</span>
+  <span class="rn">聖水 → 蠶室 Seoul Sky</span>
+</div>
+
+<div class="wrap">
+
+  <div class="kicker">Seoul · Day 3 · 聖水 Seongsu / 蠶室 Jamsil</div>
+  <div class="masthead">
+    <div class="daynum">D3<small>25 JUN 四</small></div>
+    <div>
+      <div class="title">聖水掃店 → 蠶室樂天塔黃昏夜景</div>
+      <div class="sub">沿鍊武場街一條街由工廠改建區掃到精品帶，再乘二號線直達蠶室，於樂天世界塔上看石村湖日落與夜景。上午用戶外配額逛紅磚街，正午起轉入室內大店防曬防雨。</div>
+    </div>
+  </div>
+
+  <div class="callout"><div class="ct">路線軸 · 11 站</div><div class="cv">聖水站鍊武場街步行帶 → <b>二號線直達蠶室</b> → 樂天世界購物中心垂直動線。聖水多舊倉庫改建、舖普遍 <b>11:00 才開</b>；蠶室全室內商場＋觀景塔。黃昏以石村湖散步與樂天塔觀景作壓軸，晚餐放塔後約 20:15。</div></div>
+
+  <div class="sec"><h2><span class="hn">步行地圖</span> 全日動線 <span class="zs">每站撳 Naver 連結導航</span></h2></div>
+  <div style="margin:6px 0 4px;overflow-x:auto"><svg viewBox="0 0 860 520" xmlns="http://www.w3.org/2000/svg" font-family="Inter,'Noto Sans TC',sans-serif" style="width:100%;height:auto;max-width:680px;display:block"><rect x="0" y="0" width="860" height="520" fill="#FFFFFF"/><text x="58" y="40" font-family="'Space Mono',monospace" font-size="12" letter-spacing="2" fill="#E4002B">D3 / MYEONGDONG</text><text x="58" y="74" font-size="30" font-weight="800" letter-spacing="-1" fill="#111111">聖水 (城東區)  /  蠶室 (松坡區)</text><line x1="58" y1="88" x2="802" y2="88" stroke="#111111" stroke-width="2"/><path d="M 58.0 128.0 L 244.0 128.0 L 430.0 128.0 L 616.0 128.0 L 802.0 128.0 L 802.0 258.0 L 616.0 258.0 L 430.0 258.0 L 244.0 258.0 L 58.0 258.0 L 58.0 388.0 L 244.0 388.0 L 430.0 388.0 L 616.0 388.0 L 802.0 388.0" fill="none" stroke="#E4002B" stroke-width="2.5"/><circle cx="58.0" cy="128.0" r="16" fill="#111111"/><text x="58.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">1</text><text x="58.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">洋蔥咖啡 聖水…</text><text x="58.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">08:40</text><circle cx="244.0" cy="128.0" r="16" fill="#111111"/><text x="244.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">2</text><text x="244.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Monami …</text><text x="244.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">09:45</text><circle cx="430.0" cy="128.0" r="16" fill="#FFFFFF" stroke="#E4002B" stroke-width="3"/><text x="430.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#E4002B">3</text><text x="430.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">大林倉庫紅磚街…</text><text x="430.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">10:15</text><circle cx="616.0" cy="128.0" r="16" fill="#111111"/><text x="616.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">4</text><text x="616.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Olive Y…</text><text x="616.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">10:30</text><circle cx="802.0" cy="128.0" r="16" fill="#111111"/><text x="802.0" y="133.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">5</text><text x="802.0" y="161.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Musinsa…</text><text x="802.0" y="175.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">11:00</text><circle cx="802.0" cy="258.0" r="16" fill="#FFFFFF" stroke="#E4002B" stroke-width="3"/><text x="802.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#E4002B">6</text><text x="802.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Point o…</text><text x="802.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">11:50</text><circle cx="616.0" cy="258.0" r="16" fill="#111111"/><text x="616.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">7</text><text x="616.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Jojo 刀削…</text><text x="616.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">午餐 12:30</text><circle cx="430.0" cy="258.0" r="16" fill="#111111"/><text x="430.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">8</text><text x="430.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Cat&amp;F 貓…</text><text x="430.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">13:20</text><circle cx="244.0" cy="258.0" r="16" fill="#111111"/><text x="244.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">9</text><text x="244.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">LuckyPo…</text><text x="244.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">13:50</text><circle cx="58.0" cy="258.0" r="16" fill="#111111"/><text x="58.0" y="263.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">10</text><text x="58.0" y="291.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">樂天世界購物中心</text><text x="58.0" y="305.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">15:00</text><circle cx="58.0" cy="388.0" r="16" fill="#111111"/><text x="58.0" y="393.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">11</text><text x="58.0" y="421.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">樂天世界水族館</text><text x="58.0" y="435.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">16:00</text><circle cx="244.0" cy="388.0" r="16" fill="#111111"/><text x="244.0" y="393.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">12</text><text x="244.0" y="421.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">石村湖散步看塔…</text><text x="244.0" y="435.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">18:30</text><circle cx="430.0" cy="388.0" r="16" fill="#111111"/><text x="430.0" y="393.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">13</text><text x="430.0" y="421.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Seoul S…</text><text x="430.0" y="435.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">19:10</text><circle cx="616.0" cy="388.0" r="16" fill="#111111"/><text x="616.0" y="393.0" text-anchor="middle" font-size="15" font-weight="800" fill="#FFFFFF">14</text><text x="616.0" y="421.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">一月烤肉 方夷…</text><text x="616.0" y="435.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">晚餐 20:15</text><circle cx="802.0" cy="388.0" r="16" fill="#FFFFFF" stroke="#E4002B" stroke-width="3"/><text x="802.0" y="393.0" text-anchor="middle" font-size="15" font-weight="800" fill="#E4002B">15</text><text x="802.0" y="421.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#111111">Donsunj…</text><text x="802.0" y="435.0" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9.5" fill="#7A7A7A">晚餐候選</text></svg></div>
+  <div class="rain"><span class="k">Map</span>示意動線（非實地圖）；實際導航撳下面各站「Naver Map」連結。</div>
+
+  <!-- Zone 1 聖水鍊武場街 -->
+  <div class="sec">
+    <h2><span class="hn">聖水鍊武場街</span> 紅磚倉庫一條街 <span class="zs">08:40–14:00 · 城東區</span></h2>
+
+    <div class="stop">
+      <div class="idx">1</div>
+      <div class="when">08:40<div class="must">必到</div></div>
+      <div>
+        <div class="nm">洋蔥咖啡 聖水本店 <span class="ko">어니언 성수</span></div>
+        <div class="usp">舊工廠改建的紅磚天井空間，招牌糖粉山可頌 pandoro 與鹽包，平日清晨人最少。</div>
+        <div class="row"><span><span class="k">價</span> <b>₩4,000–7,000</b>／件 · HKD 187</span><span><span class="k">步行</span> 聖水站 3 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/어니언 성수" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>戶外與天台座位多，雨天改坐室內一樓，或順移至下一站 Monami 室內店</div>
+        <img class="ph" src="img/d3_seongsu.jpg" loading="lazy" alt="">
+        <div class="cmt">「聖水洞的人氣廢墟咖啡，老屋改造的工業風空間裡各種麵包任你挑，招牌雪山麵包 pandoro 配美式咖啡最對味。」<span class="src">— yukigo.tw · Yuki's Lazy Channel</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">2</div>
+      <div class="when">09:45<div class="must">必到</div></div>
+      <div>
+        <div class="nm">Monami 文具概念店 聖水 <span class="ko">모나미 스토어 성수</span></div>
+        <div class="usp">可親手拼裝專屬 153 原子筆與客製筆記本的文具 DIY 體驗店，是聖水少數一早開門的室內手作點。</div>
+        <div class="row"><span><span class="k">價</span> DIY 套裝 <b>₩8,000–15,000</b> · HKD 41–78</span><span><span class="k">步行</span> 洋蔥 6 分</span><span><span class="k">tag</span> 媽媽手工藝</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/모나미 스토어 성수" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身全室內，可作雨天首站</div>
+        <img class="ph" src="img/d3_seongsu.jpg" loading="lazy" alt="">
+        <div class="cmt">「文具迷的天堂，可調出專屬墨水色、再親手組裝一支自己的 153 原子筆，舊工廠原址改建很有故事。」<span class="src">— joas.kr · JOAS 部落格</span></div>
+      </div>
+    </div>
+
+    <div class="stop opt">
+      <div class="idx">3</div>
+      <div class="when">10:15<div class="can">可選</div></div>
+      <div>
+        <div class="nm">大林倉庫紅磚街散步 <span class="ko">대림창고</span></div>
+        <div class="usp">五十年代紅磚倉庫外牆與鐵窗是聖水最具代表性的拍照背景，沿街即可取景。</div>
+        <div class="row"><span><span class="k">價</span> <b>免費</b></span><span><span class="k">步行</span> Monami 4 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/대림창고" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>雨天跳過，直接進 Olive Young N 與 Musinsa 室內大店</div>
+        <img class="ph" src="img/d3_seongsu.jpg" loading="lazy" alt="">
+        <div class="cmt">「大林倉庫是聖水洞紅磚廢墟風的代表，舊倉庫外牆與鐵窗一整排都是好拍的背景，被稱作首爾的布魯克林。」<span class="src">— bobbytravel.tw · 波比看世界</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">4</div>
+      <div class="when">10:30<div class="must">必到</div></div>
+      <div>
+        <div class="nm">Olive Young N 聖水旗艦 <span class="ko">올리브영N 성수</span></div>
+        <div class="usp">五層樓全韓最大美妝旗艦，是聖水少數 10:00 開門的大店，正好填補上午空檔。</div>
+        <div class="row"><span><span class="k">價</span> 面膜/防曬 <b>₩5,000–20,000</b> · HKD 311</span><span><span class="k">步行</span> 紅磚街 5 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/올리브영N 성수" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身全室內冷氣，即雨天避雨大店；購物滿 ₩15,000 可即場退稅</div>
+        <img class="ph" src="img/d0_oliveyoung.jpg" loading="lazy" alt="">
+        <div class="cmt">「Olive Young 在聖水打造的五層樓全新旗艦，是規模最大的 K-beauty 體驗場，並設即時退稅服務。」<span class="src">— visitkorea · Visit Korea</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">5</div>
+      <div class="when">11:00<div class="must">必到</div></div>
+      <div>
+        <div class="nm">Musinsa Megastore 聖水 <span class="ko">무신사 메가스토어 성수</span></div>
+        <div class="usp">二千坪四層、逾千個品牌的全韓最大時裝美妝複合店，附全韓最長波鞋牆，主打高性價比男女裝。</div>
+        <div class="row"><span><span class="k">價</span> tee <b>₩20,000 起</b> · HKD 104 起</span><span><span class="k">步行</span> Olive Young 3 分</span><span><span class="k">tag</span> 仔男裝</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/무신사 메가스토어 성수" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>挑高室內大空間，是鍊武場街最佳避雨點</div>
+        <img class="ph" src="img/d1_musinsa_standard.jpg" loading="lazy" alt="">
+        <div class="cmt">「Musinsa 在聖水開出全韓最大的時裝選物店，地下一層至四層共二千坪，以 Kicks 波鞋、Run 跑步、Girls 女裝等主題分區，開幕首週末逾四萬人到訪。」<span class="src">— insideseoul · Inside Seoul</span></div>
+      </div>
+    </div>
+
+    <div class="stop opt">
+      <div class="idx">6</div>
+      <div class="when">11:50<div class="can">可選</div></div>
+      <div>
+        <div class="nm">Point of View 設計文具選物 <span class="ko">포인트오브뷰 성수</span></div>
+        <div class="usp">以 TOOL／SCENE／ARCHIVE 三層主題策展的設計文具選物店，氛圍如美術館，適合慢逛挑手作素材。</div>
+        <div class="row"><span><span class="k">價</span> 設計小物 <b>₩5,000–40,000</b> · HKD 26–207</span><span><span class="k">步行</span> Musinsa 4 分</span><span><span class="k">tag</span> 媽媽手工藝</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/포인트오브뷰 성수" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身室內，可與 Musinsa 室內串連</div>
+        <img class="ph" src="img/d3_seongsu.jpg" loading="lazy" alt="">
+        <div class="cmt">「從創作者視角策展的概念文具店，TOOL／SCENE／ARCHIVE 三層各有不同選物，從紙張、書寫工具到激發靈感的物件一應俱全。」<span class="src">— @pointofview.seoul · Visit Seoul</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">7</div>
+      <div class="when">午餐<br>12:30<div class="must">必到</div></div>
+      <div>
+        <div class="nm">Jojo 刀削麵 聖水店 <span class="ko">조조칼국수 성수점</span></div>
+        <div class="usp">蜆湯湯底清甜零辣，是一千以上評價的翻枱快人氣店，CatchTable 可遠距取籌。</div>
+        <div class="row"><span><span class="k">價</span> 刀削麵 <b>₩10,000</b> · 煎餅 ₩15,000 · HKD 181</span><span><span class="k">步行</span> Point of View 6 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/조조칼국수 성수점" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>室內用餐，本身即雨天可行；落單時講明海鮮煎餅要不辣</div>
+        <img class="ph" src="img/d3_jojo_kalguksu.jpg" loading="lazy" alt="">
+        <div class="cmt">「蜆湯刀削麵湯底清甜不辣，配章魚海鮮煎餅是聖水翻枱很快的人氣午餐，地址在聖水一路 8 街 55。」<span class="src">— @jojo_kalguksu · Instagram</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">8</div>
+      <div class="when">13:20<div class="must">必到</div></div>
+      <div>
+        <div class="nm">Cat&amp;F 貓咖啡烘焙店 <span class="ko">캣앤에프</span></div>
+        <div class="usp">聖水以貓造型裝飾的烘焙咖啡店，招牌是自家研發的玉米鹽包，外酥內潤、鹹甜平衡，並有貓形與水豚造型麵包。</div>
+        <div class="row"><span><span class="k">價</span> 飲品 <b>₩6,000–8,000</b> · HKD 31–41</span><span><span class="k">步行</span> Jojo 5 分</span><span><span class="k">tag</span> 爸爸貓</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/캣앤에프 성수" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身全室內，正好作雨天落腳點</div>
+        <img class="ph" src="img/d0_roofcatme.jpg" loading="lazy" alt="">
+        <div class="cmt">「外層酥脆、內層濕潤的玉米鹽包，鹹味恰到好處，配上鮮奶油形成完美的甜鹹組合，以用心做好單一品項見長。」<span class="src">— diningcode · DiningCode</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">9</div>
+      <div class="when">13:50<div class="must">必到</div></div>
+      <div>
+        <div class="nm">LuckyPop 夾娃娃機樂園 聖水 <span class="ko">럭키팝 성수</span></div>
+        <div class="usp">聖水新開的四層夾娃娃機與扭蛋大樓，機台與打卡角落眾多，常逛上約兩小時。</div>
+        <div class="row"><span><span class="k">價</span> 每抽 <b>₩1,000–2,000</b> · HKD 5–10</span><span><span class="k">步行</span> Cat&amp;F 3 分</span><span><span class="k">tag</span> 仔夾娃娃</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/럭키팝 성수" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身全室內，雨天可延長停留</div>
+        <img class="ph" src="img/d3_luckypop.jpg" loading="lazy" alt="">
+        <div class="cmt">「聖水又一個玩樂據點，四層大型夾娃娃與扭蛋空間，從公仔到可愛周邊應有盡有，每層主題不同、夾的樂趣加倍，散步順道輕鬆一逛剛好。」<span class="src">— @seoul_sources · Threads</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zone 2 蠶室樂天世界 -->
+  <div class="sec">
+    <h2><span class="hn">蠶室樂天世界</span> 室內商場 + 觀景塔黃昏夜景 <span class="zs">15:00–20:15 · 松坡區</span></h2>
+
+    <div class="stop">
+      <div class="idx">10</div>
+      <div class="when">15:00<div class="must">必到</div></div>
+      <div>
+        <div class="nm">樂天世界購物中心 <span class="ko">롯데월드몰</span></div>
+        <div class="usp">蠶室站室內直結的大型商場，5 樓 Kakao Friends、B1 無印與吉卜力專櫃、B2 Daiso 一次逛齊。</div>
+        <div class="row"><span><span class="k">價</span> Kakao Friends 手信 <b>₩10,000–30,000</b></span><span><span class="k">交通</span> 二號線蠶室站直結</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/롯데월드몰" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>全室內，本身即正午防曬與防雨主場；退稅櫃位在 2 樓與 B1</div>
+        <img class="ph" src="img/d3_lotte.jpg" loading="lazy" alt="">
+        <div class="cmt">「松坡區的大型購物複合體，地下廣場與樂天世界塔相連，總樓面逾二十四萬平方米，是首爾最具規模的室內商場之一。」<span class="src">— wikipedia · Wikipedia</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">11</div>
+      <div class="when">16:00<div class="must">必到</div></div>
+      <div>
+        <div class="nm">樂天世界水族館 <span class="ko">롯데월드 아쿠아리움</span></div>
+        <div class="usp">商場地庫內、收容六百多種五萬五千隻海洋生物的大型水族館，設大型海洋生態缸與十三個主題展區。</div>
+        <div class="row"><span><span class="k">價</span> 成人 <b>₩35,000</b>（券折後約 ₩25,500 起）· HKD 396–544</span><span><span class="k">步行</span> 商場 B1 · 3 分</span><span><span class="k">tag</span> 爸爸水族館</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/롯데월드 아쿠아리움" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>本身全室內，雨天最佳備案</div>
+        <img class="ph" src="img/d3_lotte_aquarium.jpg" loading="lazy" alt="">
+        <div class="cmt">「館內有六百多種、五萬五千隻海洋生物與世界最大級的海洋生態缸，位於樂天世界購物中心內、緊鄰樂天塔，全家同遊很合適，線上購票掃 QR 即入。」<span class="src">— klook · Klook</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">12</div>
+      <div class="when">18:30<div class="must">必到</div></div>
+      <div>
+        <div class="nm">石村湖散步看塔倒影 <span class="ko">석촌호수</span></div>
+        <div class="usp">日落前在西湖一側可拍到樂天塔倒映湖面的經典構圖，是上塔前的暖場散步。</div>
+        <div class="row"><span><span class="k">價</span> <b>免費</b></span><span><span class="k">步行</span> 商場東側 5 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/석촌호수" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>雨天湖面水珠反射另有氛圍，撐傘可上鏡；下雨太大則直接回商場 6 樓望湖咖啡座</div>
+        <img class="ph" src="img/d3_seokchon_lake.jpg" loading="lazy" alt="">
+        <div class="cmt">「環繞樂天世界塔的人工湖公園，分東西兩湖、四周植滿櫻樹與步道，是拍攝高塔倒映湖面的經典地點。」<span class="src">— visitseoul · Visit Seoul</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">13</div>
+      <div class="when">19:10<div class="must">必到</div></div>
+      <div>
+        <div class="nm">Seoul Sky 樂天世界塔觀景台 <span class="ko">서울스카이</span></div>
+        <div class="usp">117–123 樓觀景塔，118 樓設世界最高室內玻璃地板，黃昏上塔可一次看齊白天、火燒雲與夜景三段。</div>
+        <div class="row"><span><span class="k">價</span> 成人 <b>₩27,000–33,000</b> · HKD 419–513</span><span><span class="k">步行</span> 石村湖 → 商場 B1 · 8 分</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/서울스카이" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>120 樓室外露台遇大雨強風會封，室內觀景層照常開放；當日清晨天色太灰可考慮跳過省約 ₩99,000（N 首爾塔 D4 仍有後備）</div>
+        <img class="ph" src="img/d3_skyline.jpg" loading="lazy" alt="">
+        <div class="cmt">「韓國最高的觀景台，117 至 123 樓可看 360 度首爾全景，傍晚上塔能一次欣賞白天、日落與夜景三段最划算。」<span class="src">— kkday · KKday 部落格</span></div>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="idx">14</div>
+      <div class="when">晚餐<br>20:15<div class="must">必到</div></div>
+      <div>
+        <div class="nm">一月烤肉 方夷食街本店 <span class="ko">일월고기</span></div>
+        <div class="usp">藏在方夷食街、本地上班族推介的炭火烤肉店，肉質厚實且由店員代客烤好，深夜營業正好接 Seoul Sky 之後。</div>
+        <div class="row"><span><span class="k">價</span> 五花腩 <b>₩18,000</b> · 韓牛眼肉 ₩25,000 · HKD 373–466</span><span><span class="k">步行</span> 樂天塔 12 分</span><span><span class="k">tag</span> 爸爸食物</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/일월고기 방이동" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>由樂天塔至方夷食街約步行 10 分鐘，雨天可乘短程的士；不想外出則改商場 B1 非連鎖食肆</div>
+        <img class="ph" src="img/d3_ilwol_gogi.jpg" loading="lazy" alt="">
+        <div class="cmt">「方夷食街的五花腩與豬皮人氣店，肉質鮮嫩多汁、由店員代客烤製，用餐方便又美味。」<span class="src">— diningcode · DiningCode</span></div>
+      </div>
+    </div>
+
+    <div class="stop opt">
+      <div class="idx">15</div>
+      <div class="when">候選<div class="can">二選一</div></div>
+      <div>
+        <div class="nm">Donsunjang（候選）<span class="ko">돈순장</span></div>
+        <div class="usp">由 Instagram 連結加入的蠶室區晚餐候選，作為 14 號「一月烤肉」的替代選擇，1v1 評估時再決定是否扶正。</div>
+        <div class="row"><span><span class="k">址</span> 松坡區蠶室洞 187-5（新川／石村湖一帶）</span><span><span class="k">⚠</span> 與 14 號一月烤肉二擇一</span><span><span class="k">tag</span> 全家</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/돈순장 잠실" target="_blank" rel="noopener">Naver Map</a></div>
+        <div class="rain"><span class="k">Rain</span>室內食肆，雨天可行；若當日改選 14 號一月烤肉則此項略過</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zonehd">購物清單 · SHOPPING</div>
+
+  <div class="callout"><div class="ct">速覽 · 邊區買咩</div><div class="cv"><b>聖水</b>＝「鍊武場街」一條街由工廠改建紅磚帶串起：上午用戶外配額行紅磚街，正午轉入 Olive Young N／Musinsa 兩間大店避曬；媽媽嘅平價靚化妝品同 DIY 集中喺一整排美妝旗艦群。<b>蠶室</b>＝樂天世界購物中心全室內垂直動線，角色／文創／雜貨／手信一次掃齊，B2 Daiso＋樂天超市係回港前入貨主場（開到 23:00，落塔後仍可掃）。多數聖水舖 11:00 先開，計時要留意。</div></div>
+
+  <div class="callout ink"><div class="ct">⭐ 別錯過速查</div><div class="cv">
+    <b>媽媽</b>：美妝旗艦群（rom&nd／Dasique＋咖啡廳／TIRTIR／Whipped 手作・連武場街一條街）、Monami（153 筆 DIY）、Point of View（設計文具）、Olive Young N（藥妝・滿 ₩15,000 即場退稅）<br>
+    <b>仔</b>：Musinsa Megastore（性價比男裝＋全韓最長波鞋牆）、LuckyPop（4 層夾娃娃）、SPAO（KPOP 聯名 tee）<br>
+    <b>爸爸</b>：Cat&F（貓造型烘焙）、水族館（D3 主錨點）、樂天超市 B2（泡麵零食入貨）<br>
+    <b>全家</b>：도토리숲 吉卜力（龍貓巴士打卡）、Kakao Friends（角色旗艦）、Daiso B2（₩1,000 起手信）、大林倉庫紅磚街（免費打卡）、Notted／London Bagel（甜品打卡）<br>
+    <b>🔸 獨特／有趣</b>：도토리숲 吉卜力官方雜貨（貓巴士 photo zone）、Kakao Friends 旗艦（角色 photo zone）、LCDC SEOUL（紅磚複合・3F DOORS 獨立手作）、Point of View（美術館式設計文具）、Monami（親手組裝 153 原子筆）、MUJI、大림창고 紅磚街（布魯克林紅磚打卡）—— 唔淨係買衫，呢批設計／角色／概念店最值得睇。
+  </div></div>
+
+  <div class="zonehd">성수 · 鍊武場街 · 聖水站 1–3번 一帶</div>
+
+  <div class="shop">
+    <div class="snum">01</div>
+    <div>
+      <div class="stitle">Musinsa Megastore 성수<span class="t">全韓最大時裝美妝樂園 · 2026-04 新開 · 仔男裝核心</span></div>
+      <div class="sd">2026 年 4 月新開、2000 坪四層逾 1000 個品牌嘅全韓最大時裝美妝複合店，主打高性價比男女裝。仔嘅「性價比男裝」一站打死，<b>Kicks 區「Signature Wall」係全韓最長波鞋牆</b>、聖水第一打卡點。挑高大空間，亦係鍊武場街最佳避雨大店。<b>注意</b>：D3.json 用嘅地址（성수이로74 大林倉庫）係 2024 年開嘅舊店 Musinsa 大林倉庫店（213 坪）；呢間 2000 坪新 Megastore 喺另一棟（성수이로62），規模大好多，出發前 Naver 核實鎖定要去邊間。</div>
+      <div class="brands">
+        <div><span class="bh">男女裝</span>Musinsa Standard（基本款・剪裁好・退稅）、Musinsa Girls（女裝）</div>
+        <div><span class="bh">波鞋 KICKS</span>Signature Wall 全韓最長波鞋牆（打卡）</div>
+        <div><span class="bh">運動 / 美妝</span>Musinsa Run、Musinsa Outdoor、Musinsa Beauty、快閃＋餐飲層</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜仔（20–30s）：性價比休閒男裝＋波鞋牆打卡；👀 媽媽：女裝偏後生街頭風（Musinsa Girls），成熟簡約款偏少；全家：雨天最佳避雨大店。tee ₩20,000 起、整套 <₩150,000。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 성동구 성수이로 62（新店；舊店為 성수이로74）</span><span><span class="k">交通</span> 聖水站 <b>1번</b> 約 7 分</span><span><span class="k">時</span> 11:00–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">02</div>
+    <div>
+      <div class="stitle">Olive Young N 성수<span class="t">全韓最大 1400 坪 5 層 K-beauty 旗艦 · 早開大店</span></div>
+      <div class="sd">五層樓、每層主題嘅全韓最大美妝旗艦，設 AI 膚質檢測、自助拍照亭、即場外國人退稅。係聖水少數 <b>10:00 先開</b>嘅大店，正好填補上午空檔（周邊美妝旗艦多數 11:00 先開）。全話題韓妝、護膚、香氛、保健食品一次掃。</div>
+      <div class="brands"><div><span class="bh">美妝 5F</span>面膜／防曬／話題保養／香氛／健康食品（每層主題不同）＋ AI 膚質檢測＋即場退稅櫃位</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜全家：藥妝手信核心，滿 ₩15,000 即場退稅（記得帶護照）；媽媽：韓妝。面膜／防曬 ₩5,000–20,000。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 성동구 연무장7길 13 팩토리얼 성수</span><span><span class="k">交通</span> 聖水站約 5 分</span><span><span class="k">時</span> 10:00–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">03</div>
+    <div>
+      <div class="stitle">美妝品牌旗艦群<span class="t">連武場街一條街 13 間 · 媽媽平價靚化妝品＋DIY 核心帶</span></div>
+      <div class="sd">聖水近一年爆開嘅 13 間美妝旗艦，<b>全部集中喺 연무장길／연무장5길 步行 5 分內</b>，多數 11:00 開、₩價親民（開架價 ₩8,000–25,000）、可試做 DIY／膚質檢測 —— 媽媽最值得花時間嘅一帶，同 Olive Young N、Musinsa、Cat&F 同喺一條街可串完。下面標「（必）」嘅四間最值；其餘路過順逛即可。各店休息日出發前 Naver 核。</div>
+      <div class="brands">
+        <div><span class="bh">必逛 4 間</span><b>rom&nd PINK OFFICE</b>（唇彩霸主・整面唇釉試色牆＋巨型唇釉裝置打卡・연무장길 88・11–21）、<b>Dasique</b>（平價版 3CE 九宮格眼影盤・<b>附首間 Dasique 咖啡廳</b>・연무장5길 6・11–20:30）、<b>TIRTIR</b>（紅氣墊信仰・膚色診斷機＋腮紅 DIY・연무장5길 7・10:30–20:30）、<b>Whipped House</b>（植物潔面爆款・<b>DIY 手作洗面乳體驗坊</b>・성수이로20길 16・11–20）</div>
+        <div><span class="bh">順逛香氛</span>Tamburins（Gentle Monster 旗下・THE SHELL 護手霜・藝術館式・연무장5길 8）、SHIRO（北海道天然香氛・연무장길 57）、ANILLO（純素香氛・歐式澡堂風・연무장길 6-1）、Kuoca（本土高端身體護膚・연무장길 29-1）</div>
+        <div><span class="bh">順逛彩妝</span>BBIA（平價開架・Last Lipstick 霧唇・연무장3길 17）、fwee AGIT（奶霧妝感・客製腮紅盤・少女打卡・성수이로7가길 10）、hince（輕奢 3 層旗艦・성수이로7가길 15）、BANILA CO（Clean It Zero 卸妝膏・연무장길 41）</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽：想「平價靚化妝品＋DIY」，rom&nd＋Dasique（連咖啡廳）＋TIRTIR＋Whipped 手作四間最值；全家：Tamburins 藝術空間打卡。普遍 ₩8,000–25,000。</div>
+      <div class="meta2"><span><span class="k">址</span> 연무장길／연무장5길 一帶（13 間步行 5 分內）</span><span><span class="k">交通</span> 聖水站 <b>2／3번</b></span><span><span class="k">時</span> 多 11:00–21:00（TIRTIR 10:30 先開・各店休息日 Naver 核）</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">04</div>
+    <div>
+      <div class="stitle">LCDC SEOUL<span class="t">紅磚文化複合空間 · 選物＋設計＋天台酒吧 · 聖水地標</span></div>
+      <div class="sd">紅磚地標複合空間，樓層分明：1F Cafe Ephemera 咖啡打卡、2F SHOP LCDC（Le Conte des Contes 時尚生活選物）、<b>3F DOORS 多間獨立手作小店</b>（含信紙手作品牌 글월 geulwoll 302 號）、4F Bar Postscript 天台酒吧。3F DOORS 多間獨立小店命中媽媽嘅手工藝／飾物。<b>注意</b>：週一休、3F 12:00 先開，同聖水其他早開店錯峰，宜放中午後。</div>
+      <div class="brands">
+        <div><span class="bh">選物 2F</span>SHOP LCDC（時尚生活選物）</div>
+        <div><span class="bh">手作 3F</span>DOORS 多間獨立小店＋글월 geulwoll 信紙手作（302 號）</div>
+        <div><span class="bh">咖啡 / 酒吧</span>1F Cafe Ephemera（10–20）、4F Bar Postscript 天台（17–24）</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽：3F DOORS 手工藝／設計選物／信紙；全家：紅磚打卡。文具／設計小物 ₩5,000–40,000。週一休、宜中午後到。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 성동구 연무장17길 10</span><span><span class="k">交通</span> 聖水站 <b>3번</b> 約 10 分</span><span><span class="k">時</span> 層別不同（3F DOORS 12–19・<b>週一休</b>）</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">05</div>
+    <div>
+      <div class="stitle">Monami 스토어 성수<span class="t">親手組裝專屬 153 原子筆 · 媽媽手工藝 · 早開室內</span></div>
+      <div class="sd">可親手拼裝專屬 153 原子筆同客製筆記本嘅文具 DIY 體驗店，舊工廠原址改建。係聖水少數一早 10:00 開門嘅室內手作點，全室內冷氣，啱一早或避雨先到。</div>
+      <div class="brands"><div><span class="bh">文具 DIY</span>153 原子筆組裝（₩8,000–15,000）、客製筆記本（₩10,000 起）</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽：手工藝；可每人組裝一支專屬原子筆作手作手信。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 성동구 아차산로 104</span><span><span class="k">交通</span> 聖水站 <b>4번</b> 約 1 分</span><span><span class="k">時</span> 10:00–21:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">06</div>
+    <div>
+      <div class="stitle">Point of View 성수<span class="t">美術館式設計文具 · TOOL／SCENE／ARCHIVE 三層</span></div>
+      <div class="sd">以 TOOL／SCENE／ARCHIVE 三層主題策展嘅設計文具選物店，以日本同德國高品質文具為主、單價偏高，氛圍如美術館宜慢逛、挑手作素材。下午先開門，建議放喺 Musinsa 之後串連。</div>
+      <div class="brands"><div><span class="bh">設計文具</span>日德高端紙張／書寫工具／靈感物件（₩5,000–40,000）</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜媽媽：設計文具／手作素材；單價偏高、宜慢逛挑一件作旅程紀念。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 성동구 성수동 一帶（연무장길內）</span><span><span class="k">交通</span> 聖水站 <b>2／3번</b></span><span><span class="k">時</span> 約 12:00–20:00（到場 Naver 核）</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">07</div>
+    <div>
+      <div class="stitle">LuckyPop 성수<span class="t">4 層夾娃娃＋扭蛋大樓 · 仔夾娃娃核心</span></div>
+      <div class="sd">聖水新開嘅四層夾娃娃機同扭蛋大樓（C&S 大樓 1–4F），機台同打卡角落眾多、每層主題不同，常逛上約兩個鐘。聖水以美妝／選物／咖啡為主，仔嘅夾娃娃區內就靠呢間一站滿足（弘大／明洞夾娃娃街密度更高）。<b>夾娃娃店通常營業至深夜，確切時間出發前 Naver 核。</b></div>
+      <div class="brands"><div><span class="bh">夾娃娃 / 扭蛋</span>4 層機海＋公仔機＋扭蛋（每抽 ₩1,000–2,000）</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜仔：夾娃娃；每人限 ₩5,000 挑戰夾一隻公仔，全室內、雨天可延長停留。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 성동구 연무장길 52, C&S 大樓 1–4F</span><span><span class="k">交通</span> 聖水站 <b>3번</b></span><span><span class="k">時</span> 到場 Naver 核（通常至深夜）</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">08</div>
+    <div>
+      <div class="stitle">大림창고 紅磚街<span class="t">聖水「布魯克林」紅磚地標 · 全家免費打卡</span></div>
+      <div class="sd">五十年代紅磚倉庫外牆同鐵窗，係聖水最具代表性嘅拍照背景，沿街即可取景、被稱作首爾嘅布魯克林。街景全日免費，倉庫內畫廊約 11:00 先開、早到只睇外牆即可。同址即 Musinsa（舊店）一帶，可順勢進室內大店。Dior 성수外牆亦可免費影相（café 奢華價不在此行消費，路過拍照不入內）。</div>
+      <div class="brands"><div><span class="bh">打卡</span>紅磚倉庫外牆＋鐵窗＋綠植牆（街景免費）／倉庫內畫廊約 11:00 起</div></div>
+      <div class="fam"><b>👀 順遊</b>｜全家：紅磚牆人像打卡（戶外・雨天跳過直接入 Olive Young N／Musinsa）；爸爸／全家：Dior 外牆路過拍照。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 성동구 성수이로 一帶（鍊武場街）</span><span><span class="k">交通</span> 聖水站 <b>3번</b></span><span><span class="k">時</span> 街景全日（倉庫內約 11:00 起）</span></div>
+    </div>
+  </div>
+
+  <div class="zonehd">잠실 · 樂天世界購物中心 · 蠶室站 1／2번 室內直結</div>
+
+  <div class="shop">
+    <div class="snum">09</div>
+    <div>
+      <div class="stitle">도토리숲 吉卜力官方雜貨<span class="t">龍貓巴士打卡＋角色雜貨天花板 · B1F</span></div>
+      <div class="sd">Studio Ghibli 官方周邊店（龍貓 토토로、魔女宅急便、千與千尋），<b>店內設大型貓巴士 photo zone</b>，係商場內最強打卡點之一。直接命中全家嘅角色／文創／打卡。入口就喺 Avenuel 1F 側、近扶手電梯，順道。</div>
+      <div class="brands"><div><span class="bh">角色雜貨</span>龍貓／魔女宅急便／千與千尋官方周邊＋貓巴士 photo zone（手信 ₩8,000–30,000）</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜全家：角色雜貨＋貓巴士打卡；媽媽：飾物控亦受。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 송파구 올림픽로 300, 롯데월드몰 <b>B1F</b></span><span><span class="k">交通</span> 蠶室站 <b>1／2번</b>直結</span><span><span class="k">時</span> 10:30–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">10</div>
+    <div>
+      <div class="stitle">Kakao Friends 旗艦<span class="t">Ryan／Apeach 角色旗艦＋photo zone · 5F</span></div>
+      <div class="sd">Kakao Friends 角色旗艦（Ryan、Apeach、Choonsik 春植）公仔、文具、生活雜貨，設角色 photo zone。D3 行程 mission 已指定喺度（三人各 ₩20,000 揀一隻最似自己嘅角色），命中全家角色線。</div>
+      <div class="brands"><div><span class="bh">角色 5F</span>Ryan／Apeach／春植 公仔・文具・生活雜貨＋photo zone（₩10,000–30,000）</div></div>
+      <div class="fam"><b>⭐ 別錯過</b>｜全家：角色打卡（三人各 ₩20,000 揀一隻）；仔：公仔。</div>
+      <div class="meta2"><span><span class="k">址</span> 서울 송파구 신천동 29, 롯데월드몰 <b>5F</b></span><span><span class="k">交通</span> 蠶室站 <b>1／2번</b>直結</span><span><span class="k">時</span> 10:30–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">11</div>
+    <div>
+      <div class="stitle">Daiso ＋ 樂天超市 월드타워점<span class="t">B2 同層 · 回港前手信入貨主場 · 開到 23:00</span></div>
+      <div class="sd">B2 同一層集齊 <b>Daiso（₩1,000 起平價雜貨掃貨王）</b>同 <b>樂天超市 월드타워점</b>（泡麵／零食／海苔／咖啡／開架美妝／酒一次入貨）。兩者都 <b>10:00 開、23:00 收</b>，比商場早開晚收 —— Seoul Sky 落塔後仍可掃，係回港前入貨最有效率嘅一站。Daiso 嘅韓系小物／文具／角色聯名亦命中媽媽手作素材。</div>
+      <div class="brands">
+        <div><span class="bh">平價雜貨</span>Daiso（韓系小物・文具・廚房・美妝工具・角色聯名季品・₩1,000–5,000）</div>
+        <div><span class="bh">手信超市</span>樂天超市（泡麵・零食・海苔・咖啡・酒・₩1,500–8,000）</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜全家：₩1,000 起手信＋泡麵零食入貨；媽媽：飾物／手作素材；爸爸：超市食物。23:00 收，落塔後仍可掃。</div>
+      <div class="meta2"><span><span class="k">址</span> 롯데월드몰 <b>B2F</b>（롯데마트 월드타워점內）</span><span><span class="k">交通</span> 蠶室站 <b>1번</b>地下通道直結</span><span><span class="k">時</span> 10:00–23:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">12</div>
+    <div>
+      <div class="stitle">MUJI 無印良品<span class="t">簡約生活雜貨＋文具 · B1F</span></div>
+      <div class="sd">廚浴用品、護膚、文具、基本款服飾、家具、食品齊全嘅簡約生活雜貨店。香港有 MUJI、非獨有，順路逛即可；媽媽鍾意簡約小物／文具可入。確切舖位到場 Naver 核。</div>
+      <div class="brands"><div><span class="bh">生活雜貨</span>廚浴／護膚／文具（₩2,000–10,000）／基本款服飾／家具／食品</div></div>
+      <div class="fam"><b>👀 順遊</b>｜全家：雜貨；媽媽：簡約小物／文具。香港有、非必入。</div>
+      <div class="meta2"><span><span class="k">址</span> 롯데월드몰 <b>B1F</b>（到場 Naver 核確切位置）</span><span><span class="k">交通</span> 蠶室站直結</span><span><span class="k">時</span> 10:30–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop">
+    <div class="snum">13</div>
+    <div>
+      <div class="stitle">3F 時裝層 · SPAO／UNIQLO／On<span class="t">性價比男女裝集中地 · KPOP 聯名 tee</span></div>
+      <div class="sd">3F 為休閒／運動主層，集齊性價比快時尚：<b>SPAO</b>（常出 BTS／角色聯名 tee／睡衣，命中仔嘅性價比男裝）、UNIQLO、WHO.A.U、On 旗艦（瑞士跑鞋）。UNIQLO／On 香港有、非獨有；SPAO 聯名 tee 較值得睇。各店確切樓層到場 Naver 核。</div>
+      <div class="brands">
+        <div><span class="bh">平價服飾</span>SPAO（聯名 tee ₩15,000–25,000・整套 <₩100,000）、UNIQLO（tee ₩12,900 起）、WHO.A.U</div>
+        <div><span class="bh">運動</span>On 旗艦（瑞士跑鞋・型號可試）</div>
+      </div>
+      <div class="fam"><b>👀 順遊</b>｜仔（20–30s）：SPAO 性價比休閒男裝／KPOP 聯名 tee（偏後生）；媽媽（40–50s）：UNIQLO 成熟簡約休閒女裝較啱（SPAO 偏後生）。UNIQLO／On 香港有、非必入。</div>
+      <div class="meta2"><span><span class="k">址</span> 롯데월드몰 <b>3F 一帶</b>（各店樓層 Naver 核）</span><span><span class="k">交通</span> 蠶室站直結</span><span><span class="k">時</span> 10:30–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="shop" style="border-bottom:none">
+    <div class="snum">14</div>
+    <div>
+      <div class="stitle">B1F／1F 甜品打卡帶<span class="t">角色甜品＋貝果＋咖啡 · Notted／London Bagel · 全家打卡</span></div>
+      <div class="sd">商場 1F／B1F 甜品打卡帶：<b>Notted World 노티드</b>（招牌微笑角色甜甜圈＋忌廉，命中全家角色線、等候比 London Bagel 短、啱一家大細快食）、London Bagel Museum（見下「最佳食」）、Blue Bottle（1F 咖啡）、artisee。落塔後或逛街中途歇腳甜品收尾首選。</div>
+      <div class="brands"><div><span class="bh">甜品打卡</span>Notted World（角色甜甜圈）、London Bagel Museum（貝果）、The Cream Bagels／Blue Bottle 咖啡（貝果／甜甜圈 ₩4,000–8,000）</div></div>
+      <div class="fam"><b>👀 順遊</b>｜全家：Notted 角色甜甜圈打卡；仔：食／角色甜甜圈。定位為下午茶／甜品，唔取代正餐（晚餐已定方夷食街烤肉）。</div>
+      <div class="meta2"><span><span class="k">址</span> 롯데월드몰 <b>1F／B1F</b></span><span><span class="k">交通</span> 蠶室站直結</span><span><span class="k">時</span> 約 10:30–22:00</span></div>
+    </div>
+  </div>
+
+  <div class="callout"><div class="ct">區內最佳 1–2 食</div><div class="cv"><b>聖水</b>：大林倉庫본점 café（紅磚倉庫鼻祖・邊食邊打卡一站搞掂・서울 성동구 성수이로 78）＋ Dasique Café（美妝逛街順帶歇腳・粉色少女系・연무장5길 6）。<b>蠶室</b>：London Bagel Museum 잠실점（全韓最紅貝果・鹹蛋黃／洋蔥忌廉・롯데월드몰 1F・10:30–22:00 L.O. 21:39）—— D3 為週四（平日）可用 <b>CatchTable</b> App 遠端取籌較穩，週末／假日只限現場排隊、2 鐘頭起跳。註：D3.json 區內食已排好（Jojo 刀削麵午餐＋Cat&F 玉米鹽包＋Onion 咖啡＋一月烤肉晚餐），上述為補充打卡選項、唔取代正餐。</div></div>
+
+  <div class="foot">
+    <b>D3 · 25 Jun 四 2026 · 相+影評版</b> · 聖水鍊武場街（11:00 才開）→ 二號線蠶室 → 樂天塔黃昏 · 影評節錄自部落格/IG/Threads，到場再核營業狀態<br>
+    地圖 Naver 到場核 · 1 HKD ≈ 195 ₩ · Generated by Claude Code
+  </div>
+
+</div>
+</body>
+</html>
