@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>首爾 9 大必買手信 ＋ 你會喺邊度撞到 · Seoul 22–27 Jun 2026</title>
+<title>首爾必買手信 24 揀 ＋ 你會喺邊度撞到 · Seoul 22–27 Jun 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
@@ -25,11 +25,11 @@ a{color:var(--ink)}
 .back::before{content:"← "}
 .kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:18px}
 .masthead{display:grid;grid-template-columns:auto 1fr;column-gap:20px;align-items:start;border-top:2px solid var(--ink);padding-top:12px;margin-top:8px}
-.daynum{font-weight:900;font-size:86px;line-height:.8;letter-spacing:-.045em}
-.daynum small{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;margin-top:6px}
-.title{font-weight:900;font-size:clamp(26px,5.4vw,38px);line-height:1.04;letter-spacing:-.022em;margin-top:2px}
-.sub{font-size:14px;line-height:1.5;color:var(--ink-2);margin-top:10px;max-width:54ch}
-@media(max-width:520px){.daynum{font-size:60px}}
+.daynum{font-weight:900;font-size:80px;line-height:.8;letter-spacing:-.05em}
+.daynum small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--ink-3);font-weight:700;margin-top:6px}
+.title{font-weight:900;font-size:clamp(25px,5.2vw,37px);line-height:1.04;letter-spacing:-.022em;margin-top:2px}
+.sub{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin-top:10px;max-width:56ch}
+@media(max-width:520px){.daynum{font-size:58px}}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0 16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:20px 0 4px;padding:10px 0}
 .fact .l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
 .fact .v{font-size:12.5px;font-weight:700;line-height:1.25;margin-top:3px}
@@ -38,7 +38,7 @@ a{color:var(--ink)}
 .sec h2{font-weight:900;font-size:15px;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:8px;border-bottom:2px solid var(--ink);display:flex;align-items:baseline;gap:9px}
 .sec h2 .hn{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700}
 .sec .lead{font-size:13px;line-height:1.5;color:var(--ink-2);margin-top:10px}
-/* day index ribbon */
+/* day index */
 .dayidx{margin-top:4px}
 .di{display:grid;grid-template-columns:104px 1fr;column-gap:16px;align-items:start;padding:13px 0;border-bottom:1px solid var(--rule)}
 .di:last-child{border-bottom:none}
@@ -48,31 +48,38 @@ a{color:var(--ink)}
 .di .l b{font-weight:800}
 .di .l .st{color:var(--red);font-weight:800}
 @media(max-width:520px){.di{grid-template-columns:1fr;row-gap:5px}}
+/* category header */
+.cat{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--ink);padding:8px 12px;margin-top:28px;display:flex;justify-content:space-between;align-items:baseline}
+.cat .cc{color:#fff;opacity:.55;font-size:10px;letter-spacing:.1em}
 /* items */
-.item{display:grid;grid-template-columns:48px 1fr;column-gap:16px;align-items:start;padding:18px 0 16px;border-bottom:1px solid var(--rule)}
+.item{display:grid;grid-template-columns:42px 1fr;column-gap:14px;align-items:start;padding:15px 0 14px;border-bottom:1px solid var(--rule)}
 .item:last-child{border-bottom:none}
-.idx{font-weight:900;font-size:40px;line-height:.82;letter-spacing:-.04em}
-.nm{font-weight:800;font-size:19px;line-height:1.14;letter-spacing:-.012em}
-.nm .en{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink-3);letter-spacing:.02em}
-.tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--red);padding:1px 6px;vertical-align:2px;margin-left:6px;white-space:nowrap}
+.idx{font-weight:900;font-size:30px;line-height:.82;letter-spacing:-.04em;color:var(--ink)}
+.nm{font-weight:800;font-size:17px;line-height:1.18;letter-spacing:-.012em}
+.nm .en{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:.01em}
+.tag{font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#fff;background:var(--red);padding:1px 6px;vertical-align:2px;margin-left:5px;white-space:nowrap;display:inline-block}
 .tag.ink{background:var(--ink)}
-.price{font-family:var(--mono);font-size:13px;font-weight:700;margin-top:7px}
+.tag.src{background:#fff;color:var(--red);border:1px solid var(--red);padding:0 5px}
+.price{font-family:var(--mono);font-size:12.5px;font-weight:700;margin-top:6px}
 .price .hkd{color:var(--ink-3);font-weight:400}
-.note{font-size:13px;line-height:1.5;color:var(--ink-2);margin-top:7px}
+.note{font-size:12.5px;line-height:1.5;color:var(--ink-2);margin-top:6px}
 .note b{color:var(--ink)}
-.fill{font-size:12.5px;line-height:1.5;color:var(--ink);margin-top:8px;padding-left:12px;border-left:2px solid var(--red)}
-.fill .l{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:2px}
+.fill{font-size:12px;line-height:1.5;color:var(--ink);margin-top:7px;padding-left:11px;border-left:2px solid var(--red)}
+.fill .l{font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-right:5px}
 .fill b{font-weight:800}
-.nav{margin-top:7px;font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.02em}
+.nav{margin-top:6px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.02em}
 .nav a{border-bottom:1px solid var(--ink);text-decoration:none;color:var(--ink)}
 .nav a::after{content:" →";color:var(--red)}
 .nav a:hover{color:var(--red);border-color:var(--red)}
+.more{font-size:12px;line-height:1.6;color:var(--ink-2);margin-top:13px;padding:10px 12px;background:var(--rule-2)}
+.more b{color:var(--ink);font-weight:700}
+.more .h{font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:3px}
 /* callouts */
 .callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:14px 0;border-left:3px solid var(--red)}
 .callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
-.callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
+.callout .cv{font-size:13px;line-height:1.55;font-weight:600}
 .callout.ink{border-left-color:var(--ink)}.callout.ink .ct{color:var(--ink)}
-.foot{margin-top:36px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10.5px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
+.foot{margin-top:36px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
 .foot b{color:var(--ink)}
 </style>
 </head>
@@ -88,65 +95,68 @@ a{color:var(--ink)}
   <a class="back" href="index.html">返行程首頁</a>
   <div class="kicker">Seoul Family Trip · 22–27 Jun 2026 · 手信攻略</div>
   <div class="masthead">
-    <div class="daynum">9<small>手信 GIFTS</small></div>
+    <div class="daynum">24<small>PICKS · 7 類</small></div>
     <div>
-      <div class="title">首爾必買手信<br>＋ 你會喺邊度撞到</div>
-      <div class="sub">Trip.com 列嘅「2026 首爾 9 大必買手信」，逐件對返你 D0–D4 嘅行程：邊一日、邊個區順路掃得到。價 KRW 主、HKD 副（1 HKD ≈ 195 ₩）。地圖一律 Naver。</div>
+      <div class="title">首爾必買手信 24 揀<br>＋ 你會喺邊度撞到</div>
+      <div class="sub">綜合 Trip.com、Cosmopolitan／ELLE HK、Creatrip、Glowpick、Funliday、GOtrip 等 <b>11+ 個 2026 來源</b>交叉篩選，逐件對返你 D0–D4 行程：邊一日、邊個區順路掃得到。<b>★多源</b> ＝ 跨 3 個以上來源推介。價 KRW 主、HKD 副（1 HKD ≈ 195 ₩）。地圖一律 Naver。</div>
     </div>
   </div>
 
   <div class="facts">
-    <div class="fact"><div class="l">來源</div><div class="v">Trip.com · 9 大手信</div></div>
-    <div class="fact"><div class="l">對應行程</div><div class="v">D0–D4 · 5 日</div></div>
-    <div class="fact"><div class="l">主力掃貨日</div><div class="v">D0 明洞 · D3 蠶室</div></div>
+    <div class="fact"><div class="l">來源</div><div class="v">11+ 媒體交叉</div></div>
+    <div class="fact"><div class="l">項目</div><div class="v">24 揀 · 7 類</div></div>
+    <div class="fact"><div class="l">美妝主場</div><div class="v">D0 明洞 Olive Young</div></div>
     <div class="fact"><div class="l">FX</div><div class="v">1 HKD ≈ 195 ₩</div></div>
   </div>
 
   <!-- ============ A 按行程速查 ============ -->
   <div class="sec">
     <h2><span class="hn">A</span> 按行程速查 · 邊日撞到邊樣</h2>
-    <div class="lead">唔使特登去搵——下面幾日嘅路線本身已經行勻大部分售賣點。★ = 嗰件手信嘅最佳對應點。</div>
+    <div class="lead">唔使特登去搵——你幾日嘅路線本身已經行勻大部分售賣點。★ = 嗰一類嘅最佳對應點。</div>
     <div class="dayidx">
 
       <div class="di">
         <div class="d">D0 明洞夜<small>22/6 一</small></div>
-        <div class="l">落機第一晚已經掃到大半：<b>Olive Young 脆片</b>（明洞旗艦店）、<b>Toms 杏仁果</b>、<b>南大門爺爺乾貨</b>（明洞分店）、<b>鯛魚燒牛奶</b>、<b>延世忌廉包</b>。</div>
+        <div class="l"><span class="st">美妝大採購主場 ★</span>：明洞 Olive Young 旗艦（Global Town，設即時退稅專區）一次掃防曬／化妝水／精華／面膜／唇釉；同場 <b>Bagel 脆片</b>、<b>HBAF 杏仁</b>（明洞旗艦）、<b>南大門爺爺乾貨</b>（明洞分店）、便利店零食／香蕉牛奶。</div>
       </div>
 
       <div class="di">
         <div class="d">D1 弘大＋延南<small>23/6 二</small></div>
-        <div class="l"><span class="st">時空間飾品 ★</span>——旗艦店正正喺你條京義線林蔭道路線上；沿途便利店補 Olive Young 脆片、杏仁果、零食。</div>
+        <div class="l"><span class="st">飾品／角色／文創 ★</span>：時空間飾品（旗艦正喺路線上）、Kakao Friends 旗艦、Daiso 7 層平價手信、Stand Oil／設計師配件；Olive Young 弘大 Town（新品上架最快）。</div>
       </div>
 
       <div class="di">
         <div class="d">D2 加平<small>24/6 三</small></div>
-        <div class="l">郊區包車日，購物淡：高速公路休息站／便利店順手補 <b>KANU 咖啡</b>、<b>紫薯片</b>、<b>忌廉包</b> 當車程零食。</div>
+        <div class="l">郊區包車日，購物淡：高速公路休息站／便利店補 <b>不辣火雞麵</b>、<b>紫薯片</b>、<b>꼬북칩</b>、<b>香蕉牛奶</b> 當車程零食。</div>
       </div>
 
       <div class="di">
-        <div class="d">D3 蠶室<small>25/6 四</small></div>
-        <div class="l"><span class="st">KANU 咖啡 ★</span>＋<b>No Brand 紫薯片</b>：蠶室 Lotte World Mall／Lotte Mart 等大型超市，整盒整箱掃最抵，啱送同事。</div>
+        <div class="d">D3 聖水→蠶室<small>25/6 四</small></div>
+        <div class="l"><span class="st">超市掃貨 ★</span>：蠶室 Lotte Mart／Lotte World Mall 整箱掃 <b>KANU</b>、<b>火雞麵</b>、<b>海苔</b>、<b>正官庄紅蔘</b>；聖水段順掃潮物 <b>NewMix 咖啡</b>、<b>Matin Kim</b> 設計配件。</div>
       </div>
 
       <div class="di">
         <div class="d">D4 安國→明洞→東大門<small>26/6 五</small></div>
-        <div class="l"><span class="st">仁寺洞 蜂蜜藥菓 ★</span>（最地道）；走之前喺明洞最後補 <b>Olive Young</b>／<b>南大門爺爺</b> 分店。</div>
+        <div class="l"><span class="st">傳統工藝 ★</span>：仁寺洞 <b>螺鈿漆器</b>、<b>藥菓精品禮盒</b>、韓繩結匙扣；走前喺明洞最後補 Olive Young／南大門爺爺分店。</div>
       </div>
 
     </div>
   </div>
 
-  <!-- ============ B 9 大手信逐件 ============ -->
+  <!-- ============ B 24 揀逐類睇 ============ -->
   <div class="sec">
-    <h2><span class="hn">B</span> 9 大手信 · 逐件睇</h2>
+    <h2><span class="hn">B</span> 24 揀 · 逐類睇</h2>
+
+    <!-- 零食餅乾 -->
+    <div class="cat"><span>零食餅乾 · Snacks</span><span class="cc">01–05</span></div>
 
     <div class="item">
       <div class="idx">1</div>
       <div>
-        <div class="nm">Olive Young Bagel 脆片 <span class="en">Delight Project</span><span class="tag">D0 明洞</span></div>
+        <div class="nm">Olive Young Bagel 脆片 <span class="en">Delight Project</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞</span></div>
         <div class="price">₩1,000<span class="hkd"> ／包 · ≈HKD 5</span></div>
-        <div class="note">近期最熱嘅頭號手信。烘焙低卡脆片，5 款味（粟米濃湯／蒜蓉牛油／忌廉濃湯／蜂蜜牛油／朱古力肉桂），平、輕、易拎，掃一堆送人最抵。</div>
-        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young 旗艦店</b>（落機首晚就行到）；<b>D1 弘大</b>、<b>D4 明洞午</b> 亦有大型門市。滿 ₩15,000 可即場退稅。</div>
+        <div class="note">近期頭號手信。非油炸低卡脆片（約 200 kcal），蒜蓉牛油／蜂蜜牛油／玉米濃湯等多味，平、輕、易拎，掃一堆送人最抵。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young 旗艦</b>（首晚就行到）；D1 弘大、D4 明洞亦有。</div>
         <div class="nav"><a href="https://map.naver.com/p/search/올리브영 명동" target="_blank" rel="noopener">Naver · 올리브영 명동</a></div>
       </div>
     </div>
@@ -154,82 +164,254 @@ a{color:var(--ink)}
     <div class="item">
       <div class="idx">2</div>
       <div>
-        <div class="nm">Toms Gilim 杏仁果 <span class="en">Tom's Gilim</span><span class="tag">D0／D1</span></div>
-        <div class="price">₩6,000 起<span class="hkd"> · ≈HKD 31 起</span></div>
-        <div class="note">超人氣杏仁，鹹甜多口味（蜂蜜牛油／芥末／麻辣／紫菜／奶油餅乾／Tiramisu），有細包大包。送同事、放零食籃都一流。</div>
-        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞</b>、<b>D1 弘大</b> 嘅便利店同超市最易搵齊口味；其實全程便利店都有。</div>
+        <div class="nm">HBAF／Tom's 調味杏仁 <span class="en">바프 Almond</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞旗艦</span></div>
+        <div class="price">₩5,000–7,000<span class="hkd"> ／包 · ≈HKD 26–36</span></div>
+        <div class="note">韓國最大堅果品牌，70+ 口味（蜂蜜牛油／芥末／辣炒年糕／Tiramisu）。明洞旗艦店有專屬口味，外地難買。送同事一流。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 HBAF 旗艦</b>（主街一帶）；便利店、Olive Young、超市亦有基本款。</div>
+        <div class="nav"><a href="https://map.naver.com/p/search/바프 명동" target="_blank" rel="noopener">Naver · HBAF 명동</a></div>
       </div>
     </div>
 
     <div class="item">
       <div class="idx">3</div>
       <div>
-        <div class="nm">KANU 漸層咖啡 <span class="en">KANU Latte</span><span class="tag">D3 蠶室</span></div>
-        <div class="price">₩5,000 起<span class="hkd"> ／盒 · ≈HKD 26 起</span></div>
-        <div class="note">韓國國民沖泡咖啡（孔劉代言），無糖但奶味香濃，跟普通三合一唔同。有 Latte／雙倍濃縮／美式／低咖啡因，送同事最穩陣。</div>
-        <div class="fill"><span class="l">邊度撞到</span><b>D3 蠶室 Lotte Mart／大型超市</b> 整盒掃最抵；便利店亦有散條。重身但耐放，可寄艙。</div>
+        <div class="nm">蜂蜜藥菓 <span class="en">Yakgwa</span><span class="tag src">多源 ★</span><span class="tag">D4 仁寺洞</span></div>
+        <div class="price">便利店 ₩2,000 起<span class="hkd"> · 精品盒 ₩15,000+ · ≈HKD 10／77+</span></div>
+        <div class="note">韓國傳統蜂蜜麻油炸糕，2025–26 強勢回潮，口感似港式「馬仔」。便利店有平裝；Golden Piece 等精品禮盒可送禮（凍食更佳）。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D4 安國／仁寺洞</b>（傳統糕餅／精品禮盒最地道）；便利店（CU／GS25）有日常版。</div>
       </div>
     </div>
 
     <div class="item">
       <div class="idx">4</div>
       <div>
-        <div class="nm">延世牛奶芝士忌廉包 <span class="en">CU × Yonsei</span><span class="tag ink">全程 CU</span></div>
-        <div class="price">₩3,300<span class="hkd"> · ≈HKD 17</span></div>
-        <div class="note">CU 同延世牛奶聯乘嘅話題小食，軟滑綿密、甜中帶鹹；4 款味（牛奶／朱古力／紅豆／最搶手嘅墨魚汁車打芝士）。</div>
-        <div class="fill"><span class="l">邊度撞到</span><b>全程 CU 便利店</b>（酒店忠武路樓下、明洞、弘大都有）。<b>鮮食、唔耐放</b> → 當地即買即食，唔好諗住帶返港。</div>
+        <div class="nm">꼬북칩 龜殼脆餅 <span class="en">Turtle Chips</span><span class="tag ink">全程便利店</span></div>
+        <div class="price">₩1,700<span class="hkd"> · ≈HKD 9</span></div>
+        <div class="note">四層龜殼狀脆餅，朱古力 churros／粟米濃湯等味，口感獨特、便利店零食評分常居前，輕巧易帶。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>全程便利店</b>（CU／GS25／7-11）；D2 加平車程零食首選。</div>
       </div>
     </div>
 
     <div class="item">
       <div class="idx">5</div>
       <div>
-        <div class="nm">蜂蜜藥菓 <span class="en">Yakgwa</span><span class="tag">D4 仁寺洞</span></div>
-        <div class="price">₩2,000–8,000<span class="hkd"> · ≈HKD 10–41</span></div>
-        <div class="note">韓國傳統花狀蜜餅（蜂蜜＋芝麻油＋小麥粉），口感似港式「馬仔」，韓劇常見。最有韓國味嘅手信之選。</div>
-        <div class="fill"><span class="l">邊度撞到</span><b>D4 安國／仁寺洞</b>（Ssamziegil 一帶傳統糕餅店最地道、最靚盒裝）；便利店、超市亦有袋裝。</div>
+        <div class="nm">No Brand 紫薯片 <span class="en">emart No Brand</span><span class="tag ink">全程／D3</span></div>
+        <div class="price">₩1,000–5,000<span class="hkd"> · ≈HKD 5–26</span></div>
+        <div class="note">emart 自家品牌，高顏值紫薯片，淡甜清爽；同系列脆片／鍋巴茶／楓糖夾心餅都抵。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>emart24 便利店</b>全程都見；<b>D3 蠶室</b> 一帶大型超市選擇最多。</div>
       </div>
     </div>
+
+    <!-- 即食泡麵 -->
+    <div class="cat"><span>即食泡麵 · Ramyeon</span><span class="cc">06</span></div>
 
     <div class="item">
       <div class="idx">6</div>
       <div>
-        <div class="nm">No Brand 紫薯片 <span class="en">emart No Brand</span><span class="tag ink">全程／D3</span></div>
-        <div class="price">₩1,000–5,000<span class="hkd"> · ≈HKD 5–26</span></div>
-        <div class="note">emart 自家品牌，包裝顏值超高嘅紫薯片，淡甜清爽。同系列仲有亮眼脆片、鍋巴茶、楓糖夾心餅，送人得體又抵。</div>
-        <div class="fill"><span class="l">邊度撞到</span><b>emart24 便利店</b>（全程都見到）；<b>D3 蠶室</b> 一帶大型超市選擇最多。</div>
+        <div class="nm">火雞麵（不辣亦有）<span class="en">Buldak 불닭볶음면</span><span class="tag src">多源 ★</span><span class="tag">D3 蠶室超市</span></div>
+        <div class="price">₩1,200 起<span class="hkd"> ／包 · ≈HKD 6 · 超市多包裝更平</span></div>
+        <div class="note">全球爆紅炒麵，韓國本地口味最齊（原味／芝士／忌廉／炭烤／湯版）；外地買唔齊，啱大量帶。怕辣可揀芝士／忌廉版。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D3 蠶室 Lotte Mart／大型超市</b> 整箱掃最抵；便利店有散包。<span style="color:var(--ink-3)">同場順帶：신라면블랙、The Misik「愛馬仕泡麵」李政宰代言高級版。</span></div>
       </div>
     </div>
+
+    <!-- 咖啡飲品 -->
+    <div class="cat"><span>咖啡飲品 · Coffee & Drinks</span><span class="cc">07–10</span></div>
 
     <div class="item">
       <div class="idx">7</div>
       <div>
-        <div class="nm">南大門爺爺 魚乾／果乾 <span class="en">Namdaemun</span><span class="tag">D0／D4 明洞</span></div>
-        <div class="price">現場定價<span class="hkd"> · 散裝秤重</span></div>
-        <div class="note">無添加乾貨——魷魚絲、雞泡魚乾鹹香夠；草莓乾、蘋果乾用低溫脫水保住鮮果香。長者啱口味、送禮唔失禮。</div>
-        <div class="fill"><span class="l">邊度撞到</span>今程<b>南大門朝市未排</b>，但「南大門爺爺東京食品店」喺<b>明洞有分店</b> → D0／D4 明洞行到。乾貨攤多數收現金，備少量韓圜。<span style="color:var(--ink-3)">（店名到場 Naver 再核）</span></div>
-        <div class="nav"><a href="https://map.naver.com/p/search/남대문 할아버지 견과 명동" target="_blank" rel="noopener">Naver · 남대문 할아버지 (明洞)</a></div>
+        <div class="nm">KANU 漸層咖啡 <span class="en">KANU Latte</span><span class="tag src">多源 ★</span><span class="tag">D3 蠶室超市</span></div>
+        <div class="price">₩5,000 起<span class="hkd"> ／盒 · ≈HKD 26 起</span></div>
+        <div class="note">韓國國民沖泡咖啡（孔劉代言），無糖奶味濃；Latte／雙倍濃縮／美式／低咖啡因，盒裝靚、送同事穩陣。耐放可寄艙。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D3 蠶室超市</b> 整盒掃最抵；便利店、Olive Young 有散裝。</div>
       </div>
     </div>
 
     <div class="item">
       <div class="idx">8</div>
       <div>
-        <div class="nm">鯛魚燒牛奶 <span class="en">7-Eleven</span><span class="tag ink">全程 7-11</span></div>
-        <div class="price">₩1,650<span class="hkd"> · ≈HKD 9</span></div>
-        <div class="note">7-11 限定牛奶飲品，把紅豆味／忌廉味鯛魚燒融入牛奶，得意又抵試。鯛魚燒帶唔到返屋企，就試吓佢嘅牛奶版。</div>
-        <div class="fill"><span class="l">邊度撞到</span><b>全程 7-11</b>（明洞、弘大都有）。係飲品、唔當手信，當地即買即飲最啱。</div>
+        <div class="nm">香蕉牛奶 <span class="en">Banana Milk 바나나우유</span><span class="tag src">多源 ★</span><span class="tag ink">全程便利店</span></div>
+        <div class="price">₩1,800<span class="hkd"> · ≈HKD 9</span></div>
+        <div class="note">1974 年圓肚瓶造型不變，韓國地標飲品，外地難買正版。即飲、唔當手信都要試一次。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>全程便利店</b>；連同 7-11 鯛魚燒牛奶、CU 延世芝士忌廉包一齊試（鮮食即買即飲，唔帶返港）。</div>
       </div>
     </div>
 
     <div class="item">
       <div class="idx">9</div>
       <div>
-        <div class="nm">時空間飾品 <span class="en">시공간 / SI:GONG:GAN</span><span class="tag">D1 弘大 ★</span></div>
+        <div class="nm">TEAZEN 康普茶 <span class="en">Kombucha</span><span class="tag src">多源 ★</span><span class="tag ink">便利店／OY</span></div>
+        <div class="price">₩沖劑盒裝<span class="hkd"> · 每包約 15 kcal</span></div>
+        <div class="note">BTS 田柾國代言，零負擔益生菌沖劑，多果味，被多個 HK 媒體列為健康飲品手信首選。輕身好分。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>Olive Young／便利店／超市</b>全程都有，D0 明洞 OL 順手入。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">10</div>
+      <div>
+        <div class="nm">NewMix 咖啡 <span class="en">뉴믹스 newmix</span><span class="tag src">Creatrip 2026</span><span class="tag">D3 聖水</span></div>
+        <div class="price">₩9,000–17,900<span class="hkd"> · ≈HKD 46–92</span></div>
+        <div class="note">2026 爆紅精緻即溶咖啡，抹茶／烤栗子／香草等味，包裝靚，Creatrip 列年度最值得買第一。門市小眾，要預時間。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D3 聖水店</b>（順你聖水段）；另有北村／漢南店。</div>
+        <div class="nav"><a href="https://map.naver.com/p/search/뉴믹스 성수" target="_blank" rel="noopener">Naver · 뉴믹스 성수</a></div>
+      </div>
+    </div>
+
+    <!-- 美妝護膚 -->
+    <div class="cat"><span>美妝護膚 · K-Beauty（Olive Young）</span><span class="cc">11–17</span></div>
+
+    <div class="item">
+      <div class="idx">11</div>
+      <div>
+        <div class="nm">Beauty of Joseon 米萃防曬 <span class="en">Relief Sun</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞 OY</span></div>
+        <div class="price">₩9,000–12,000<span class="hkd"> · ≈HKD 46–62</span></div>
+        <div class="note">Olive Young 防曬長期 No.1，輕薄無白膜、全膚質。韓價比歐美平 20–35%，囤貨/送人皆宜。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young 旗艦</b>（即時退稅專區）；弘大 Town 亦有。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">12</div>
+      <div>
+        <div class="nm">Anua 魚腥草 77% 化妝水 <span class="en">Heartleaf Toner</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞 OY</span></div>
+        <div class="price">₩15,000<span class="hkd"> · ≈HKD 77</span></div>
+        <div class="note">Olive Young 化妝水三年霸榜 No.1，舒緩鎮靜；棉片版同樣得獎。敏感肌啱、媽媽手信首選。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young</b>；常 1+1。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">13</div>
+      <div>
+        <div class="nm">Torriden Dive-In 玻尿酸精華 <span class="en">Dive-In Serum</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞 OY</span></div>
+        <div class="price">₩13,000–21,000<span class="hkd"> · ≈HKD 67–108</span></div>
+        <div class="note">5D 微分子玻尿酸，「全球每幾秒賣一瓶」，Olive Young 常 1+1，性價比極高；同系列面膜亦得獎。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young</b>。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">14</div>
+      <div>
+        <div class="nm">VT Reedle Shot 微針精華 <span class="en">Reedle Shot 100</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞 OY</span></div>
+        <div class="price">₩32,000<span class="hkd"> · ≈HKD 164</span></div>
+        <div class="note">全球銷量逾 330 萬瓶，微針技術改善膚質，Olive Young 長期斷貨王。送自己／閨密。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young</b>（旺場易缺，見到即入）。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">15</div>
+      <div>
+        <div class="nm">rom&amp;nd 果汁唇釉 <span class="en">Juicy Lasting Tint</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞 OY</span></div>
+        <div class="price">₩9,900<span class="hkd"> · ≈HKD 51</span></div>
+        <div class="note">玻璃唇效果、保濕持色，色號多、開架價，遊客最愛彩妝手信之一。一次買幾支送人。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young</b>。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">16</div>
+      <div>
+        <div class="nm">Mediheal 棉片／面膜 <span class="en">Cica Pad / Mask</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞 OY</span></div>
+        <div class="price">棉片 ₩26,000–28,900<span class="hkd"> ／100 片 · ≈HKD 133–148</span></div>
+        <div class="note">100 片裝棉片量感足、超抵分送；面膜單片約 ₩1,000–1,500。亮肌／修護／控油多款，手信掃一堆。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young</b>／免稅店。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">17</div>
+      <div>
+        <div class="nm">Laneige 睡眠唇膜 <span class="en">Lip Sleeping Mask</span><span class="tag src">多源 ★</span><span class="tag">D0 明洞 OY</span></div>
+        <div class="price">韓價最低<span class="hkd"> · 常 1+1</span></div>
+        <div class="note">經典韓妝送禮款，全球有售但韓國最平，Olive Young 常買一送一。穩陣、人人啱。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D0 明洞 Olive Young</b>／百貨／機場免稅。</div>
+        <div class="more"><span class="h">同場其他斷貨王（Olive Young）</span><b>COSRX</b> 蝸牛精華 · <b>Round Lab</b> 1025 獨島化妝水／白樺防曬 · <b>TIRTIR</b> 紅色氣墊 · <b>Medicube</b> PDRN 粉紅精華 · <b>Numbuzin</b> 3 號 · <b>SKIN1004</b> 積雪草 · <b>AESTURA</b> 365 乳霜 · <b>ma:nyo</b> 卸妝油 · <b>Dasique／fwee</b> 彩妝。</div>
+      </div>
+    </div>
+
+    <!-- 海苔乾貨保健 -->
+    <div class="cat"><span>海苔 · 乾貨 · 保健</span><span class="cc">18–20</span></div>
+
+    <div class="item">
+      <div class="idx">18</div>
+      <div>
+        <div class="nm">韓國海苔 김 <span class="en">양반／광천김</span><span class="tag src">多源 ★</span><span class="tag">D3 超市</span></div>
+        <div class="price">₩3,000–8,000<span class="hkd"> ／多包裝 · ≈HKD 15–41</span></div>
+        <div class="note">韓國餐桌必備，調味紫菜／炸紫菜脆片，輕巧耐放，多份指南列首要食品手信。長輩啱。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D3 蠶室超市</b>整袋掃；便利店、南大門散裝亦有。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">19</div>
+      <div>
+        <div class="nm">南大門爺爺 魚乾／果乾 <span class="en">Namdaemun</span><span class="tag">D0／D4 明洞</span></div>
+        <div class="price">現場定價<span class="hkd"> · 散裝秤重</span></div>
+        <div class="note">無添加乾貨——魷魚絲、雞泡魚乾、草莓乾、蘋果乾（低溫脫水保香）。長者口味、送禮唔失禮。</div>
+        <div class="fill"><span class="l">邊度撞到</span>今程南大門朝市未排，但其「東京食品店」喺<b>明洞有分店</b> → D0／D4 明洞行到。乾貨攤多收現金。<span style="color:var(--ink-3)">（到場 Naver 核）</span></div>
+        <div class="nav"><a href="https://map.naver.com/p/search/남대문 할아버지 견과 명동" target="_blank" rel="noopener">Naver · 남대문 할아버지 (明洞)</a></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">20</div>
+      <div>
+        <div class="nm">正官庄 紅蔘 <span class="en">Korean Red Ginseng</span><span class="tag src">多源 ★</span><span class="tag ink">OY／免稅</span></div>
+        <div class="price">糖／茶包 ₩2,500–7,000<span class="hkd"> · ≈HKD 13–36 · 禮盒另計</span></div>
+        <div class="note">韓國最具代表保健手信，六年根品質最高。零售版紅蔘糖／茶包平、啱送長輩；禮盒走機場免稅價更抵。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>Olive Young／百貨</b>有零售版；高價禮盒留 <b>回程仁川免稅</b>。</div>
+      </div>
+    </div>
+
+    <!-- 飾品角色文創 -->
+    <div class="cat"><span>飾品 · 角色 · 文創</span><span class="cc">21–23</span></div>
+
+    <div class="item">
+      <div class="idx">21</div>
+      <div>
+        <div class="nm">時空間飾品 <span class="en">시공간 / SI:GONG:GAN</span><span class="tag src">多源 ★</span><span class="tag">D1 弘大 ★</span></div>
         <div class="price">₩5,000 起<span class="hkd"> · ≈HKD 26 起</span></div>
-        <div class="note">旅客必逛嘅人氣飾品選物店，貨最齊——耳環／戒指／項鍊／頭飾／服飾／擺設小物，平靚款多。媽媽、姐妹手信首選。</div>
-        <div class="fill"><span class="l">邊度撞到</span><b>D1 弘大旗艦店</b>（麻浦區弘益路3街44）＋<b>延南洞分店</b>——啱啱就喺你 D1 條路線上，可以慢慢揀。新村、建大亦有分店。</div>
+        <div class="note">旅客必逛人氣飾品選物，貨最齊——耳環／戒指／項鍊／頭飾／小物，平靚款多。媽媽、姐妹手信首選。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D1 弘大旗艦</b>（弘益路3街44）＋延南洞分店——啱啱喺你 D1 路線上。</div>
         <div class="nav"><a href="https://map.naver.com/p/search/시공간 홍대" target="_blank" rel="noopener">Naver · 시공간 홍대</a></div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">22</div>
+      <div>
+        <div class="nm">Kakao／LINE Friends 角色精品 <span class="en">Ryan · BT21</span><span class="tag src">多源 ★</span><span class="tag">D1 弘大旗艦</span></div>
+        <div class="price">貼紙 ₩1,000 起<span class="hkd"> · 公仔 ₩20,000+ · ≈HKD 5／103+</span></div>
+        <div class="note">韓國本土 IP，旗艦限定款多（文具／毛公仔／旅行小物）。打卡兼手信，後生／小朋友啱。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D1 弘大 Kakao Friends 旗艦</b>（頂層 Ryan Café）；LINE Friends 明洞店。</div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="idx">23</div>
+      <div>
+        <div class="nm">Daiso 平價雜貨手信 <span class="en">다이소</span><span class="tag ink">D1 弘大 7F／全程</span></div>
+        <div class="price">₩1,000–5,000<span class="hkd"> · ≈HKD 5–26</span></div>
+        <div class="note">韓製美妝小物／髮飾／文具／聯乘雜貨，多數 ₩1,000–3,000，一次過買齊平手信、掃貨唔肉痛。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D1 弘大 2 號店</b>（7 層最大）；明洞、全程都有分店。</div>
+      </div>
+    </div>
+
+    <!-- 傳統工藝 -->
+    <div class="cat"><span>傳統工藝 · Craft</span><span class="cc">24</span></div>
+
+    <div class="item">
+      <div class="idx">24</div>
+      <div>
+        <div class="nm">螺鈿漆器 書籤／杯墊 <span class="en">나전칠기 Mother-of-Pearl</span><span class="tag src">多源 ★</span><span class="tag">D4 仁寺洞</span></div>
+        <div class="price">書籤 ₩28,000 起<span class="hkd"> · ≈HKD 144 起 · 杯墊 ₩30,000–40,000</span></div>
+        <div class="note">朝鮮貴族工藝，手工螺鈿鑲嵌，書籤版輕巧可攜，多份指南公認「最能代表韓國工藝」嘅體面手信。</div>
+        <div class="fill"><span class="l">邊度撞到</span><b>D4 仁寺洞</b> 工藝店（Ssamziegil 一帶）／明洞旅遊中心。</div>
+        <div class="more"><span class="h">仁寺洞／明洞加碼</span><b>核桃菓子（Bok Hodu）</b>新鮮核桃紅豆小餅 · <b>O'sulloc</b> 濟州抹茶威化／餅乾 · <b>매듭</b> 韓繩結匙扣 · <b>Matin Kim／Stand Oil</b> 極簡設計錢包／手袋（聖水・弘大潮牌街可試）。</div>
       </div>
     </div>
 
@@ -237,18 +419,20 @@ a{color:var(--ink)}
 
   <!-- ============ C 買嘢實務 ============ -->
   <div class="sec">
-    <h2><span class="hn">C</span> 買嘢實務 · 三件事</h2>
+    <h2><span class="hn">C</span> 買嘢實務 · 四件事</h2>
 
-    <div class="callout"><div class="ct">退稅</div><div class="cv">單一商店、單日消費滿 <b>₩15,000</b> 可退稅。Olive Young、大型店多設 <b>即場退稅 (instant refund) 機</b>，現場扣返；散買就回程喺機場退稅櫃位辦，記得帶護照、保留單據。</div></div>
+    <div class="callout"><div class="ct">退稅</div><div class="cv">單店單日滿 <b>₩15,000</b> 可退稅；Olive Young 明洞旗艦（Global Town）設<b>即時退稅專區</b>現場扣返，每單即時退稅上限 ₩1,000,000。<b>要帶實體護照</b>，自助收銀機唔計。Olive Young Global App 有 ₩2,000–5,000 歡迎券，落機前下載領。</div></div>
 
-    <div class="callout"><div class="ct">液體／鮮食</div><div class="cv">KANU 係粉條狀、紫薯片杏仁果係乾貨 → <b>可寄艙、耐放</b>。延世忌廉包、鯛魚燒牛奶屬<b>鮮食／飲品</b>，唔耐放又佔手提 100ml 液體限額 → 當地食晒，唔好寄望帶返港。</div></div>
+    <div class="callout ink"><div class="ct">美妝 haul</div><div class="cv"><b>明洞旗艦</b>最大、有退稅專區（D0 夜先掃）；<b>弘大 Town</b> 上新最快（D1 補）。Torriden／Laneige 常 1+1，見到抵價即入。6 月正值季度促銷。</div></div>
 
-    <div class="callout ink"><div class="ct">慳位</div><div class="cv">零食輕但佔行李位。打包清單已備<b>可摺購物袋</b>；主力掃貨擺 <b>D3 蠶室</b>（超市最齊）同走前嘅 <b>D4 明洞</b>，唔使首兩日就拎住一大袋周圍行。</div></div>
+    <div class="callout"><div class="ct">液體／鮮食</div><div class="cv">防曬／化妝水／精華＝<b>液體</b>，多買要<b>寄艙</b>（手提每支 ≤100ml）。泡麵／海苔／杏仁／藥菓／紅蔘乾貨＝寄艙耐放。延世忌廉包、鯛魚燒牛奶、香蕉牛奶＝<b>鮮食即飲</b>，當地食晒。</div></div>
+
+    <div class="callout ink"><div class="ct">慳位／長輩</div><div class="cv">主力掃貨擺 <b>D3 蠶室超市</b> 同走前 <b>D4 明洞</b>，唔使頭兩日就拎一大袋。長輩 gift：<b>紅蔘 · 海苔 · 藥菓</b>。高價紅蔘禮盒、Paris Baguette 奶油餅、O'sulloc 留 <b>回程仁川免稅</b> 補。帶可摺購物袋。</div></div>
   </div>
 
   <div class="foot">
-    <b>來源</b> Trip.com「2026 首爾 9 大必買手信」（作者 Tanya Ng·旅遊達人，文章自核 2026-06-22）；行程對應由本攻略按 D0–D4 路線整理。<br>
-    <b>核實 2026-06-22</b> · FX 1 HKD ≈ 195 KRW · 價以門市 checkout 為準 · 店址／營業到場 Naver Map 再核 · Generated by Claude Code
+    <b>來源</b> 綜合 11+ 個 2026 來源交叉：Trip.com、Cosmopolitan HK、ELLE HK、U Lifestyle、Wingon Travel、GOtrip、Funliday、Creatrip、YourKorea、KCulture、wherekorea、Glowpick（pretties HK）、koreapeek、VisitKorea。<br>
+    <b>核實 2026-06-22</b> · FX 1 HKD ≈ 195 KRW · ★多源＝跨 3+ 來源推介 · 價以門市 checkout 為準 · 店址／營業到場 Naver 再核 · Generated by Claude Code
   </div>
 
 </div>
