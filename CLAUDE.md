@@ -25,6 +25,7 @@ A **travel-planning kit** plus its worked example. Two layers:
 - **Record trade-offs** when dropping a stop, so it's reversible.
 
 ## Conventions
+- **對話語言：與用戶溝通一律用繁體中文（香港．粵語書面語），語氣參照本 repo 既有規劃文件（例：「邊度買」「唔好錯過」「落單」）。技術名詞／程式碼可保留英文。Communicate with the user in Traditional Chinese (Hong Kong Cantonese), matching the tone of the existing planning files.**
 - Artifacts are **self-contained HTML** (inline CSS, no build, works offline).
 - Prices: **local currency primary, home currency secondary**, FX rate stamped + dated.
 - Place names show **local script** for map navigation; maps use the destination's app
