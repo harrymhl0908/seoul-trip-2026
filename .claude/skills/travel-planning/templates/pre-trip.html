@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>出發前落單卡 + 打包 · {{CITY}} {{DATES}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.55;padding:22px 18px 72px}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--ink)}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.masthead{display:grid;grid-template-columns:auto 1fr;column-gap:20px;align-items:start;border-top:2px solid var(--ink);padding-top:12px;margin-top:8px}
+.daynum{font-weight:900;font-size:86px;line-height:.8;letter-spacing:-.045em}
+.daynum small{display:block;font-family:var(--mono);font-size:13px;letter-spacing:.1em;color:var(--ink-3);font-weight:700;margin-top:6px}
+.title{font-weight:900;font-size:clamp(26px,5.4vw,38px);line-height:1.02;letter-spacing:-.022em;margin-top:2px}
+.sub{font-size:14px;line-height:1.5;color:var(--ink-2);margin-top:10px;max-width:52ch}
+@media(max-width:520px){.daynum{font-size:60px}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0 16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:20px 0 4px;padding:10px 0}
+.fact .l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.fact .v{font-size:12.5px;font-weight:700;line-height:1.25;margin-top:3px}
+@media(max-width:520px){.facts{grid-template-columns:repeat(2,1fr);gap:10px 16px}}
+.sec{margin-top:34px}
+.sec h2{font-weight:900;font-size:15px;letter-spacing:-.005em;text-transform:uppercase;padding-bottom:8px;border-bottom:2px solid var(--ink);display:flex;align-items:baseline;gap:9px}
+.sec h2 .hn{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700}
+.item{display:grid;grid-template-columns:48px 1fr;column-gap:16px;align-items:start;padding:18px 0 16px;border-bottom:1px solid var(--rule)}
+.item:last-child{border-bottom:none}
+.idx{font-weight:900;font-size:40px;line-height:.82;letter-spacing:-.04em}
+.item.opt .idx{color:var(--red);opacity:.5}
+.nm{font-weight:800;font-size:19px;line-height:1.12;letter-spacing:-.012em}
+.tag{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--red);padding:1px 6px;vertical-align:2px;margin-left:6px}
+.tag.you{background:var(--ink)}
+.price{font-family:var(--mono);font-size:13px;font-weight:700;margin-top:7px}
+.price .hkd{color:var(--ink-3);font-weight:400}
+.note{font-size:13px;line-height:1.5;color:var(--ink-2);margin-top:7px}
+.note b{color:var(--ink)}
+.fill{font-size:12px;line-height:1.5;color:var(--ink);margin-top:7px;padding-left:12px;border-left:2px solid var(--red)}
+.fill .l{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:2px}
+.book{display:block;margin-top:8px;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.02em;border:1px solid var(--ink);padding:9px 12px;text-decoration:none;color:var(--ink)}
+.book::after{content:" →";color:var(--red)}
+.book:hover,.book:active{border-color:var(--red);color:var(--red)}
+.book .s{font-weight:400;color:var(--ink-3);font-size:11px}
+.book.alt{border-style:dashed}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:14px 0;border-left:3px solid var(--red)}
+.callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
+.callout.ink{border-left-color:var(--ink)}.callout.ink .ct{color:var(--ink)}
+.done li{list-style:none;padding:9px 0 9px 60px;position:relative;border-bottom:1px solid var(--rule-2);font-size:13.5px;line-height:1.5}
+.done li:last-child{border-bottom:none}
+.done li::before{content:"DONE";position:absolute;left:0;top:9px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;color:var(--red)}
+.done b{font-weight:800}
+.pack{margin-top:6px}
+.pack label{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:9px 0;border-bottom:1px solid var(--rule-2);font-size:14px;line-height:1.45;cursor:pointer}
+.pack label:last-child{border-bottom:none}
+.pack input{width:18px;height:18px;margin-top:2px;accent-color:var(--red)}
+.pack .k{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);display:block}
+.pack b{font-weight:700}
+.pgrp{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin:16px 0 2px}
+.foot{margin-top:36px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10.5px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">{{CITY}} Trip · {{DATES}} · T–1 出發前夜</div>
+  <div class="masthead">
+    <div class="daynum">{{T1_DAY}}<small>{{T1_MONTH}}</small></div>
+    <div>
+      <div class="title">出發前落單卡<br>＋ 打包</div>
+      <div class="sub">一頁搞掂今日要落單嘅嘢同打包。手機直接點 link 訂；打包項可 tick，會記住。價 {{LOCAL_CCY}} 主、{{HOME_CCY}} 副（1 {{HOME_CCY}} ≈ {{FX}} {{LOCAL_CCY}}）。</div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><div class="l">去程</div><div class="v">{{OUTBOUND}}</div></div>
+    <div class="fact"><div class="l">回程</div><div class="v">{{RETURN}}</div></div>
+    <div class="fact"><div class="l">住宿</div><div class="v">{{LODGING}}</div></div>
+    <div class="fact"><div class="l">FX</div><div class="v">1 {{HOME_CCY}} ≈ {{FX}} {{LOCAL_CCY}}</div></div>
+  </div>
+
+  <!-- ============ A · 今日必落單（time-critical bookings first） ============ -->
+  <div class="sec">
+    <h2><span class="hn">A</span> 今日必落單</h2>
+
+    <!-- BOOKING ITEM TEMPLATE — duplicate per booking -->
+    <div class="item">
+      <div class="idx">1</div>
+      <div>
+        <div class="nm">{{BOOKING_NAME}}<span class="tag you">你訂</span></div>
+        <div class="price">{{PRICE_LOCAL}}<span class="hkd"> · ≈{{PRICE_HOME}}</span></div>
+        <div class="note">{{why now / why this option}}</div>
+        <div class="fill"><span class="l">落單填</span>{{exact details to type at checkout: name, address, flight, pax}}</div>
+        <a class="book" href="{{BOOKING_URL}}" target="_blank" rel="noopener">{{PLATFORM}} <span class="s">{{search terms}}</span></a>
+        <a class="book alt" href="{{ALT_URL}}" target="_blank" rel="noopener">{{ALT_PLATFORM}} <span class="s">{{alt terms}}</span></a>
+      </div>
+    </div>
+
+    <!-- TIME-CRITICAL example: last train / transfer cut-off — VERIFY to the minute -->
+    <div class="item">
+      <div class="idx">2</div>
+      <div>
+        <div class="nm">回程去機場交通<span class="tag">需決定</span></div>
+        <div class="price">{{option A price}} ｜ {{option B price}}</div>
+        <div class="note"><b>建議：{{recommendation}}.</b> {{rationale}}</div>
+        <div class="callout ink"><div class="ct">慳錢 fallback</div><div class="cv">{{last-train / cut-off — VERIFY to the minute + source. e.g. 尾班直通 22:40（核實日期）}}</div></div>
+        <div class="fill"><span class="l">順手核</span>{{the one fact to double-check, e.g. bag-drop close time}}</div>
+        <a class="book" href="{{URL}}" target="_blank" rel="noopener">{{PLATFORM}} <span class="s">{{terms}}</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ B · 今日或聽朝 ============ -->
+  <div class="sec">
+    <h2><span class="hn">B</span> 今日或聽朝</h2>
+    <div class="item opt">
+      <div class="idx">3</div>
+      <div>
+        <div class="nm">裝齊 App<span class="tag you">你裝</span></div>
+        <div class="note">{{destination's required apps — e.g. Korea: Naver Map（行人/交通主力，Google Map 唔準）· Papago · Kakao T · 티머니GO · Catch Table}}。eSIM ✓。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ C · 已搞掂 ============ -->
+  <div class="sec">
+    <h2><span class="hn">C</span> 已搞掂 · 自動跳過</h2>
+    <ul class="done">
+      <li><b>{{entry/visa status}}</b>：{{detail — e.g. K-ETA 豁免到 …}}</li>
+      <li><b>{{arrival card}}</b>：{{detail}}</li>
+      <li><b>eSIM</b>、<b>旅遊保險</b>、<b>現金</b>、<b>致電住宿</b> — ✓。</li>
+    </ul>
+  </div>
+
+  <!-- ============ D · 提醒 ============ -->
+  <div class="sec">
+    <h2><span class="hn">D</span> 幾個提醒</h2>
+    <div class="callout"><div class="ct">{{REMINDER_1}}</div><div class="cv">{{detail}}</div></div>
+    <div class="callout ink"><div class="ct">{{WEATHER}}</div><div class="cv">{{seasonal timing note — e.g. 梅雨 25–27 先到，打包 sun+rain 兩備}}</div></div>
+  </div>
+
+  <!-- ============ E · 打包清單（weather-adaptive，persist to localStorage） ============ -->
+  <div class="sec">
+    <h2><span class="hn">E</span> 打包清單</h2>
+
+    <div class="pgrp">▍ {{GROUP — e.g. 雨 · RAIN}}</div>
+    <div class="pack">
+      <label><input type="checkbox" data-k="p1"><span><span class="k">{{qty}}</span><b>{{item}}</b>（{{why}}）</span></label>
+      <label><input type="checkbox" data-k="p2"><span><b>{{item}}</b></span></label>
+    </div>
+
+    <div class="pgrp">▍ {{GROUP — e.g. 證件/截圖 · DOCS}}</div>
+    <div class="pack">
+      <label><input type="checkbox" data-k="p11"><span><b>護照</b>（有效期 6 個月以上）</span></label>
+      <label><input type="checkbox" data-k="p12"><span><b>各 booking 確認截圖</b>（存落 offline pack）</span></label>
+      <label><input type="checkbox" data-k="p13"><span><b>住宿地址（當地文字）</b> {{address_local}}（畀司機睇）</span></label>
+    </div>
+  </div>
+
+  <div class="foot">
+    <b>核實 {{DATE_VERIFIED}}</b> · FX 1 {{HOME_CCY}} ≈ {{FX}} {{LOCAL_CCY}} · {{key verified facts + sources}}<br>
+    booking link = 平台搜尋頁，價以 checkout 為準 · 地圖一律 {{MAP_APP}} · Generated by Claude Code
+  </div>
+
+</div>
+<script>
+// 打包 checklist：localStorage 記住
+(function(){
+  var boxes=document.querySelectorAll('.pack input[type=checkbox]');
+  boxes.forEach(function(b){
+    var k='pretrip_'+b.dataset.k;
+    try{if(localStorage.getItem(k)==='1')b.checked=true;}catch(e){}
+    b.addEventListener('change',function(){
+      try{localStorage.setItem(k,b.checked?'1':'0');}catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>

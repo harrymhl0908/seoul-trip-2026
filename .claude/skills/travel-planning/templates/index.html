@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{CITY}} {{DATES}} · 行程總覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.5;padding:24px 18px 72px}
+.wrap{max-width:760px;margin:0 auto}
+a{color:var(--ink)}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.title{font-weight:900;font-size:clamp(30px,7vw,56px);line-height:.96;letter-spacing:-.03em;border-top:2px solid var(--ink);padding-top:12px;margin-top:6px}
+.sub{font-size:14px;color:var(--ink-2);margin-top:10px;max-width:54ch}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0 16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:20px 0;padding:10px 0}
+.fact .l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.fact .v{font-size:12.5px;font-weight:700;margin-top:3px}
+@media(max-width:520px){.facts{grid-template-columns:repeat(2,1fr);gap:10px 16px}}
+.sec h2{font-weight:900;font-size:13px;text-transform:uppercase;letter-spacing:.02em;padding-bottom:7px;border-bottom:2px solid var(--ink);margin-top:30px}
+/* day nav cards */
+.days{margin-top:8px}
+.day{display:grid;grid-template-columns:64px 1fr auto;column-gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--rule);text-decoration:none}
+.day .n{font-weight:900;font-size:42px;line-height:.8;letter-spacing:-.04em}
+.day .nm{font-weight:800;font-size:17px;line-height:1.15}
+.day .nm .ko{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--ink-3);display:block;margin-top:2px}
+.day .meta{font-family:var(--mono);font-size:10px;color:var(--ink-3);text-align:right;line-height:1.6}
+.day .meta .go{color:var(--red);font-weight:700}
+/* tool links */
+.tools{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+@media(max-width:520px){.tools{grid-template-columns:1fr}}
+.tool{display:block;border:1px solid var(--ink);padding:12px 14px;text-decoration:none;font-family:var(--mono);font-size:13px;font-weight:700}
+.tool::after{content:" →";color:var(--red)}
+.tool:hover{border-color:var(--red);color:var(--red)}
+.tool .s{display:block;font-weight:400;color:var(--ink-3);font-size:11px;margin-top:3px}
+.foot{margin-top:34px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3)}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">{{TRIP_KICKER — e.g. Family Trip · 6 Days 5 Nights}}</div>
+  <div class="title">{{CITY}}<br>{{DATES}}</div>
+  <div class="sub">{{one-line trip intent / theme}}</div>
+
+  <div class="facts">
+    <div class="fact"><div class="l">日數</div><div class="v">{{N_DAYS}}</div></div>
+    <div class="fact"><div class="l">同行</div><div class="v">{{TRAVELERS}}</div></div>
+    <div class="fact"><div class="l">住宿</div><div class="v">{{LODGING}}</div></div>
+    <div class="fact"><div class="l">預算</div><div class="v">{{BUDGET}}</div></div>
+  </div>
+
+  <!-- ============ DAYS ============ -->
+  <div class="sec"><h2>每日行程</h2></div>
+  <div class="days">
+    <a class="day" href="d1.html">
+      <div class="n">D1</div>
+      <div><div class="nm">{{DAY_TITLE}} <span class="ko">{{DISTRICT_LOCAL}}</span></div></div>
+      <div class="meta">{{DATE}}<br><span class="go">行程＋購物 →</span></div>
+    </a>
+    <a class="day" href="d2.html">
+      <div class="n">D2</div>
+      <div><div class="nm">{{DAY_TITLE}} <span class="ko">{{DISTRICT_LOCAL}}</span></div></div>
+      <div class="meta">{{DATE}}<br><span class="go">行程 →</span></div>
+    </a>
+    <!-- …one per day -->
+  </div>
+
+  <!-- ============ TOOLS / ARTIFACTS ============ -->
+  <div class="sec"><h2>工具 · 清單 · 地圖</h2></div>
+  <div class="tools">
+    <a class="tool" href="pre-trip.html">出發前落單卡<span class="s">booking + 打包清單</span></a>
+    <a class="tool" href="budget-ledger.html">預算簿 + 訂單追蹤<span class="s">多幣 budget + 確認號</span></a>
+    <a class="tool" href="souvenirs.html">手信地圖<span class="s">買咩 + 邊度買</span></a>
+    <a class="tool" href="daily-itinerary.html">每日速覽<span class="s">手機一頁 digest</span></a>
+    <!-- add per-day glance / maps / driver-brief as applicable -->
+  </div>
+
+  <div class="foot">
+    <b>{{CITY}} {{DATES}}</b> · 核實 {{DATE_VERIFIED}} · 1 {{HOME_CCY}} ≈ {{FX}} {{LOCAL_CCY}} · 地圖 {{MAP_APP}}<br>
+    所有資料到場再核營業狀態 · Generated by Claude Code · travel-planning skill
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>D{{N}} 購物清單 · {{DISTRICT_LOCAL}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.5;padding:0 0 64px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+a{color:var(--ink)}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-top:18px}
+.masthead{border-top:2px solid var(--ink);padding-top:10px;margin-top:6px}
+.title{font-weight:900;font-size:clamp(22px,4.8vw,32px);line-height:1.04;letter-spacing:-.022em}
+.sub{font-size:13.5px;line-height:1.5;color:var(--ink-2);margin-top:9px;max-width:52ch}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:baseline;padding:11px 0 11px 14px;margin:16px 0;border-left:3px solid var(--red)}
+.callout .ct{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+.callout .cv{font-size:13.5px;line-height:1.55;font-weight:600}
+.callout.ink{border-left-color:var(--ink)}.callout.ink .ct{color:var(--ink)}
+.zonehd{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--ink);padding:7px 12px;margin-top:30px}
+.shop{display:grid;grid-template-columns:46px 1fr;column-gap:14px;align-items:start;padding:18px 0 17px;border-bottom:1px solid var(--rule)}
+.snum{font-weight:900;font-size:30px;line-height:.82;letter-spacing:-.04em}
+.stitle{font-weight:900;font-size:18px;line-height:1.16;letter-spacing:-.015em}
+.stitle .t{display:block;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--red);margin-top:5px}
+.sd{font-size:12.5px;line-height:1.6;color:var(--ink-2);margin-top:9px}
+.sd b{color:var(--ink)}
+.brands{font-size:11.5px;line-height:1.7;margin-top:10px;padding:10px 12px;background:var(--rule-2)}
+.brands .bh{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-right:5px}
+.fam{font-size:12px;line-height:1.55;margin-top:10px;padding:7px 0 7px 11px;border-left:3px solid var(--red);color:var(--ink);font-weight:600}
+.meta2{margin-top:11px;font-family:var(--mono);font-size:10.5px;line-height:1.7;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:1px 16px}
+.meta2 .k{color:var(--red);font-weight:700;margin-right:4px}
+.meta2 b{color:var(--ink)}
+.foot{margin-top:30px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3);letter-spacing:.02em}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">{{CITY}} · D{{N}} · {{DISTRICT}} 購物</div>
+  <div class="masthead">
+    <div class="title">{{DISTRICT}}掃店清單</div>
+    <div class="sub">{{ONE_LINE — what this district is best for and how to play it}}</div>
+  </div>
+
+  <!-- QUICK OVERVIEW · 邊區買咩 -->
+  <div class="callout"><div class="ct">速覽 · 邊區買咩</div><div class="cv">{{OVERVIEW — which sub-areas, who buys what, timing notes (e.g. shops open 11:00)}}</div></div>
+
+  <!-- ⭐ MUST-NOT-MISS · per persona — the signature touch -->
+  <div class="callout ink"><div class="ct">⭐ 別錯過速查</div><div class="cv">
+    <b>{{PERSONA_1}}</b>：{{picks}}<br>
+    <b>{{PERSONA_2}}</b>：{{picks}}<br>
+    <b>{{PERSONA_3}}</b>：{{picks}}<br>
+    <b>全家</b>：{{picks}}<br>
+    <b>🔸 獨特／有趣</b>：{{the design/concept/character shops worth seeing even if not buying}}
+  </div></div>
+
+  <div class="zonehd">{{SUB_AREA_LOCAL}} · {{STATION}} 一帶</div>
+
+  <!-- SHOP TEMPLATE — duplicate per shop -->
+  <div class="shop">
+    <div class="snum">01</div>
+    <div>
+      <div class="stitle">{{SHOP_NAME}}<span class="t">{{TAGLINE — what's special / new / for whom}}</span></div>
+      <div class="sd">{{DESCRIPTION — ~80-130 words: what to buy, why worth it, quirks, opening-time caveats}}</div>
+      <div class="brands">
+        <div><span class="bh">{{CATEGORY}}</span>{{brands in this category}}</div>
+        <div><span class="bh">{{CATEGORY}}</span>{{brands}}</div>
+      </div>
+      <div class="fam"><b>⭐ 別錯過</b>｜{{PERSONA}}：{{why they must not miss it}}；{{rough price}}.</div>
+      <div class="meta2"><span><span class="k">址</span> {{ADDRESS_LOCAL}}</span><span><span class="k">交通</span> {{STATION}} <b>{{EXIT}}번</b></span><span><span class="k">時</span> {{HOURS}}</span></div>
+    </div>
+  </div>
+
+  <!-- BEST 1-2 FOOD in the district -->
+  <div class="callout"><div class="ct">區內最佳 1–2 食</div><div class="cv">{{FOOD_PICKS — 1-2 standout eats with addresses + queue/booking note}}</div></div>
+
+  <div class="foot">
+    <b>D{{N}} 購物 · {{DATE}}</b> · 各店休息日／確切樓層到場 Naver 核<br>
+    核實 {{DATE_VERIFIED}} · 1 HKD ≈ {{FX}} ₩ · Generated by Claude Code
+  </div>
+
+</div>
+</body>
+</html>

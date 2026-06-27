@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>D{{N}} 速覽 · {{DISTRICT_LOCAL}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.5;padding:0 0 56px}
+.wrap{max-width:640px;margin:0 auto;padding:0 18px}
+a{color:var(--ink)}
+.wx{background:var(--ink);color:#fff;padding:11px 18px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.wx .d{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.wx .rn{background:var(--red);font-family:var(--mono);font-size:10px;font-weight:700;padding:1px 7px;text-transform:uppercase}
+.masthead{border-top:2px solid var(--ink);padding-top:10px;margin-top:14px}
+.daynum{font-weight:900;font-size:48px;line-height:.85;letter-spacing:-.04em}
+.title{font-weight:900;font-size:22px;line-height:1.05;letter-spacing:-.02em;margin-top:4px}
+/* compact timeline — key stops only */
+.tl{margin-top:14px}
+.t-row{display:grid;grid-template-columns:62px 1fr;column-gap:12px;padding:9px 0;border-bottom:1px solid var(--rule-2);align-items:baseline}
+.t-row:last-child{border-bottom:none}
+.t-when{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--red)}
+.t-nm{font-weight:700;font-size:14px}
+.t-nm .ko{font-family:var(--mono);font-weight:400;font-size:10.5px;color:var(--ink-3)}
+.t-nm .anchor{font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--ink);padding:1px 5px;margin-left:6px}
+.t-meta{font-size:11px;color:var(--ink-2);margin-top:2px}
+.t-meta a{font-family:var(--mono);font-size:10.5px;font-weight:700;border-bottom:1px solid var(--ink);text-decoration:none}
+.t-meta a::after{content:" →";color:var(--red)}
+.hi{margin-top:16px;padding:10px 0 10px 12px;border-left:3px solid var(--red);font-size:12.5px;line-height:1.6;font-weight:600}
+.hi .h{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:4px}
+.foot{margin-top:24px;padding-top:10px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.6;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<div class="wx"><span class="d">{{DATE}} {{WEEKDAY}}</span><span class="rn">{{ROUTE_ONELINE}}</span></div>
+<div class="wrap">
+  <div class="masthead">
+    <div class="daynum">D{{N}}</div>
+    <div class="title">{{DAY_TITLE}}</div>
+  </div>
+
+  <!-- COMPACT TIMELINE — key stops only (anchors + meals). Generated from the same stop data as day.html. -->
+  <div class="tl">
+    <div class="t-row">
+      <div class="t-when">{{TIME}}</div>
+      <div>
+        <div class="t-nm">{{NAME}} <span class="ko">{{NAME_LOCAL}}</span><span class="anchor">錨</span></div>
+        <div class="t-meta">{{PRICE}} · {{WALK}} · <a href="https://map.naver.com/p/search/{{NAME_LOCAL}}" target="_blank" rel="noopener">Naver</a></div>
+      </div>
+    </div>
+    <div class="t-row">
+      <div class="t-when">{{TIME}}</div>
+      <div>
+        <div class="t-nm">{{NAME}} <span class="ko">{{NAME_LOCAL}}</span></div>
+        <div class="t-meta">{{PRICE}} · <a href="https://map.naver.com/p/search/{{NAME_LOCAL}}" target="_blank" rel="noopener">Naver</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hi"><span class="h">⭐ 別錯過</span>{{must-not-miss highlights for the day, condensed}}</div>
+  <div class="hi"><span class="h">☂ 落雨 Plan-B</span>{{the day's rain fallback in one line}}</div>
+
+  <div class="foot">D{{N}} 速覽 · 完整版見 d{{N}}.html · 核實 {{DATE_VERIFIED}} · 1 HKD ≈ {{FX}} ₩</div>
+</div>
+</body>
+</html>
