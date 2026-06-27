@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="{{LOCAL_LANG_CODE}}"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{DAY}} 包車行程 / Charter brief</title>
+<!--
+  BILINGUAL DRIVER / HOST BRIEF
+  Purpose: a charter-day itinerary the local driver (or host) can read in their language,
+  with addresses in local script + map links, plus a translated column for the traveler.
+  Generalize the two <section> blocks: one in the LOCAL language, one in the traveler's.
+  Keep cards simple and high-contrast — this is read in a moving car.
+-->
+<style>
+*{box-sizing:border-box;margin:0}
+body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR','Noto Sans SC','Noto Sans TC',system-ui,sans-serif;background:#f4f4f4;color:#111;line-height:1.45;padding:0 0 40px}
+.hd{background:#111;color:#fff;padding:16px 18px}
+.hd .k{font-size:11px;letter-spacing:.18em;color:#ff5a6e;font-weight:700;text-transform:uppercase}
+.hd h1{font-size:19px;font-weight:800;margin-top:3px}
+.hd .meta{font-size:12px;color:#bbb;margin-top:5px}
+.wrap{max-width:560px;margin:0 auto;padding:0 14px}
+section{margin-top:18px}
+section h2{font-size:15px;font-weight:800;color:#E4002B;border-bottom:2px solid #111;padding-bottom:6px;margin-bottom:10px}
+.card{display:flex;gap:11px;background:#fff;border:1px solid #e3e3e3;border-radius:11px;padding:12px;margin-bottom:9px}
+.card.opt{border-style:dashed;border-color:#E4002B;background:#fffafa}
+.card.meal{background:#fff5f0;border-color:#ffcdb2}
+.card.end{background:#f0f0f0}
+.bd .num{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#111;color:#fff;font-weight:800;font-size:14px}
+.card.opt .bd .num{background:#fff;color:#E4002B;border:2px solid #E4002B}
+.card.meal .bd .num{background:#E4002B}
+.bdy{flex:1;min-width:0}
+.nm{font-weight:800;font-size:15px}
+.tm{font-family:'SF Mono',ui-monospace,monospace;font-size:13px;color:#E4002B;font-weight:700;margin-top:2px}
+.ad{font-size:13px;color:#333;margin-top:4px}
+.nt{font-size:12.5px;color:#666;margin-top:3px}
+a.nav{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:#fff;background:#1a73e8;padding:6px 12px;border-radius:8px;text-decoration:none}
+.foot{font-size:12px;color:#777;margin-top:6px}
+.bk{font-size:12px;color:#888;text-align:center;margin-top:22px;padding-top:12px;border-top:1px solid #ddd}
+.phone{background:#fff8d6;border:1px solid #e8d97a;border-radius:9px;padding:9px 12px;font-size:13px;margin-top:12px}
+.note{background:#eef4ff;border:1px solid #b9d0f5;border-left:4px solid #1a73e8;border-radius:9px;padding:11px 13px;margin-top:12px}
+.note b.t{display:block;font-size:13.5px;color:#1a4fa0;margin-bottom:5px}
+.note ul{margin:0;padding-left:18px} .note li{font-size:12.8px;color:#23324a;margin:3px 0;line-height:1.4}
+</style></head><body>
+<div class="hd"><div class="k">{{TRIP}} · {{DAY}}</div>
+<h1>{{TITLE_LOCAL}} / {{TITLE_TRAVELER}}</h1>
+<div class="meta">{{DATE}} · {{operator / booking ref}} · {{PAX}} · {{HOURS}}</div></div>
+<div class="wrap">
+
+<div class="phone">📞 {{traveler contact label in local lang}}：__________</div>
+<div class="note"><b class="t">📌 {{"notes for driver" in local lang}}</b><ul>
+  <li>{{key instruction 1 — e.g. lunch location, entry-deadline ordering}}</li>
+  <li>{{key instruction 2}}</li>
+  <li>{{charter hours + overtime rule}}</li>
+</ul></div>
+
+<!-- ===== LOCAL LANGUAGE COLUMN ===== -->
+<section><h2>{{"itinerary" in local lang}}</h2>
+
+  <div class="card end"><div class="bd"><span class="num">·</span></div><div class="bdy">
+    <div class="nm">{{pickup — lodging name in local script}}</div>
+    <div class="tm">{{TIME}}</div>
+    <div class="ad">{{lodging address in local script}}</div>
+    <div class="nt">{{pickup note}}</div>
+    <a class="nav" href="https://map.naver.com/p/search/{{lodging_local}}" target="_blank" rel="noopener">🧭 {{"navigate" local}}</a>
+  </div></div>
+
+  <div class="card"><div class="bd"><span class="num">1</span></div><div class="bdy">
+    <div class="nm">{{STOP_LOCAL}}</div>
+    <div class="tm">{{arrive}} → {{leave}}</div>
+    <div class="ad">{{address local script}}</div>
+    <div class="nt">{{note}}</div>
+    <a class="nav" href="https://map.naver.com/p/search/{{stop_local}}" target="_blank" rel="noopener">🧭 {{"navigate" local}}</a>
+  </div></div>
+
+  <div class="card meal"><div class="bd"><span class="num">🍴</span></div><div class="bdy">
+    <div class="nm">{{LUNCH_LOCAL}}</div><div class="tm">{{time}}</div>
+    <div class="ad">{{address}}</div><div class="nt">{{note}}</div>
+    <a class="nav" href="https://map.naver.com/p/search/{{lunch_local}}" target="_blank" rel="noopener">🧭 {{"navigate" local}}</a>
+  </div></div>
+
+  <div class="card opt"><div class="bd"><span class="num">＋</span></div><div class="bdy">
+    <div class="nm">{{OPTIONAL_STOP_LOCAL}}（{{"optional" local}}）</div><div class="tm">{{time}}</div>
+    <div class="ad">{{address}}</div><div class="nt">{{condition — e.g. only if time allows; overtime charge}}</div>
+    <a class="nav" href="https://map.naver.com/p/search/{{stop_local}}" target="_blank" rel="noopener">🧭 {{"navigate" local}}</a>
+  </div></div>
+
+  <div class="card end"><div class="bd"><span class="num">✓</span></div><div class="bdy">
+    <div class="nm">{{return — lodging local}}</div><div class="tm">{{time}}</div>
+    <div class="ad">{{address local}}</div>
+    <a class="nav" href="https://map.naver.com/p/search/{{lodging_local}}" target="_blank" rel="noopener">🧭 {{"navigate" local}}</a>
+  </div></div>
+  <p class="foot">※ {{key ordering reminder in local lang}}</p>
+</section>
+
+<!-- ===== TRAVELER LANGUAGE COLUMN (mirror of the above) ===== -->
+<section><h2>{{"itinerary (traveler lang)"}}</h2>
+  <!-- duplicate the cards above, translated into the traveler's language; keep the same
+       local-script addresses + Naver links so navigation is identical -->
+</section>
+
+<div class="bk">{{"addresses open in the map app" — bilingual one-liner}}</div>
+</div></body></html>

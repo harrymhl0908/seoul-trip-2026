@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>預算簿 + 訂單追蹤 · {{CITY}} {{DATES}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff;--ink:#111;--ink-2:#444;--ink-3:#7a7a7a;--red:#E4002B;--rule:#dcdcdc;--rule-2:#eaeaea;--ok:#0a7d34;
+  --sans:"Inter","Noto Sans TC","PingFang TC",system-ui,sans-serif;
+  --mono:"Space Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:15px;line-height:1.5;padding:22px 16px 72px}
+.wrap{max-width:820px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.title{font-weight:900;font-size:clamp(24px,5vw,34px);line-height:1.04;letter-spacing:-.022em;border-top:2px solid var(--ink);padding-top:10px;margin-top:6px}
+.sub{font-size:13.5px;color:var(--ink-2);margin-top:8px;max-width:60ch}
+/* big total */
+.total{display:grid;grid-template-columns:repeat(3,1fr);gap:0 16px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);margin:18px 0 4px;padding:12px 0}
+.total .l{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.total .v{font-weight:900;font-size:26px;letter-spacing:-.02em;margin-top:3px}
+.total .v small{font-family:var(--mono);font-size:12px;font-weight:400;color:var(--ink-3)}
+.sec{margin-top:30px}
+.sec h2{font-weight:900;font-size:14px;text-transform:uppercase;padding-bottom:7px;border-bottom:2px solid var(--ink);display:flex;gap:8px;align-items:baseline}
+.sec h2 .hn{font-family:var(--mono);font-size:11px;color:var(--red)}
+table{width:100%;border-collapse:collapse;margin-top:6px;font-size:12.5px}
+th{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:8px 8px 6px;border-bottom:1px solid var(--ink)}
+th.r,td.r{text-align:right}
+td{padding:9px 8px;border-bottom:1px solid var(--rule-2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.cat{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+td .it{font-weight:700}
+td .sub2{font-size:11px;color:var(--ink-3);margin-top:2px}
+td.num{font-family:var(--mono);font-weight:700;white-space:nowrap}
+td.num .h{display:block;font-weight:400;color:var(--ink-3);font-size:11px}
+tfoot td{border-top:2px solid var(--ink);font-weight:900;font-size:14px;font-family:var(--mono)}
+/* booking tracker */
+.bk{display:grid;grid-template-columns:1fr;gap:0}
+.brow{display:grid;grid-template-columns:1fr auto;gap:8px 14px;align-items:start;padding:14px 0;border-bottom:1px solid var(--rule)}
+.brow:last-child{border-bottom:none}
+.bnm{font-weight:800;font-size:15px}
+.bmeta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:4px;line-height:1.6}
+.bmeta a{color:var(--ink)}
+.bmeta .cf{color:var(--ink);font-weight:700}
+.st{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;white-space:nowrap;height:fit-content}
+.st.todo{color:var(--red);border:1px solid var(--red)}
+.st.booked{color:#fff;background:var(--ok)}
+.foot{margin-top:34px;padding-top:12px;border-top:2px solid var(--ink);font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--ink-3)}
+.foot b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="kicker">{{CITY}} · {{DATES}} · {{N_PAX}} 人</div>
+  <div class="title">預算簿 + 訂單追蹤</div>
+  <div class="sub">每項以 {{LOCAL_CCY}} 主、{{HOME_CCY}} 副記。小計自動滾上每日／全程總額。FX 1 {{HOME_CCY}} ≈ {{FX}} {{LOCAL_CCY}}（核實 {{DATE_VERIFIED}}）。</div>
+
+  <div class="total">
+    <div><div class="l">全程總額（估）</div><div class="v">{{TOTAL_LOCAL}} <small>≈ {{TOTAL_HOME}}</small></div></div>
+    <div><div class="l">每人</div><div class="v">{{PER_PERSON_LOCAL}} <small>≈ {{PER_PERSON_HOME}}</small></div></div>
+    <div><div class="l">已訂／待訂</div><div class="v">{{N_BOOKED}}/{{N_TOTAL}}</div></div>
+  </div>
+
+  <!-- ============ BY CATEGORY ============ -->
+  <div class="sec">
+    <h2><span class="hn">$</span> 分類預算</h2>
+    <table>
+      <thead><tr><th>類</th><th>項目</th><th class="r">{{LOCAL_CCY}}</th><th class="r">≈{{HOME_CCY}}</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">交通</td><td><div class="it">{{item}}</div><div class="sub2">{{note}}</div></td><td class="num r">{{local}}</td><td class="num r">{{home}}</td></tr>
+        <tr><td class="cat">住宿</td><td><div class="it">{{item}}</div></td><td class="num r">{{local}}</td><td class="num r">{{home}}</td></tr>
+        <tr><td class="cat">門票</td><td><div class="it">{{item}}</div></td><td class="num r">{{local}}</td><td class="num r">{{home}}</td></tr>
+        <tr><td class="cat">餐飲</td><td><div class="it">{{per-day food budget × days}}</div></td><td class="num r">{{local}}</td><td class="num r">{{home}}</td></tr>
+        <tr><td class="cat">購物</td><td><div class="it">{{shopping/souvenir allowance}}</div></td><td class="num r">{{local}}</td><td class="num r">{{home}}</td></tr>
+      </tbody>
+      <tfoot><tr><td></td><td>總計</td><td class="r">{{TOTAL_LOCAL}}</td><td class="r">{{TOTAL_HOME}}</td></tr></tfoot>
+    </table>
+  </div>
+
+  <!-- ============ BY DAY (optional roll-up) ============ -->
+  <div class="sec">
+    <h2><span class="hn">▦</span> 每日小計</h2>
+    <table>
+      <thead><tr><th>日</th><th>重點開支</th><th class="r">{{LOCAL_CCY}}</th><th class="r">≈{{HOME_CCY}}</th></tr></thead>
+      <tbody>
+        <tr><td class="num">D1</td><td>{{anchor cost + meals}}</td><td class="num r">{{local}}</td><td class="num r">{{home}}</td></tr>
+        <tr><td class="num">D2</td><td>{{…}}</td><td class="num r">{{local}}</td><td class="num r">{{home}}</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============ BOOKING TRACKER ============ -->
+  <div class="sec">
+    <h2><span class="hn">✓</span> 訂單追蹤 · 確認號</h2>
+    <div class="bk">
+      <div class="brow">
+        <div>
+          <div class="bnm">{{BOOKING_NAME}}</div>
+          <div class="bmeta">需要 {{DATE_NEEDED}} · {{PRICE}} · <span class="cf">確認號 {{CONFIRMATION_NO}}</span> · <a href="{{BOOKING_URL}}" target="_blank" rel="noopener">連結</a></div>
+        </div>
+        <div class="st booked">已訂</div>
+      </div>
+      <div class="brow">
+        <div>
+          <div class="bnm">{{BOOKING_NAME}}</div>
+          <div class="bmeta">需要 {{DATE_NEEDED}} · {{PRICE}} · 確認號 — · <a href="{{BOOKING_URL}}" target="_blank" rel="noopener">去訂</a></div>
+        </div>
+        <div class="st todo">待訂</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <b>核實 {{DATE_VERIFIED}}</b> · 價以 checkout 為準 · FX 1 {{HOME_CCY}} ≈ {{FX}} {{LOCAL_CCY}}<br>
+    分帳：若多人，按已訂項記誰先付，回程結算 · Generated by Claude Code
+  </div>
+
+</div>
+</body>
+</html>
